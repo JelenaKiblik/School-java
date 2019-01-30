@@ -65,11 +65,6 @@ public class Introduction {
         if (valueOne < 5 || valueTwo < 5) {
             return "bad";
         }
-//
-//        if (valueOne >= 5 && valueTwo >= 5) {
-//            return "ok";
-//        }
-
         if (valueOne == valueTwo * 2 || valueTwo == valueOne * 2) {
             return "good";
         }
@@ -78,10 +73,10 @@ public class Introduction {
 
     public static void main(String[] args) {
         // static method we can call directly from static method (main)
-//        System.out.println(countJava("javaJavaJAVA"));  // 3
-//        System.out.println(countJava("Nothing here"));  // 0
-        System.out.println(howIsOutcome(1, 10));
-        System.out.println(howIsOutcome(6, 12));
-        System.out.println(howIsOutcome(8, 9));
+        System.out.println(countJava("javaJavaJAVA"));  // 3
+        System.out.println(countJava("Nothing here"));  // 0
+//        System.out.println(howIsOutcome(1, 10));
+//        System.out.println(howIsOutcome(6, 12));
+//        System.out.println(howIsOutcome(8, 9));
     }
 }
