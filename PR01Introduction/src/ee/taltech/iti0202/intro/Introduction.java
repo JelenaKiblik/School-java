@@ -18,10 +18,10 @@ public class Introduction {
 
         while (lastIndex != -1) {
 
-            lastIndex = stringWithJava.toLowerCase().indexOf(findStr,lastIndex);
+            lastIndex = stringWithJava.toLowerCase().indexOf(findStr, lastIndex);
 
             if (lastIndex != -1) {
-                count ++;
+                count++;
                 lastIndex += findStr.length();
             }
         }
