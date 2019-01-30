@@ -38,7 +38,14 @@ public class Introduction {
      * @return true if sneakyNumber's value equals its number of occurrences
      */
     public static boolean doubleNumber(int[] inputNumbers, int sneakyNumber) {
-        return false;
+        int sum = 0;
+        for (int item : inputNumbers) {
+            if (item == sneakyNumber) {
+                sum++;
+            }
+        }
+
+        return sum == sneakyNumber;
     }
 
 
@@ -62,6 +69,5 @@ public class Introduction {
         // static method we can call directly from static method (main)
         System.out.println(countJava("javaJavaJAVA"));  // 3
         System.out.println(countJava("Nothing here"));  // 0
-        // try some other examples here
     }
 }
