@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.intro;
 
-import com.sun.deploy.util.StringUtils;
 
 public class Introduction {
 
@@ -17,11 +16,11 @@ public class Introduction {
         int lastIndex = 0;
         int count = 0;
 
-        while(lastIndex != -1){
+        while (lastIndex != -1) {
 
             lastIndex = stringWithJava.toLowerCase().indexOf(findStr,lastIndex);
 
-            if(lastIndex != -1){
+            if (lastIndex != -1) {
                 count ++;
                 lastIndex += findStr.length();
             }
