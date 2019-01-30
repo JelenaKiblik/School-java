@@ -66,8 +66,8 @@ public class Introduction {
             return "bad";
         } else if (valueOne >= 5 && valueTwo >= 5) {
             return "ok";
-        } else if ((valueOne == valueTwo * 2 || valueTwo == valueOne * 2) && (valueOne < 5 ||  valueTwo < 5)) {
-            return "good";
+//        } else if ((valueOne == valueTwo * 2 || valueTwo == valueOne * 2) && (valueOne < 5 ||  valueTwo < 5)) {
+//            return "good";
         }
         return "bad";
     }
