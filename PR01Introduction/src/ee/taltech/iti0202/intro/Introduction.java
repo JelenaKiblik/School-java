@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.intro;
 
+import com.sun.deploy.util.StringUtils;
+
 public class Introduction {
 
     /**
@@ -10,7 +12,21 @@ public class Introduction {
      * @return The number of word Java occurrences.
      */
     public static int countJava(String stringWithJava) {
-        return 0;
+        String findStr = "java";
+
+        int lastIndex = 0;
+        int count = 0;
+
+        while(lastIndex != -1){
+
+            lastIndex = stringWithJava.toLowerCase().indexOf(findStr,lastIndex);
+
+            if(lastIndex != -1){
+                count ++;
+                lastIndex += findStr.length();
+            }
+        }
+        return count;
     }
 
 
@@ -40,7 +56,7 @@ public class Introduction {
      * @return true if sneakyNumber's value equals its number of occurrences
      */
     public static String howIsOutcome(int valueOne, int valueTwo) {
-        return 0;
+        return null;
     }
 
     public static void main(String[] args) {
