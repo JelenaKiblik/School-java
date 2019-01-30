@@ -69,7 +69,7 @@ public class Introduction {
         } else if ((valueOne == valueTwo * 2 || valueTwo == valueOne * 2) && ( valueOne < 5 ||  valueTwo < 5)) {
             return "good";
         }
-        return null;
+        return "bad";
     }
 
     public static void main(String[] args) {
