@@ -62,11 +62,11 @@ public class Introduction {
      * @return true if sneakyNumber's value equals its number of occurrences
      */
     public static String howIsOutcome(int valueOne, int valueTwo) {
-        if ( valueOne < 5 && valueTwo < 5) {
+        if (valueOne < 5 && valueTwo < 5) {
             return "bad";
         } else if (valueOne >= 5 && valueTwo >= 5) {
             return "ok";
-        } else if ((valueOne == valueTwo * 2 || valueTwo == valueOne * 2) && ( valueOne < 5 ||  valueTwo < 5)) {
+        } else if ((valueOne == valueTwo * 2 || valueTwo == valueOne * 2) && (valueOne < 5 ||  valueTwo < 5)) {
             return "good";
         }
         return "bad";
