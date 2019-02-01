@@ -11,19 +11,19 @@ public class IDCode {
     }
 
     private static boolean isGenderNumberCorrect(String idCode) {
-        return false;
+        return idCode.charAt(0) >= 1 || idCode.charAt(0) <= 6;
     }
 
     private static boolean isYearNumberCorrect(String idCode) {
-        return false;
+        return Integer.parseInt(idCode.substring(1,3)) >= 0 || Integer.parseInt(idCode.substring(1,3)) <= 99;
     }
 
     private static boolean isMonthNumberCorrect(String idCode) {
-        return false;
+        return Integer.parseInt(idCode.substring(3,5)) > 0 || Integer.parseInt(idCode.substring(3,5)) <= 12;
     }
 
     private static boolean isDayNumberCorrect(String idCode) {
-        return false;
+        return Integer.parseInt(idCode.substring(5,7)) > 0 || Integer.parseInt(idCode.substring(5,7)) <= 31;
     }
 
     private static boolean isQueueNumberCorrect(String idCode) {
