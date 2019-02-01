@@ -19,22 +19,23 @@ public class IDCode {
     }
 
     private static boolean isGenderNumberCorrect(String idCode) {
-        return idCode.charAt(0) >= MIN_GENDER_NUMBER && idCode.charAt(0) <= MAX_GENDER_NUMBER;
+        return idCode.charAt(0) >= MIN_GENDER_NUMBER
+                && idCode.charAt(0) <= MAX_GENDER_NUMBER;
     }
 
     private static boolean isYearNumberCorrect(String idCode) {
-        return Integer.parseInt(idCode.substring(1, 3)) >= MIN_YEAR_NUMBER &&
-                Integer.parseInt(idCode.substring(1, 3)) <= MAX_YEAR_NUMBER;
+        return Integer.parseInt(idCode.substring(1, 3)) >= MIN_YEAR_NUMBER
+                && Integer.parseInt(idCode.substring(1, 3)) <= MAX_YEAR_NUMBER;
     }
 
     private static boolean isMonthNumberCorrect(String idCode) {
-        return Integer.parseInt(idCode.substring(3, 5)) > MIN_MONTH_NUMBER &&
-                Integer.parseInt(idCode.substring(3, 5)) <= MAX_MONTH_NUMBER;
+        return Integer.parseInt(idCode.substring(3, 5)) > MIN_MONTH_NUMBER
+                && Integer.parseInt(idCode.substring(3, 5)) <= MAX_MONTH_NUMBER;
     }
 
     private static boolean isDayNumberCorrect(String idCode) {
-        return Integer.parseInt(idCode.substring(5, 7)) > MIN_DAY_NUMBER &&
-                Integer.parseInt(idCode.substring(5, 7)) <= MAX_DAY_NUMBER;
+        return Integer.parseInt(idCode.substring(5, 7)) > MIN_DAY_NUMBER
+                && Integer.parseInt(idCode.substring(5, 7)) <= MAX_DAY_NUMBER;
     }
 
     private static boolean isQueueNumberCorrect(String idCode) {
