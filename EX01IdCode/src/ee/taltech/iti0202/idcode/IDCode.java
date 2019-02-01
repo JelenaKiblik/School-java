@@ -9,6 +9,7 @@ public class IDCode {
     private static final int MAX_MONTH_NUMBER = 12;
     private static final int MIN_DAY_NUMBER = 1;
     private static final int MAX_DAY_NUMBER = 31;
+    private static final int DAY_NUMBER = 7;
 
     private enum Gender {
         MALE, FEMALE
@@ -34,8 +35,8 @@ public class IDCode {
     }
 
     private static boolean isDayNumberCorrect(String idCode) {
-        return Integer.parseInt(idCode.substring(5, 7)) > MIN_DAY_NUMBER
-                && Integer.parseInt(idCode.substring(5, 7)) <= MAX_DAY_NUMBER;
+        return Integer.parseInt(idCode.substring(5, DAY_NUMBER)) > MIN_DAY_NUMBER
+                && Integer.parseInt(idCode.substring(5, DAY_NUMBER)) <= MAX_DAY_NUMBER;
     }
 
     private static boolean isQueueNumberCorrect(String idCode) {
