@@ -41,6 +41,8 @@ public class IDCode {
 
     private static final int NUMBER_OF_DAY_VARIABLE = 8;
 
+    private static boolean IS_CORRECT_ID;
+
     private static final int[] MULTIPLIERS_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
     private static final int[] MULTIPLIERS_2 = {3, 4, 5, 6, 7, 8, 9, 1, 2, 3};
 
@@ -119,7 +121,7 @@ public class IDCode {
         long checkNumber = sum % RESIDUE_NUMBER;
 
         if ((checkNumber >= 0) && (checkNumber < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
-            return true;
+            IS_CORRECT_ID = true;
         } else if (checkNumber == 10) {
             for (int i = 0; i < MULTIPLIERS_2.length; i++) {
                 value = MULTIPLIERS_2[i] * idCodeArray[i];
@@ -128,15 +130,15 @@ public class IDCode {
                 long checkNumber2 = sum % RESIDUE_NUMBER;
 
                 if ((checkNumber2 >= 0) && (checkNumber2 < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
-                    return true;
+                    IS_CORRECT_ID = true;
                 } else if (checkNumber2 == CONTROL_NUMBER) {
                     checkNumber2 = 0;
                     return checkNumber2 == idCode.charAt(10);
                 } else {
-                    return false;
+                    IS_CORRECT_ID = false;
                 }
             }
-        return true;
+        return IS_CORRECT_ID;
     }
 
     private static boolean isLeapYear(int fullYear) {
@@ -180,7 +182,7 @@ public class IDCode {
 
     public static void main(String[] args) {
         // static method we can call directly from static method (main)
-        System.out.println(isControlNumberCorrect("48802232723"));
+        System.out.println(isControlNumberCorrect("48802232724"));
         System.out.println(getInformationFromIDCode("48802232723"));
     }
 }
