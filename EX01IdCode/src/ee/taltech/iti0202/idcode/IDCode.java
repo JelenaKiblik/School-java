@@ -41,8 +41,6 @@ public class IDCode {
 
     private static final int NUMBER_OF_DAY_VARIABLE = 8;
 
-    private static boolean IS_CORRECT_ID;
-
     private static final int[] MULTIPLIERS_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
     private static final int[] MULTIPLIERS_2 = {3, 4, 5, 6, 7, 8, 9, 1, 2, 3};
 
@@ -121,7 +119,7 @@ public class IDCode {
         long checkNumber = sum % RESIDUE_NUMBER;
 
         if ((checkNumber >= 0) && (checkNumber < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
-            IS_CORRECT_ID = true;
+            return true;
         } else if (checkNumber == 10) {
             for (int i = 0; i < MULTIPLIERS_2.length; i++) {
                 value = MULTIPLIERS_2[i] * idCodeArray[i];
@@ -130,15 +128,15 @@ public class IDCode {
                 long checkNumber2 = sum % RESIDUE_NUMBER;
 
                 if ((checkNumber2 >= 0) && (checkNumber2 < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
-                    IS_CORRECT_ID = true;
+                    return true;
                 } else if (checkNumber2 == CONTROL_NUMBER) {
                     checkNumber2 = 0;
                     return checkNumber2 == idCode.charAt(10);
                 } else {
-                    IS_CORRECT_ID = false;
+                    return false;
                 }
             }
-        return IS_CORRECT_ID;
+        return false;
     }
 
     private static boolean isLeapYear(int fullYear) {
