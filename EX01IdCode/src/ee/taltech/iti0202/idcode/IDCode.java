@@ -32,7 +32,17 @@ public class IDCode {
     private static final int DAY_NUMBER_END = 7;
     private static final int QUEUE_NUMBER_START = 7;
     private static final int QUEUE_NUMBER_END = 10;
+
+    private static final int CONTROL_NUMBER = 10;
+    private static final int RESIDUE_NUMBER = 11;
+    private static final int YEAR_MODIFIER_1 = 400;
+    private static final int YEAR_MODIFIER_2 = 100;
+    private static final int YEAR_MODIFIER_3 = 4;
+
     private static final int NOT_MAGIC_NUMBER8 = 8;
+
+    private static final int[] MULTIPLIERS_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
+    private static final int[] MULTIPLIERS_2 = {3, 4, 5, 6, 7, 8, 9, 1, 2, 3};
 
     private static int fullYear;
     private static Gender gender;
@@ -42,8 +52,9 @@ public class IDCode {
     }
 
     public static boolean isIDCodeCorrect(String idCode) {
-        return idCode.length() == ID_LENGTH && isYearNumberCorrect(idCode) && isMonthNumberCorrect(idCode) && isGenderNumberCorrect(idCode)
-                && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode) && isControlNumberCorrect(idCode);
+        return idCode.length() == ID_LENGTH && isYearNumberCorrect(idCode) && isMonthNumberCorrect(idCode)
+                && isGenderNumberCorrect(idCode) && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode)
+                && isControlNumberCorrect(idCode);
     }
 
     private static boolean isGenderNumberCorrect(String idCode) {
@@ -87,8 +98,6 @@ public class IDCode {
     }
 
     private static boolean isControlNumberCorrect(String idCode) {
-        int[] multipliers1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
-        int[] multipliers2 = {3, 4, 5, 6, 7, 8, 9, 1, 2, 3};
 
         String[] parts = idCode.split("");
 
@@ -103,24 +112,24 @@ public class IDCode {
         long value;
         long sum = 0;
 
-        for (int i = 0; i < multipliers1.length; i++) {
-            value = multipliers1[i] * idCodeArray[i];
+        for (int i = 0; i < MULTIPLIERS_1.length; i++) {
+            value = MULTIPLIERS_1[i] * idCodeArray[i];
             sum = sum + value;
         }
 
-        long checkNumber = sum % 11;
+        long checkNumber = sum % RESIDUE_NUMBER;
 
-        if ((checkNumber >= 0) && (checkNumber < 10) && (checkNumber == idCode.charAt(10))) {
+        if ((checkNumber >= 0) && (checkNumber < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
             return true;
         } else if (checkNumber == 10) {
-            for (int i = 0; i < multipliers2.length; i++) {
-                value = multipliers2[i] * idCodeArray[i];
+            for (int i = 0; i < MULTIPLIERS_2.length; i++) {
+                value = MULTIPLIERS_2[i] * idCodeArray[i];
                 sum = sum + value;
-                long checkNumber2 = sum % 11;
+                long checkNumber2 = sum % RESIDUE_NUMBER;
 
-                if ((checkNumber2 >= 0) && (checkNumber2 < 10) && (checkNumber == idCode.charAt(10))) {
+                if ((checkNumber2 >= 0) && (checkNumber2 < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
                     return true;
-                } else if (checkNumber2 == 10) {
+                } else if (checkNumber2 == CONTROL_NUMBER) {
                     checkNumber2 = 0;
                     return checkNumber2 == idCode.charAt(10);
                 } else {
@@ -132,7 +141,8 @@ public class IDCode {
     }
 
     private static boolean isLeapYear(int fullYear) {
-        return ((fullYear % 400 == 0) || ((fullYear % 4 == 0) && (fullYear % 100 != 0)));
+        return ((fullYear % YEAR_MODIFIER_1 == 0) || ((fullYear % YEAR_MODIFIER_3 == 0)
+                && (fullYear % YEAR_MODIFIER_2 != 0)));
     }
 
     public static String getInformationFromIDCode(String idCode) {
