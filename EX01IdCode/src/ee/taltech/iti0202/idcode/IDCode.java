@@ -23,6 +23,17 @@ public class IDCode {
     private static final int MALE_YEAR_3 = 5;
     private static final int FEMALE_YEAR_3 = 6;
 
+    private static final int ID_LENGTH = 11;
+    private static final int YEAR_NUMBER_START = 1;
+    private static final int YEAR_NUMBER_END = 3;
+    private static final int MONTH_NUMBER_START = 3;
+    private static final int MONTH_NUMBER_END = 5;
+    private static final int DAY_NUMBER_START = 5;
+    private static final int DAY_NUMBER_END = 7;
+    private static final int QUEUE_NUMBER_START = 7;
+    private static final int QUEUE_NUMBER_END = 10;
+    private static final int NOT_MAGIC_NUMBER8 = 8;
+
     private static int fullYear;
     private static Gender gender;
 
@@ -31,7 +42,7 @@ public class IDCode {
     }
 
     public static boolean isIDCodeCorrect(String idCode) {
-        return isYearNumberCorrect(idCode) && isMonthNumberCorrect(idCode) && isGenderNumberCorrect(idCode)
+        return idCode.length() == ID_LENGTH && isYearNumberCorrect(idCode) && isMonthNumberCorrect(idCode) && isGenderNumberCorrect(idCode)
                 && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode) && isControlNumberCorrect(idCode);
     }
 
@@ -41,21 +52,21 @@ public class IDCode {
     }
 
     private static boolean isYearNumberCorrect(String idCode) {
-        return Integer.parseInt(idCode.substring(1, 3)) >= MIN_YEAR_NUMBER
-                && Integer.parseInt(idCode.substring(1, 3)) <= MAX_YEAR_NUMBER;
+        return Integer.parseInt(idCode.substring(YEAR_NUMBER_START, YEAR_NUMBER_END)) >= MIN_YEAR_NUMBER
+                && Integer.parseInt(idCode.substring(YEAR_NUMBER_START, YEAR_NUMBER_END)) <= MAX_YEAR_NUMBER;
     }
 
     private static boolean isMonthNumberCorrect(String idCode) {
-        return Integer.parseInt(idCode.substring(3, 5)) >= MIN_MONTH_NUMBER
-                && Integer.parseInt(idCode.substring(3, 5)) <= MAX_MONTH_NUMBER;
+        return Integer.parseInt(idCode.substring(MONTH_NUMBER_START, MONTH_NUMBER_END)) >= MIN_MONTH_NUMBER
+                && Integer.parseInt(idCode.substring(MONTH_NUMBER_START, MONTH_NUMBER_END)) <= MAX_MONTH_NUMBER;
     }
 
     private static boolean isDayNumberCorrect(String idCode) {
         double maxDays;
-        int dayNumber = Integer.parseInt(idCode.substring(5, 7));
-        int monthNumber = Integer.parseInt(idCode.substring(3, 5));
+        int dayNumber = Integer.parseInt(idCode.substring(DAY_NUMBER_START, DAY_NUMBER_END));
+        int monthNumber = Integer.parseInt(idCode.substring(MONTH_NUMBER_START, MONTH_NUMBER_END));
         int year = getFullYear(idCode);
-        maxDays = MIN_MAX_DAY_NUMBER + (monthNumber + Math.floor(monthNumber / 8)) % 2 + 2 % monthNumber
+        maxDays = MIN_MAX_DAY_NUMBER + (monthNumber + Math.floor(monthNumber / NOT_MAGIC_NUMBER8)) % 2 + 2 % monthNumber
                 + 2 * Math.floor(1 / monthNumber);
         if (!isLeapYear(year)) {
             return (dayNumber >= MIN_DAY_NUMBER) && (dayNumber <= maxDays);
@@ -71,8 +82,8 @@ public class IDCode {
     }
 
     private static boolean isQueueNumberCorrect(String idCode) {
-        return Integer.parseInt(idCode.substring(7, 10)) > MIN_QUEUE_NUMBER
-                && Integer.parseInt(idCode.substring(7, 10)) <= MAX_QUEUE_NUMBER;
+        return Integer.parseInt(idCode.substring(QUEUE_NUMBER_START, QUEUE_NUMBER_END)) > MIN_QUEUE_NUMBER
+                && Integer.parseInt(idCode.substring(QUEUE_NUMBER_START, QUEUE_NUMBER_END)) <= MAX_QUEUE_NUMBER;
     }
 
     private static boolean isControlNumberCorrect(String idCode) {
