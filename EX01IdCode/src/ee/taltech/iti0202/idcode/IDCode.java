@@ -76,8 +76,8 @@ public class IDCode {
         int dayNumber = Integer.parseInt(idCode.substring(DAY_NUMBER_START, DAY_NUMBER_END));
         int monthNumber = Integer.parseInt(idCode.substring(MONTH_NUMBER_START, MONTH_NUMBER_END));
         int year = getFullYear(idCode);
-        maxDays = MIN_MAX_DAY_NUMBER + (monthNumber + Math.floor(monthNumber / NUMBER_OF_DAY_VARIABLE)) % 2 + 2 % monthNumber
-                + 2 * Math.floor(1 / monthNumber);
+        maxDays = MIN_MAX_DAY_NUMBER + (monthNumber + Math.floor(monthNumber / NUMBER_OF_DAY_VARIABLE)) % 2
+                + 2 % monthNumber + 2 * Math.floor(1 / monthNumber);
         if (!isLeapYear(year)) {
             return (dayNumber >= MIN_DAY_NUMBER) && (dayNumber <= maxDays);
         }
