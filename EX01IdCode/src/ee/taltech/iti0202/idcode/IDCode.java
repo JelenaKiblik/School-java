@@ -1,5 +1,4 @@
 package ee.taltech.iti0202.idcode;
-
 public class IDCode {
 
     private static final int MIN_GENDER_NUMBER = 1;
@@ -99,7 +98,11 @@ public class IDCode {
     private static boolean isControlNumberCorrect(String idCode) {
 
         String[] parts = idCode.split("");
+
+
         int[] idCodeArray = new int[parts.length ];
+
+
         for (int n = 0; n < parts.length; n++) {
             idCodeArray[n] = Integer.parseInt(parts[n]);
         }
@@ -116,11 +119,10 @@ public class IDCode {
 
         if ((checkNumber >= 0) && (checkNumber < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
             return true;
-        } else if (checkNumber == CONTROL_NUMBER) {
+        } else if (checkNumber == 10) {
             for (int i = 0; i < MULTIPLIERS_2.length; i++) {
                 value = MULTIPLIERS_2[i] * idCodeArray[i];
-                sum = sum + value;
-            }
+                sum = sum + value; }
 
             long checkNumber2 = sum % RESIDUE_NUMBER;
 
@@ -133,7 +135,7 @@ public class IDCode {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     private static boolean isLeapYear(int fullYear) {
@@ -177,7 +179,7 @@ public class IDCode {
 
     public static void main(String[] args) {
         // static method we can call directly from static method (main)
-        System.out.println(isControlNumberCorrect("48802232724"));
-        System.out.println(getInformationFromIDCode("48802232724"));
+        System.out.println(isControlNumberCorrect("48802232723"));
+        System.out.println(getInformationFromIDCode("48802232723"));
     }
 }
