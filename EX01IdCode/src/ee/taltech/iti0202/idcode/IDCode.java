@@ -12,6 +12,16 @@ public class IDCode {
     private static final int FEBRUARY_MAX_DAY_NUMBER = 29;
     private static final int MIN_QUEUE_NUMBER = 1;
     private static final int MAX_QUEUE_NUMBER = 999;
+    private static final int MIN_MAX_DAY_NUMBER = 28;
+    private static final int YEAR_1800 = 1800;
+    private static final int YEAR_1900 = 1900;
+    private static final int YEAR_2000 = 2000;
+    private static final int MALE_YEAR_1 = 1;
+    private static final int FEMALE_YEAR_1 = 2;
+    private static final int MALE_YEAR_2 = 3;
+    private static final int FEMALE_YEAR_2 = 4;
+    private static final int MALE_YEAR_3 = 5;
+    private static final int FEMALE_YEAR_3 = 6;
 
     private static int fullYear;
     private static Gender gender;
@@ -27,7 +37,7 @@ public class IDCode {
 
     private static boolean isGenderNumberCorrect(String idCode) {
         return Integer.parseInt(String.valueOf(idCode.charAt(0))) >= MIN_GENDER_NUMBER
-                && Integer.parseInt(String.valueOf(idCode.charAt(0)))<= MAX_GENDER_NUMBER;
+                && Integer.parseInt(String.valueOf(idCode.charAt(0))) <= MAX_GENDER_NUMBER;
     }
 
     private static boolean isYearNumberCorrect(String idCode) {
@@ -45,7 +55,7 @@ public class IDCode {
         int dayNumber = Integer.parseInt(idCode.substring(5, 7));
         int monthNumber = Integer.parseInt(idCode.substring(3, 5));
         int year = getFullYear(idCode);
-        maxDays = 28 + (monthNumber + Math.floor(monthNumber / 8)) % 2 + 2 % monthNumber
+        maxDays = MIN_MAX_DAY_NUMBER + (monthNumber + Math.floor(monthNumber / 8)) % 2 + 2 % monthNumber
                 + 2 * Math.floor(1 / monthNumber);
         if (!isLeapYear(year)) {
             return (dayNumber >= MIN_DAY_NUMBER) && (dayNumber <= maxDays);
@@ -134,17 +144,15 @@ public class IDCode {
     }
 
     public static int getFullYear(String idCode) {
-        if (Integer.parseInt(String.valueOf(idCode.charAt(0))) == 1
-                || Integer.parseInt(String.valueOf(idCode.charAt(0))) == 2) {
-            fullYear = 1800 + Integer.parseInt(idCode.substring(1, 3));
-        }
-        if (Integer.parseInt(String.valueOf(idCode.charAt(0))) == 3
-                || Integer.parseInt(String.valueOf(idCode.charAt(0))) == 4) {
-            fullYear = 1900 + Integer.parseInt(idCode.substring(1, 3));
-        }
-        if (Integer.parseInt(String.valueOf(idCode.charAt(0))) == 5
-                || Integer.parseInt(String.valueOf(idCode.charAt(0))) == 6) {
-            fullYear = 2000 + Integer.parseInt(idCode.substring(1, 3));
+        if (Integer.parseInt(String.valueOf(idCode.charAt(0))) == MALE_YEAR_1
+                || Integer.parseInt(String.valueOf(idCode.charAt(0))) == FEMALE_YEAR_1) {
+            fullYear = YEAR_1800 + Integer.parseInt(idCode.substring(1, 3));
+        } else if (Integer.parseInt(String.valueOf(idCode.charAt(0))) == MALE_YEAR_2
+                || Integer.parseInt(String.valueOf(idCode.charAt(0))) == FEMALE_YEAR_2) {
+            fullYear = YEAR_1900 + Integer.parseInt(idCode.substring(1, 3));
+        } else if (Integer.parseInt(String.valueOf(idCode.charAt(0))) == MALE_YEAR_3
+                || Integer.parseInt(String.valueOf(idCode.charAt(0))) == FEMALE_YEAR_3) {
+            fullYear = YEAR_2000 + Integer.parseInt(idCode.substring(1, 3));
         }
         return fullYear;
     }
