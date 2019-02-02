@@ -39,7 +39,7 @@ public class IDCode {
     private static final int YEAR_MODIFIER_2 = 100;
     private static final int YEAR_MODIFIER_3 = 4;
 
-    private static final int NOT_MAGIC_NUMBER8 = 8;
+    private static final int NUMBER_OF_DAY_VARIABLE = 8;
 
     private static final int[] MULTIPLIERS_1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
     private static final int[] MULTIPLIERS_2 = {3, 4, 5, 6, 7, 8, 9, 1, 2, 3};
@@ -77,7 +77,7 @@ public class IDCode {
         int dayNumber = Integer.parseInt(idCode.substring(DAY_NUMBER_START, DAY_NUMBER_END));
         int monthNumber = Integer.parseInt(idCode.substring(MONTH_NUMBER_START, MONTH_NUMBER_END));
         int year = getFullYear(idCode);
-        maxDays = MIN_MAX_DAY_NUMBER + (monthNumber + Math.floor(monthNumber / NOT_MAGIC_NUMBER8)) % 2 + 2 % monthNumber
+        maxDays = MIN_MAX_DAY_NUMBER + (monthNumber + Math.floor(monthNumber / NUMBER_OF_DAY_VARIABLE)) % 2 + 2 % monthNumber
                 + 2 * Math.floor(1 / monthNumber);
         if (!isLeapYear(year)) {
             return (dayNumber >= MIN_DAY_NUMBER) && (dayNumber <= maxDays);
@@ -146,8 +146,8 @@ public class IDCode {
     }
 
     public static String getInformationFromIDCode(String idCode) {
-        String dayOfBirth = idCode.substring(5, 7);
-        String monthOfBirth = idCode.substring(3, 5);
+        String dayOfBirth = idCode.substring(DAY_NUMBER_START, DAY_NUMBER_END);
+        String monthOfBirth = idCode.substring(MONTH_NUMBER_START, MONTH_NUMBER_END);
         String yearOfBirth = String.valueOf(getFullYear(idCode));
         String dateOfBirth = dayOfBirth + "." + monthOfBirth + "." + yearOfBirth;
 
