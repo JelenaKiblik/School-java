@@ -45,7 +45,6 @@ public class IDCode {
     private static final int[] MULTIPLIERS_2 = {3, 4, 5, 6, 7, 8, 9, 1, 2, 3};
 
     private static int fullYear;
-    private static Gender gender;
 
     private enum Gender {
         MALE, FEMALE
@@ -124,7 +123,8 @@ public class IDCode {
         } else if (checkNumber == 10) {
             for (int i = 0; i < MULTIPLIERS_2.length; i++) {
                 value = MULTIPLIERS_2[i] * idCodeArray[i];
-                sum = sum + value;
+                sum = sum + value; }
+
                 long checkNumber2 = sum % RESIDUE_NUMBER;
 
                 if ((checkNumber2 >= 0) && (checkNumber2 < CONTROL_NUMBER) && (checkNumber == idCode.charAt(10))) {
@@ -136,7 +136,6 @@ public class IDCode {
                     return false;
                 }
             }
-        }
         return true;
     }
 
@@ -160,6 +159,7 @@ public class IDCode {
 
     public static Gender getGender(String idCode) {
         char genderDigit = idCode.charAt(0);
+        Gender gender;
         gender = genderDigit % 2 == 0 ? Gender.FEMALE : Gender.MALE;
         return gender;
     }
