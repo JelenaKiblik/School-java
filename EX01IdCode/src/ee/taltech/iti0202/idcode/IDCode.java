@@ -51,8 +51,7 @@ public class IDCode {
 
     public static boolean isIDCodeCorrect(String idCode) {
         return idCode.length() == ID_LENGTH && isYearNumberCorrect(idCode) && isMonthNumberCorrect(idCode)
-                && isGenderNumberCorrect(idCode) && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode)
-                && isControlNumberCorrect(idCode);
+                && isGenderNumberCorrect(idCode) && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode);
     }
 
     private static boolean isGenderNumberCorrect(String idCode) {
@@ -114,8 +113,8 @@ public class IDCode {
 
         long checkNumber = sum % RESIDUE_NUMBER;
 
-        System.out.println(idCode.charAt(10));
-        System.out.println(checkNumber);
+//        System.out.println(idCode.charAt(10));
+//        System.out.println(checkNumber);
 
         if ((checkNumber >= 0) && (checkNumber < CONTROL_NUMBER)
                 && (checkNumber == Integer.parseInt(String.valueOf(idCode.charAt(10))))) {
@@ -183,7 +182,7 @@ public class IDCode {
 
     public static void main(String[] args) {
         // static method we can call directly from static method (main)
-        System.out.println(isControlNumberCorrect("48802232724"));
-//        System.out.println(getInformationFromIDCode("48802232723"));
+        System.out.println(isIDCodeCorrect("48802232723"));
+        System.out.println(getInformationFromIDCode("48802232723"));
     }
 }
