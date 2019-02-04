@@ -51,7 +51,8 @@ public class IDCode {
 
     public static boolean isIDCodeCorrect(String idCode) {
         return idCode.length() == ID_LENGTH && isYearNumberCorrect(idCode) && isMonthNumberCorrect(idCode)
-                && isGenderNumberCorrect(idCode) && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode);
+                && isGenderNumberCorrect(idCode) && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode)
+                && isControlNumberCorrect(idCode);
     }
 
     private static boolean isGenderNumberCorrect(String idCode) {
@@ -95,7 +96,6 @@ public class IDCode {
     }
 
     private static boolean isControlNumberCorrect(String idCode) {
-
         String[] parts = idCode.split("");
         int[] idCodeArray = new int[parts.length ];
 
@@ -104,41 +104,34 @@ public class IDCode {
         }
 
         long value;
-        long sum = 0;
+        long sum1 = 0;
+        long sum2 = 0;
 
         for (int i = 0; i < MULTIPLIERS_1.length; i++) {
             value = MULTIPLIERS_1[i] * idCodeArray[i];
-            sum = sum + value;
+            sum1 = sum1 + value;
         }
+        long checkNumber1 = sum1 % RESIDUE_NUMBER;
 
-        long checkNumber = sum % RESIDUE_NUMBER;
+        for (int i = 0; i < MULTIPLIERS_2.length; i++) {
+            value = MULTIPLIERS_2[i] * idCodeArray[i];
+            sum2 = sum2 + value;
+        }
+        long checkNumber2 = sum2 % RESIDUE_NUMBER;
 
 //        System.out.println(idCode.charAt(10));
-//        System.out.println(checkNumber);
+//        System.out.println(checkNumber1);
 
-        if ((checkNumber >= 0) && (checkNumber < CONTROL_NUMBER)
-                && (checkNumber == Integer.parseInt(String.valueOf(idCode.charAt(10))))) {
-            return true;
-        } else if (checkNumber == 10) {
-            for (int i = 0; i < MULTIPLIERS_2.length; i++) {
-                value = MULTIPLIERS_2[i] * idCodeArray[i];
-                sum = sum + value;
-            }
-
-            long checkNumber2 = sum % RESIDUE_NUMBER;
-
-            if ((checkNumber2 >= 0) && (checkNumber2 < CONTROL_NUMBER) && (checkNumber
-                    == Integer.parseInt(String.valueOf(idCode.charAt(10))))) {
-                return true;
-            } else if (checkNumber2 == CONTROL_NUMBER) {
-                checkNumber2 = 0;
-                return checkNumber2 == Integer.parseInt(String.valueOf(idCode.charAt(10)));
-            } else {
-                return false;
-            }
+        long number;
+        if (checkNumber1 != CONTROL_NUMBER) {
+            number = checkNumber1;
+        } else if (checkNumber2 != CONTROL_NUMBER) {
+            number = checkNumber2;
         } else {
-            return false;
+            number = 0;
         }
+
+        return number == Integer.parseInt(String.valueOf(idCode.charAt(10)));
     }
 
     private static boolean isLeapYear(int fullYear) {
@@ -182,7 +175,7 @@ public class IDCode {
 
     public static void main(String[] args) {
         // static method we can call directly from static method (main)
-        System.out.println(isIDCodeCorrect("48802232723"));
-        System.out.println(getInformationFromIDCode("48802232723"));
+        System.out.println(isControlNumberCorrect("48802232724"));
+        System.out.println(getInformationFromIDCode("48802232724"));
     }
 }
