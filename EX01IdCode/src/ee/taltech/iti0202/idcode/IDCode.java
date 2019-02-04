@@ -49,7 +49,7 @@ public class IDCode {
         MALE, FEMALE
     }
 
-    private static boolean isIDCodeCorrect(String idCode) {
+    public static boolean isIDCodeCorrect(String idCode) {
         return idCode.length() == ID_LENGTH && isYearNumberCorrect(idCode) && isMonthNumberCorrect(idCode)
                 && isGenderNumberCorrect(idCode) && isDayNumberCorrect(idCode) && isQueueNumberCorrect(idCode)
                 && isControlNumberCorrect(idCode);
@@ -139,7 +139,7 @@ public class IDCode {
                 && (fullYear % YEAR_MODIFIER_2 != 0)));
     }
 
-    private static String getInformationFromIDCode(String idCode) {
+    public static String getInformationFromIDCode(String idCode) {
         String dayOfBirth = idCode.substring(DAY_NUMBER_START, DAY_NUMBER_END);
         String monthOfBirth = idCode.substring(MONTH_NUMBER_START, MONTH_NUMBER_END);
         String yearOfBirth = String.valueOf(getFullYear(idCode));
@@ -153,14 +153,14 @@ public class IDCode {
         }
     }
 
-    private static Gender getGender(String idCode) {
+    public static Gender getGender(String idCode) {
         char genderDigit = idCode.charAt(0);
         Gender gender;
         gender = genderDigit % 2 == 0 ? Gender.FEMALE : Gender.MALE;
         return gender;
     }
 
-    private static int getFullYear(String idCode) {
+    public static int getFullYear(String idCode) {
         if (Integer.parseInt(String.valueOf(idCode.charAt(0))) == MALE_YEAR_1
                 || Integer.parseInt(String.valueOf(idCode.charAt(0))) == FEMALE_YEAR_1) {
             fullYear = YEAR_1800 + Integer.parseInt(idCode.substring(1, 3));
@@ -177,7 +177,7 @@ public class IDCode {
     public static void main(String[] args) {
         // static method we can call directly from static method (main)
         System.out.println(isControlNumberCorrect("48802232724"));
-        System.out.println(getInformationFromIDCode("48802232723"));
         System.out.println(getInformationFromIDCode("48802232724"));
+        System.out.println(getInformationFromIDCode("48802232723"));
     }
 }
