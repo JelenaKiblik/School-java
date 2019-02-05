@@ -39,12 +39,14 @@ public class Main {
 
         Map.Entry<String, Integer> mostRepeated = null;
         for (Map.Entry<String, Integer> e : map.entrySet()) {
-            if (mostRepeated == null || mostRepeated.getValue() < e.getValue())
+            if (mostRepeated == null || mostRepeated.getValue() < e.getValue()) {
                 mostRepeated = e;
+            }
         }
 
         if (mostRepeated != null) {
-            maxRepeated = mostRepeated.getKey();}
+            maxRepeated = mostRepeated.getKey();
+        }
         return maxRepeated;
     }
 
