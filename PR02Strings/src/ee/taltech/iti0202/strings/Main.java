@@ -2,6 +2,9 @@ package ee.taltech.iti0202.strings;
 import java.util.*;
 
 public class Main {
+
+    private static String maxRepeated;
+
     /**
      * Classic count the words exercise.
      * <p>
@@ -28,7 +31,21 @@ public class Main {
      * @return most frequent word in the sentence
      */
     public static String mostFrequentWord(String[] sentence) {
-        return "TODO";
+        Map<String, Integer> map = new HashMap<>();
+
+        for (String name : sentence) {
+            map.put(name, map.getOrDefault(name, 0) + 1);
+        }
+
+        Map.Entry<String, Integer> mostRepeated = null;
+        for (Map.Entry<String, Integer> e : map.entrySet()) {
+            if (mostRepeated == null || mostRepeated.getValue() < e.getValue())
+                mostRepeated = e;
+        }
+
+        if (mostRepeated != null) {
+            maxRepeated = mostRepeated.getKey();}
+        return maxRepeated;
     }
 
     /**
@@ -64,19 +81,20 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println(wordCount(new String[]{})); // empty
-        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"})); // {bacon=2, eggs=2, SPAM=3}
-
+//        System.out.println(wordCount(new String[]{})); // empty
+//        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
+//        // {bacon=2, eggs=2, SPAM=3}
+//
 //        System.out.println();
 //        System.out.println(mostFrequentWord(new String[]{})); // null
 //        System.out.println(mostFrequentWord(new String[]{"SPAM", "SPAM", "eggs", "bacon", "and", "SPAM"})); // SPAM
 //
-//        System.out.println();
-//        System.out.println(onlyEvenWords(Arrays.asList("tere", "tere", "vanakere"))); // [tere]
-//        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
-//        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
-//        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "a", "b"))); // [a, b]
-//        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
+        System.out.println();
+        System.out.println(onlyEvenWords(Arrays.asList("tere", "tere", "vanakere"))); // [tere]
+        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
+        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
+        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "a", "b"))); // [a, b]
+        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
 //
 //        System.out.println();
 //        System.out.println(onlyEvenCharacters("aaa")); // a
