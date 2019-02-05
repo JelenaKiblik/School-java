@@ -71,9 +71,9 @@ public class Main {
 //        for (String word : words) {
 //            list.add(word);
 //        }
-        for (int i = 1; i < words.size(); i = i + 2) {
-            list.add(words.get(i));
-        }
+//        for (int i = 0; i < words.size(); i++) {
+//            list.add(words.get(i));
+//        }
         //return list;
         return list;
     }
@@ -96,13 +96,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println(wordCount(new String[]{})); // empty
-        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
+//        System.out.println(wordCount(new String[]{})); // empty
+//        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
         // {bacon=2, eggs=2, SPAM=3}
 
-        System.out.println();
-        System.out.println(mostFrequentWord(new String[]{})); // null
-        System.out.println(mostFrequentWord(new String[]{"SPAM", "SPAM", "eggs", "bacon", "and", "SPAM"})); // SPAM
+//        System.out.println();
+//        System.out.println(mostFrequentWord(new String[]{})); // null
+//        System.out.println(mostFrequentWord(new String[]{"SPAM", "SPAM", "eggs", "bacon", "and", "SPAM"})); // SPAM
 
         System.out.println();
         System.out.println(onlyEvenWords(Arrays.asList("tere", "tere", "vanakere"))); // [tere]
@@ -111,10 +111,10 @@ public class Main {
         System.out.println(onlyEvenWords(Arrays.asList("a", "b", "a", "b"))); // [a, b]
         System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
 
-        System.out.println();
-        System.out.println(onlyEvenCharacters("aaa")); // a
-        System.out.println(onlyEvenCharacters("aabbcaca")); // abca
-        System.out.println(onlyEvenCharacters("bob")); // b
-        System.out.println("\"" + onlyEvenCharacters("abc") + "\"");// ""
+//        System.out.println();
+//        System.out.println(onlyEvenCharacters("aaa")); // a
+//        System.out.println(onlyEvenCharacters("aabbcaca")); // abca
+//        System.out.println(onlyEvenCharacters("bob")); // b
+//        System.out.println("\"" + onlyEvenCharacters("abc") + "\""); // ""
     }
 }
