@@ -68,13 +68,26 @@ public class Main {
      */
     public static List<String> onlyEvenWords(List<String> words) {
         List<String> list = new ArrayList<>();
-//        for (String word : words) {
-//            list.add(word);
-//        }
-//        for (int i = 0; i < words.size(); i++) {
-//            list.add(words.get(i));
-//        }
-        //return list;
+        Map<String, Integer> allWords = new HashMap<>();
+
+        for (String name : words) {
+            if (allWords.containsKey(name)) {
+                allWords.put(name, allWords.get(name) + 1);
+            } else {
+                allWords.put(name, 1);
+            }
+
+            for (Map.Entry<String, Integer> entry : allWords.entrySet()) {
+                int number = 0;
+                number += entry.getValue();
+                System.out.println(entry.getKey());
+//                if (number % 2 == 0){
+//                    list.add(entry.getKey());
+//                }
+            }
+        }
+
+//        System.out.println(allWords);
         return list;
     }
 
