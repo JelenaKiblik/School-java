@@ -3,8 +3,8 @@ package ee.taltech.iti0202.strings;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Arrays;
 
 public class Main {
 
@@ -19,13 +19,12 @@ public class Main {
      * @return map containing all word to count mappings.
      */
     public static Map<String, Integer> wordCount(String[] sentence) {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> wordMap = new HashMap<>();
         for (String name : sentence) {
-            map.put(name, map.getOrDefault(name, 0) + 1);
+            wordMap.put(name, wordMap.getOrDefault(name, 0) + 1);
         }
-        return map;
+        return wordMap;
     }
-
 
     /**
      * Find the most frequent word in given array of strings.
@@ -36,14 +35,14 @@ public class Main {
      * @return most frequent word in the sentence
      */
     public static String mostFrequentWord(String[] sentence) {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> wordMap = new HashMap<>();
 
         for (String name : sentence) {
-            map.put(name, map.getOrDefault(name, 0) + 1);
+            wordMap.put(name, wordMap.getOrDefault(name, 0) + 1);
         }
 
         Map.Entry<String, Integer> mostRepeated = null;
-        for (Map.Entry<String, Integer> e : map.entrySet()) {
+        for (Map.Entry<String, Integer> e : wordMap.entrySet()) {
             if (mostRepeated == null || mostRepeated.getValue() < e.getValue()) {
                 mostRepeated = e;
             }
@@ -67,32 +66,22 @@ public class Main {
      * @return list of strings matching criteria
      */
     public static List<String> onlyEvenWords(List<String> words) {
-        List<String> list = new ArrayList<>();
-        Map<String, Integer> wordCount = new HashMap<>();
+        List<String> evenWordsList = new ArrayList<>();
+        Map<String, Integer> wordMap = new HashMap<>();
 
-        for (String word : words) {
-            if (wordCount.containsKey(word)) {
-                wordCount.put(word, wordCount.get(word) + 1);
-            } else {
-                wordCount.put(word, 1);
-            }
-
-            for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
-//                System.out.println(entry.getKey() + ":" + entry.getValue());
-
-                int value;
-                String key;
-                value = entry.getValue();
-                key = entry.getKey();
-
-                if (value % 2 == 0) {
-                    list.add(entry.getKey());
-                    wordCount.remove(key);
-//                    System.out.println(list);
+        for (String currentWord : words) {
+            int i = 0;
+            if (wordMap.containsKey(currentWord)) {
+                i = wordMap.get(currentWord) + 1;
+                wordMap.put(currentWord, i);
+                if (i % 2 == 0) {
+                    evenWordsList.add(currentWord);
                 }
+            } else {
+                wordMap.put(currentWord, i + 1);
             }
         }
-        return list;
+        return evenWordsList;
     }
 
     /**
@@ -108,30 +97,47 @@ public class Main {
      * @return string
      */
     public static String onlyEvenCharacters(String input) {
-        return "FooBar";
+        String[] charactersList = input.split("");
+        String result = "";
+        Map<String, Integer> characterMap = new HashMap<>();
+
+        for (String currentCharacter : charactersList) {
+            int i = 0;
+            if (characterMap.containsKey(currentCharacter)) {
+                i = characterMap.get(currentCharacter) + 1;
+                characterMap.put(currentCharacter, i);
+                if (i % 2 == 0) {
+                    result = result + currentCharacter;
+                }
+            } else {
+                characterMap.put(currentCharacter, i + 1);
+            }
+
+        }
+        return result;
     }
 
 
     public static void main(String[] args) {
-//        System.out.println(wordCount(new String[]{})); // empty
-//        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
-//       //  {bacon=2, eggs=2, SPAM=3}
-//
-//        System.out.println();
-//        System.out.println(mostFrequentWord(new String[]{})); // null
-//        System.out.println(mostFrequentWord(new String[]{"SPAM", "SPAM", "eggs", "bacon", "and", "SPAM"})); // SPAM
+        System.out.println(wordCount(new String[]{})); // empty
+        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
+       //  {bacon=2, eggs=2, SPAM=3}
 
         System.out.println();
-//        System.out.println(onlyEvenWords(Arrays.asList("tere", "tere", "vanakere"))); // [tere]
-//        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
+        System.out.println(mostFrequentWord(new String[]{})); // null
+        System.out.println(mostFrequentWord(new String[]{"SPAM", "SPAM", "eggs", "bacon", "and", "SPAM"})); // SPAM
+
+        System.out.println();
+        System.out.println(onlyEvenWords(Arrays.asList("tere", "tere", "vanakere"))); // [tere]
+        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
         System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
-//        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "a", "b"))); // [a, b]
-//        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
-//
-//        System.out.println();
-//        System.out.println(onlyEvenCharacters("aaa")); // a
-//        System.out.println(onlyEvenCharacters("aabbcaca")); // abca
-//        System.out.println(onlyEvenCharacters("bob")); // b
-//        System.out.println("\"" + onlyEvenCharacters("abc") + "\""); // ""
+        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "a", "b"))); // [a, b]
+        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
+
+        System.out.println();
+        System.out.println(onlyEvenCharacters("aaa")); // a
+        System.out.println(onlyEvenCharacters("aabbcaca")); // abca
+        System.out.println(onlyEvenCharacters("bob")); // b
+        System.out.println("\"" + onlyEvenCharacters("abc") + "\""); // ""
     }
 }
