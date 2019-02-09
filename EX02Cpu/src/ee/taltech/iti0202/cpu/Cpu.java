@@ -9,8 +9,8 @@ public class Cpu {
     private static final int ARITHMETIC_FUNCTION = 1;
     private static final int ARITHMETIC_VALUE = 2;
     private static final int COMPARATOR_KEY = 4;
-    private static final int  COMPARATOR_FUNCTION = 5;
-    private static final int PRE_COMPARATOR_VALUE =6;
+    private static final int COMPARATOR_FUNCTION = 5;
+    private static final int PRE_COMPARATOR_VALUE = 6;
 
     static Map<String, Integer> registerValues = new HashMap<>();
     static ArrayList<Integer> allValues = new ArrayList<>();
