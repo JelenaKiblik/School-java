@@ -1,6 +1,8 @@
 package ee.taltech.iti0202.cpu;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cpu {
 
@@ -30,7 +32,7 @@ public class Cpu {
 
             int checkValue = registerValues.get(comparatorKey);
 
-            implementOperation(valueToBeModified, arithmeticFunction, arithmeticValue, comparatorFunction, 
+            implementOperation(valueToBeModified, arithmeticFunction, arithmeticValue, comparatorFunction,
                     comparatorValue, checkValue);
 
         }
@@ -43,7 +45,7 @@ public class Cpu {
 
     }
 
-    private static void implementOperation(String valueToBeModified, String arithmeticFunction, int arithmeticValue, 
+    private static void implementOperation(String valueToBeModified, String arithmeticFunction, int arithmeticValue,
                                            String comparatorFunction, int comparatorValue, int checkValue) {
         switch (comparatorFunction) {
             case ">":
@@ -137,15 +139,15 @@ public class Cpu {
         );
         System.out.println(res); // {a=1, b=0, c=-10}
 
-//        res = compute(
-//                "b inc 7 if a > 4\n" +
-//                        "a inc 1 if c < 13\n" +
-//                        "c dec -10 if a >= 1\n" +
-//                        "c inc -20 if c == 10\n" +
-//                        "abc inc 100 if a != -23\n" +
-//                        "a inc 2 if a <= 0"
-//        );
-//        System.out.println(res); // {a=1, b=0, c=-10, abc=100}
+        res = compute(
+                "b inc 7 if a > 4\n" +
+                        "a inc 1 if c < 13\n" +
+                        "c dec -10 if a >= 1\n" +
+                        "c inc -20 if c == 10\n" +
+                        "abc inc 100 if a != -23\n" +
+                        "a inc 2 if a <= 0"
+        );
+        System.out.println(res); // {a=1, b=0, c=-10, abc=100}
     }
 
 }
