@@ -9,7 +9,7 @@ public class Cpu {
 
     public static Map<String, Integer> compute(String instructions) {
 
-        String[] lines = instructions.split( " ");
+        String[] lines = instructions.split(" ");
         for (int i = 0; i < lines.length; i++) {
 
             String valueToBeModified = lines[0];
@@ -21,16 +21,17 @@ public class Cpu {
             int comparatorValue = Integer.parseInt(String.valueOf(preComparatorValue.charAt(0)));
 
 
-            if(!registerValues.containsKey(valueToBeModified)) {
+            if (!registerValues.containsKey(valueToBeModified)) {
                 registerValues.put(valueToBeModified, 0);
             }
-            if(!registerValues.containsKey(comparatorKey)) {
+            if (!registerValues.containsKey(comparatorKey)) {
                 registerValues.put(comparatorKey, 0);
             }
 
             int checkValue = registerValues.get(comparatorKey);
 
-            implementOperation(valueToBeModified, arithmeticFunction, arithmeticValue, comparatorFunction, comparatorValue, checkValue);
+            implementOperation(valueToBeModified, arithmeticFunction, arithmeticValue, comparatorFunction, 
+                    comparatorValue, checkValue);
 
         }
 
@@ -42,84 +43,97 @@ public class Cpu {
 
     }
 
-    private static void implementOperation(String valueToBeModified, String arithmeticFunction, int arthmeticValue, String comparatorFunction, int comparatorValue, int checkValue) {
+    private static void implementOperation(String valueToBeModified, String arithmeticFunction, int arithmeticValue, 
+                                           String comparatorFunction, int comparatorValue, int checkValue) {
         switch (comparatorFunction) {
             case ">":
-                largerThanImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue, arthmeticValue);
+                largerThanImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
+                        arithmeticValue);
                 break;
             case "<":
-                smallerThanImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue, arthmeticValue);
+                smallerThanImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
+                        arithmeticValue);
                 break;
             case ">=":
-                largerThanOrEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue, arthmeticValue);
+                largerThanOrEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
+                        arithmeticValue);
                 break;
             case "<=":
-                smallerThanOrEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue, arthmeticValue);
+                smallerThanOrEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
+                        arithmeticValue);
                 break;
             case "==":
-                equalToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue, arthmeticValue);
+                equalToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
+                        arithmeticValue);
                 break;
             case "!=":
-                notEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue, arthmeticValue);
+                notEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
+                        arithmeticValue);
                 break;
         }
     }
 
-    private static void performAction(String valueToBeModified, String arithmeticFunction, int arthmeticValue) {
+    private static void performAction(String valueToBeModified, String arithmeticFunction, int arithmeticValue) {
         int newValue = registerValues.get(valueToBeModified);
 
-        if(arithmeticFunction.equals("inc")) {
-            registerValues.put(valueToBeModified, newValue + arthmeticValue);
-            allValues.add(newValue + arthmeticValue);
-        } else if(arithmeticFunction.equals("dec")) {
-            registerValues.put(valueToBeModified, newValue - arthmeticValue);
-            allValues.add(newValue - arthmeticValue);
+        if (arithmeticFunction.equals("inc")) {
+            registerValues.put(valueToBeModified, newValue + arithmeticValue);
+            allValues.add(newValue + arithmeticValue);
+        } else if (arithmeticFunction.equals("dec")) {
+            registerValues.put(valueToBeModified, newValue - arithmeticValue);
+            allValues.add(newValue - arithmeticValue);
         }
 
     }
 
-    private static void largerThanImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue, int checkValue, int arthmeticValue) {
-        if(checkValue > comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arthmeticValue);
+    private static void largerThanImplementation(String valueToBeModified, String arithmeticFunction,
+                                                 int comparatorValue, int checkValue, int arithmeticValue) {
+        if (checkValue > comparatorValue) {
+            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
         }
     }
 
-    private static void smallerThanImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue, int checkValue, int arthmeticValue) {
-        if(checkValue < comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arthmeticValue);
+    private static void smallerThanImplementation(String valueToBeModified, String arithmeticFunction,
+                                                  int comparatorValue, int checkValue, int arithmeticValue) {
+        if (checkValue < comparatorValue) {
+            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
         }
     }
 
-    private static void largerThanOrEqualToImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue, int checkValue, int arthmeticValue) {
-        if(checkValue >= comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arthmeticValue);
+    private static void largerThanOrEqualToImplementation(String valueToBeModified, String arithmeticFunction,
+                                                          int comparatorValue, int checkValue, int arithmeticValue) {
+        if (checkValue >= comparatorValue) {
+            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
         }
     }
 
-    private static void smallerThanOrEqualToImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue, int checkValue, int arthmeticValue) {
-        if(checkValue <= comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arthmeticValue);
+    private static void smallerThanOrEqualToImplementation(String valueToBeModified, String arithmeticFunction,
+                                                           int comparatorValue, int checkValue, int arithmeticValue) {
+        if (checkValue <= comparatorValue) {
+            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
         }
     }
 
-    private static void equalToImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue, int checkValue, int arthmeticValue) {
-        if(checkValue == comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arthmeticValue);
+    private static void equalToImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue,
+                                              int checkValue, int arithmeticValue) {
+        if (checkValue == comparatorValue) {
+            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
         }
     }
 
-    private static void notEqualToImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue, int checkValue, int arthmeticValue) {
-        if(checkValue != comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arthmeticValue);
+    private static void notEqualToImplementation(String valueToBeModified, String arithmeticFunction,
+                                                 int comparatorValue, int checkValue, int arithmeticValue) {
+        if (checkValue != comparatorValue) {
+            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
         }
     }
 
     public static void main(String[] args) {
         Map<String, Integer> res = compute(
-                "b inc 5 if a > 1\n" +
-                        "a inc 1 if b < 5\n" +
-                        "c dec -10 if a >= 1\n" +
-                        "c inc -20 if c == 10"
+                "b inc 5 if a > 1\n"
+                        + "a inc 1 if b < 5\n"
+                        + "c dec -10 if a >= 1\n"
+                        + "c inc -20 if c == 10"
         );
         System.out.println(res); // {a=1, b=0, c=-10}
 
