@@ -1,5 +1,8 @@
 package ee.taltech.iti0202.cpu;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Cpu {
 
@@ -62,6 +65,8 @@ public class Cpu {
                         condition = true;
                     }
                     break;
+                    default:
+                        throw new RuntimeException("Unexpected operator");
             }
 
             if (condition) {
@@ -99,5 +104,4 @@ public class Cpu {
 //        );
 //        System.out.println(res); // {a=1, b=0, c=-10, abc=100}
     }
-
 }
