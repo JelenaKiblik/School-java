@@ -9,120 +9,76 @@ public class Cpu {
     private static final int COMPARATOR_KEY = 4;
     private static final int COMPARATOR_FUNCTION = 5;
     private static final int COMPARATOR_VALUE = 6;
-
-    static HashMap<String, Integer> registerValues = new HashMap<>();
-    static ArrayList<Integer> allValues = new ArrayList<>();
+    private static boolean condition;
 
     public static Map<String, Integer> compute(String instructions) {
+        HashMap<String, Integer> map = new HashMap<>();
         List<String> registers = Arrays.asList(instructions);
-        for(String s : registers) {
+
+        for (String s : registers) {
             String[] steps = s.split("\\s");
-            String valueToBeModified = steps[VALUE_TO_BE_MODIFIED];
-            String arithmeticFunction = steps[ARITHMETIC_FUNCTION];
-            int arithmeticValue = Integer.parseInt(steps[ARITHMETIC_VALUE]);
-            String comparatorKey = steps[COMPARATOR_KEY];
-            String comparatorFunction = steps[COMPARATOR_FUNCTION];
-            int comparatorValue = Integer.parseInt(steps[COMPARATOR_VALUE]);
-            if (!registerValues.containsKey(valueToBeModified)) {
-                registerValues.put(valueToBeModified, 0);
+            String valueToBeModified = steps[0];
+            int arithmeticFunction = (steps[1].equals("inc") ? 1 : -1);
+            int arithmeticValue = Integer.parseInt(steps[2]);
+            String comparatorKey = steps[4];
+            String comparatorFunction = steps[5];
+            int comparatorValue = Integer.parseInt(steps[6]);
+
+            if (!map.containsKey(comparatorKey)) {
+                map.put(comparatorKey, 0);
             }
-            if (!registerValues.containsKey(comparatorKey)) {
-                registerValues.put(comparatorKey, 0);
+            if (!map.containsKey(valueToBeModified)) {
+                map.put(valueToBeModified, 0);
             }
 
-            int checkValue = registerValues.get(comparatorKey);
-            implementOperation(valueToBeModified, arithmeticFunction, arithmeticValue, comparatorFunction,
-                    comparatorValue, checkValue);
+            switch (comparatorFunction) {
+                case "==":
+                    if (map.get(comparatorKey) == comparatorValue) {
+                        condition = true;
+                    }
+                    break;
+                case "!=":
+                    if (map.get(comparatorKey) != comparatorValue) {
+                        condition = true;
+                    }
+                    break;
+                case "<":
+                    if (map.get(comparatorKey) < comparatorValue) {
+                        condition = true;
+                    }
+                    break;
+                case "<=":
+                    if (map.get(comparatorKey) <= comparatorValue) {
+                        condition = true;
+                    }
+                    break;
+                case ">":
+                    if (map.get(comparatorKey) > comparatorValue) {
+                        condition = true;
+                    }
+                    break;
+                case ">=":
+                    if (map.get(comparatorKey) >= comparatorValue) {
+                        condition = true;
+                    }
+                    break;
+            }
+
+            if (condition) {
+                map.replace(valueToBeModified, map.get(valueToBeModified) + (arithmeticFunction * arithmeticValue));
+            }
+
+            System.out.println(valueToBeModified);
+            System.out.println(arithmeticFunction);
+            System.out.println(arithmeticValue);
+            System.out.println(comparatorKey);
+            System.out.println(comparatorFunction);
+            System.out.println(comparatorValue);
+            System.out.println(Arrays.toString(steps));
         }
-        return registerValues;
+        return map;
     }
 
-    private static void implementOperation(String valueToBeModified, String arithmeticFunction, int arithmeticValue,
-                                           String comparatorFunction, int comparatorValue, int checkValue) {
-        switch (comparatorFunction) {
-            case ">":
-                largerThanImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
-                        arithmeticValue);
-                break;
-            case "<":
-                smallerThanImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
-                        arithmeticValue);
-                break;
-            case ">=":
-                largerThanOrEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
-                        arithmeticValue);
-                break;
-            case "<=":
-                smallerThanOrEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
-                        arithmeticValue);
-                break;
-            case "==":
-                equalToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
-                        arithmeticValue);
-                break;
-            case "!=":
-                notEqualToImplementation(valueToBeModified, arithmeticFunction, comparatorValue, checkValue,
-                        arithmeticValue);
-                break;
-            default:
-                throw new RuntimeException("Unexpected operator");
-        }
-    }
-
-    private static void performAction(String valueToBeModified, String arithmeticFunction, int arithmeticValue) {
-        int newValue = registerValues.get(valueToBeModified);
-
-        if(arithmeticFunction.equals("inc")) {
-            registerValues.put(valueToBeModified, newValue + arithmeticValue);
-            allValues.add(newValue + arithmeticValue);
-        } else if(arithmeticFunction.equals("dec")) {
-            registerValues.put(valueToBeModified, newValue - arithmeticValue);
-            allValues.add(newValue - arithmeticValue);
-        }
-
-    }
-
-    private static void largerThanImplementation(String valueToBeModified, String arithmeticFunction,
-                                                 int comparatorValue, int checkValue, int arithmeticValue) {
-        if (checkValue > comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
-        }
-    }
-
-    private static void smallerThanImplementation(String valueToBeModified, String arithmeticFunction,
-                                                  int comparatorValue, int checkValue, int arithmeticValue) {
-        if (checkValue < comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
-        }
-    }
-
-    private static void largerThanOrEqualToImplementation(String valueToBeModified, String arithmeticFunction,
-                                                          int comparatorValue, int checkValue, int arithmeticValue) {
-        if (checkValue >= comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
-        }
-    }
-
-    private static void smallerThanOrEqualToImplementation(String valueToBeModified, String arithmeticFunction,
-                                                           int comparatorValue, int checkValue, int arithmeticValue) {
-        if (checkValue <= comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
-        }
-    }
-
-    private static void equalToImplementation(String valueToBeModified, String arithmeticFunction, int comparatorValue,
-                                              int checkValue, int arithmeticValue) {
-        if (checkValue == comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
-        }
-    }
-
-    private static void notEqualToImplementation(String valueToBeModified, String arithmeticFunction,
-                                                 int comparatorValue, int checkValue, int arithmeticValue) {
-        if (checkValue != comparatorValue) {
-            performAction(valueToBeModified, arithmeticFunction, arithmeticValue);
-        }
-    }
 
     public static void main(String[] args) {
         Map<String, Integer> res = compute(
