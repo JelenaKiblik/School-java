@@ -95,12 +95,12 @@ public class Cpu {
         System.out.println(res); // {a=1, b=0, c=-10}
 
         res = compute(
-                "b inc 7 if a > 4\n" +
-                        "a inc 1 if c < 13\n" +
-                        "c dec -10 if a >= 1\n" +
-                        "c inc -20 if c == 10\n" +
-                        "abc inc 100 if a != -23\n" +
-                        "a inc 2 if a <= 0"
+                "b inc 7 if a > 4\n"
+                        + "a inc 1 if c < 13\n"
+                        + "c dec -10 if a >= 1\n"
+                        + "c inc -20 if c == 10\n"
+                        + "abc inc 100 if a != -23\n"
+                        + "a inc 2 if a <= 0"
         );
         System.out.println(res); // {a=1, b=0, c=-10, abc=100}
     }
