@@ -78,6 +78,7 @@ public class Cpu {
 
             if (condition) {
                 map.replace(valueToBeModified, map.get(valueToBeModified) + (arithmeticFunction * arithmeticValue));
+                condition = false;
             }
 
             }
