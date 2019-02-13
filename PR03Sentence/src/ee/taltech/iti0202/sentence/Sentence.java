@@ -39,8 +39,7 @@ public class Sentence {
                 addPunctuation(wordsList[i]);
                 System.out.println("here is a new punctuation " + newWord);
                 break;
-            }
-            else {
+            } else {
                 addWord(newWord);
                 System.out.println("here is a new word " + newWord);
             }
