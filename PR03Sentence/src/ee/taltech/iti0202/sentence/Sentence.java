@@ -23,9 +23,9 @@ public class Sentence {
      */
     public Sentence(String text) {
         String[] wordsList = text.split(" ");
-        for ( int i = 0; i < wordsList.length; i++) {
+        for (int i = 0; i < wordsList.length; i++) {
 //            if (!wordsList[i].equals(".", "!", "?")) {
-            if (!Arrays.asList(".", "!", "?").contains(wordsList[i]) ) {
+            if (!Arrays.asList(".", "!", "?").contains(wordsList[i])) {
                 addWord(wordsList[i]);
             } else {
                 addPunctuation(wordsList[i]);
