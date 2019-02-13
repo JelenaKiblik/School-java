@@ -5,12 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static com.sun.org.apache.xerces.internal.util.XMLChar.trim;
+
 /**
  * Sentence class represent words and punctuation.
  */
 public class Sentence {
     private String punctuation;
-    private String word;
     private List<String> words = new ArrayList<>();
 
     /**
@@ -24,12 +25,24 @@ public class Sentence {
     public Sentence(String text) {
         String[] wordsList = text.split(" ");
         for (int i = 0; i < wordsList.length; i++) {
-//            if (!wordsList[i].equals(".", "!", "?")) {
-            if (!Arrays.asList(".", "!", "?").contains(wordsList[i])) {
-                addWord(wordsList[i]);
-            } else {
-                addPunctuation(wordsList[i]);
+            String newWord = wordsList[i];
+            if (newWord.substring(newWord.length() - 1).equals("!")) {
+
+                addWord(newWord.substring(0, newWord.length() - 1));
+                System.out.println("here is a word " + newWord.substring(0, newWord.length() - 1));
+
+                addPunctuation(newWord.substring(newWord.length() - 1));
+                System.out.println("here is a punctuation " + newWord.substring(newWord.length() - 1));
                 break;
+
+            } else if (Arrays.asList(".", "!", "?").contains(wordsList[i])) {
+                addPunctuation(wordsList[i]);
+                System.out.println("here is a new punctuation " + newWord);
+                break;
+            }
+            else {
+                addWord(newWord);
+                System.out.println("here is a new word " + newWord);
             }
         }
 //        String[] words = text.split(" ");
@@ -64,7 +77,6 @@ public class Sentence {
      */
     public boolean addWord(String word) {
         if (!words.contains(punctuation)) {
-            this.word = word;
             words.add(word);
             return true;
         } else {
@@ -82,7 +94,7 @@ public class Sentence {
      * @return Whether punctuation was added (false if sentence already had punctuation).
      */
     public boolean addPunctuation(String punctuation) {
-        if (!words.contains(punctuation)) {
+        if ((!words.contains(punctuation)) || (words.size() == 0)) {
             this.punctuation = punctuation;
             words.add(punctuation);
             return true;
@@ -110,7 +122,23 @@ public class Sentence {
 
     @Override
     public String toString() {
-        return "";
+        String newSentence = "";
+        if (words.size() != 0) {
+            for (String word : words) {
+                newSentence += word + " ";
+            }
+            String result = "";
+            result += newSentence.substring(0, 1).toUpperCase() + newSentence.substring(1);
+            if (!words.contains(punctuation)) {
+                System.out.println(result);
+                return trim(result) +  "...";
+            } else {
+                System.out.println(trim(result));
+                return trim(result);
+            }
+        } else {
+            return "";
+        }
     }
 
     @Override
@@ -135,38 +163,38 @@ public class Sentence {
         System.out.println(s2); // Hello world...
         System.out.println(s1.equals(s2)); // true
 
-//        Sentence s3 = new Sentence("Hello world!");
-//        System.out.println(s3); // Hello world!
-//        System.out.println(s1.equals(s3)); // false
-//
-//
-//        Sentence s4 = new Sentence("Hi! Ignore those.");
-//        System.out.println(s4); // Hi!
-//        Sentence s5 = new Sentence("so.me po.in.ts he,re but only end counts. yes?");
-//        System.out.println(s5); // So.me po.in.ts he,re but only end counts.
+        Sentence s3 = new Sentence("Hello world!");
+        System.out.println(s3); // Hello world!
+        System.out.println(s1.equals(s3)); // false
 
-//        Sentence s6 = new Sentence();
-//        s6.addWord("hello");
-//        System.out.println(s6);  // Hello...
-//        s6.addWord("world");
-//        System.out.println(s6);  // Hello world...
-//        s6.addPunctuation("??");
-//        System.out.println(s6);  // Hello world??
-//        System.out.println(s6.addWord("NO"));  // false
-//        System.out.println(s6.addPunctuation("."));  // false
-//        s6.removePunctuation();
-//        s6.removeWord("hello");
-//        System.out.println(s6); // World...
-//        s6.removeWord("world");
-//        System.out.println(s6);
-//        System.out.println(s6.addPunctuation("wat?"));  // false
-//        s6.addWord("??");
-//        s6.addPunctuation("hello");
-//        System.out.println(s6);  // ??hello
-//
-//        Sentence s7 = new Sentence(" hello     world    yes?");
-//        System.out.println(s7);  // Hello world yes?
-//        System.out.println(s7.addWord("CANNOT"));  // false
+
+        Sentence s4 = new Sentence("Hi! Ignore those.");
+        System.out.println(s4); // Hi!
+        Sentence s5 = new Sentence("so.me po.in.ts he,re but only end counts. yes?");
+        System.out.println(s5); // So.me po.in.ts he,re but only end counts.
+
+        Sentence s6 = new Sentence();
+        s6.addWord("hello");
+        System.out.println(s6);  // Hello...
+        s6.addWord("world");
+        System.out.println(s6);  // Hello world...
+        s6.addPunctuation("??");
+        System.out.println(s6);  // Hello world??
+        System.out.println(s6.addWord("NO"));  // false
+        System.out.println(s6.addPunctuation("."));  // false
+        s6.removePunctuation();
+        s6.removeWord("hello");
+        System.out.println(s6); // World...
+        s6.removeWord("world");
+        System.out.println(s6);
+        System.out.println(s6.addPunctuation("wat?"));  // false
+        s6.addWord("??");
+        s6.addPunctuation("hello");
+        System.out.println(s6);  // ??hello
+
+        Sentence s7 = new Sentence(" hello     world    yes?");
+        System.out.println(s7);  // Hello world yes?
+        System.out.println(s7.addWord("CANNOT"));  // false
     }
 }
 
