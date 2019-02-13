@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.sentence;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,6 +9,8 @@ import java.util.Objects;
  * Sentence class represent words and punctuation.
  */
 public class Sentence {
+    private String punctuation;
+    private String word;
     private List<String> words = new ArrayList<>();
 
     /**
@@ -19,6 +22,17 @@ public class Sentence {
      * @param text Sentence as string
      */
     public Sentence(String text) {
+        String[] wordsList = text.split(" ");
+        for ( int i = 0; i < wordsList.length; i++) {
+//            if (!wordsList[i].equals(".", "!", "?")) {
+            if (!Arrays.asList(".", "!", "?").contains(wordsList[i]) ) {
+                addWord(wordsList[i]);
+            } else {
+                addPunctuation(wordsList[i]);
+                break;
+            }
+        }
+//        String[] words = text.split(" ");
     }
 
     public Sentence() { }
@@ -32,7 +46,12 @@ public class Sentence {
      * @return Whether word was in the sentence and removed.
      */
     public boolean removeWord(String word) {
-        return false;
+        if ((words.size() != 0) && (!words.contains(punctuation))) {
+            words.remove(word);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -44,7 +63,13 @@ public class Sentence {
      * @return Whether word was added to sentence (false if sentence has punctuation).
      */
     public boolean addWord(String word) {
-        return false;
+        if (!words.contains(punctuation)) {
+            this.word = word;
+            words.add(word);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -57,7 +82,13 @@ public class Sentence {
      * @return Whether punctuation was added (false if sentence already had punctuation).
      */
     public boolean addPunctuation(String punctuation) {
-        return true;
+        if (!words.contains(punctuation)) {
+            this.punctuation = punctuation;
+            words.add(punctuation);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -69,7 +100,12 @@ public class Sentence {
      * @return Whether punctuation was removed (false if there was no punctuation).
      */
     public boolean removePunctuation() {
-        return true;
+        if (words.contains(punctuation)) {
+            words.remove(punctuation);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -99,15 +135,15 @@ public class Sentence {
         System.out.println(s2); // Hello world...
         System.out.println(s1.equals(s2)); // true
 
-        Sentence s3 = new Sentence("Hello world!");
-        System.out.println(s3); // Hello world!
-        System.out.println(s1.equals(s3)); // false
-
-
-        Sentence s4 = new Sentence("Hi! Ignore those.");
-        System.out.println(s4); // Hi!
-        Sentence s5 = new Sentence("so.me po.in.ts he,re but only end counts. yes?");
-        System.out.println(s5); // So.me po.in.ts he,re but only end counts.
+//        Sentence s3 = new Sentence("Hello world!");
+//        System.out.println(s3); // Hello world!
+//        System.out.println(s1.equals(s3)); // false
+//
+//
+//        Sentence s4 = new Sentence("Hi! Ignore those.");
+//        System.out.println(s4); // Hi!
+//        Sentence s5 = new Sentence("so.me po.in.ts he,re but only end counts. yes?");
+//        System.out.println(s5); // So.me po.in.ts he,re but only end counts.
 
 //        Sentence s6 = new Sentence();
 //        s6.addWord("hello");
