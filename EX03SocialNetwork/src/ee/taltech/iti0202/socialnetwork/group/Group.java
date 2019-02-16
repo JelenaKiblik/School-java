@@ -43,8 +43,7 @@ public class Group {
     }
 
     public void publishMessage(Message message) {
-//        if (groupList.contains(user)) {
-        messages.add(message);
+        if (!groupList.isEmpty()) messages.add(message);
     }
 
     public List<Message> getMessages() {
