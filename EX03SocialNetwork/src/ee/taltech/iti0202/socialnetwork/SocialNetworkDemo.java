@@ -5,16 +5,19 @@ import ee.taltech.iti0202.socialnetwork.user.User;
 
 public class SocialNetworkDemo {
 
+    private static final int AGE_1 = 10;
+    private static final int AGE_2 = 20;
+
     public static void main(String[] args) {
         User user1 = new User("user1");
         System.out.println(user1.getName()); // user1
         System.out.println(user1.getAge()); // null
 
-        User user2 = new User("user2", 10);
+        User user2 = new User("user2", AGE_1);
         System.out.println(user2.getName()); // user2
         System.out.println(user2.getAge()); // 10
 
-        User user3 = new User("user2", 20);
+        User user3 = new User("user2", AGE_2);
 
         Group group1 = new Group("group1", user1);
         System.out.println(group1.getName()); // group1
@@ -38,13 +41,12 @@ public class SocialNetworkDemo {
 
         Message message2 = new Message("title2", "content2", user3);
         group2.publishMessage(message2);
-//
-//        SocialNetwork socialNetwork = new SocialNetwork();
-//        socialNetwork.registerGroup(group1);
-//        socialNetwork.registerGroup(group2);
-//        System.out.println(socialNetwork.getGroups()); // [group1, newGroup]
-//
-//        System.out.println(socialNetwork.getFeedForUser(user2)); // [title1]
-    }
 
+        SocialNetwork socialNetwork = new SocialNetwork();
+        socialNetwork.registerGroup(group1);
+        socialNetwork.registerGroup(group2);
+        System.out.println(socialNetwork.getGroups()); // [group1, newGroup]
+
+        System.out.println(socialNetwork.getFeedForUser(user2)); // [title1]
+    }
 }

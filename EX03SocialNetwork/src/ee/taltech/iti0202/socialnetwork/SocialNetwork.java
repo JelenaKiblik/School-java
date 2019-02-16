@@ -18,8 +18,6 @@ public class SocialNetwork {
     }
 
     public Feed getFeedForUser(User user) {
-//        return new Feed(null, null);
-        return null;
+        return new Feed(null, null);
     }
-
 }
