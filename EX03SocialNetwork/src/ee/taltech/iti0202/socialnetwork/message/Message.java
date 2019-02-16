@@ -7,9 +7,11 @@ public class Message {
     private User author;
 
     public Message(String title, String message, User author) {
-        this.title = title;
-        this.message = message;
-        this.author = author;
+        if (author != null) {
+            this.title = title;
+            this.message = message;
+            this.author = author;
+        }
     }
 
     public String getTitle() {
