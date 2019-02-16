@@ -46,7 +46,7 @@ public class Group {
     }
 
     public void publishMessage(Message message) {
-        if (!groupList.isEmpty() && groupList.contains(commonUser)) messages.add(message);
+        if ((groupList.size() == 0) || (groupList.contains(commonUser))) messages.add(message);
     }
 
     public List<Message> getMessages() {
