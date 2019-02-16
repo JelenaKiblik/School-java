@@ -9,7 +9,7 @@ import java.util.Set;
 public class Group {
     private String name;
     private User owner;
-    private HashSet<User> groupList = new HashSet<>();
+    private Set<User> groupList = new HashSet<>();
     private List<Message> messages = new ArrayList<>();
     private Object user;
 
