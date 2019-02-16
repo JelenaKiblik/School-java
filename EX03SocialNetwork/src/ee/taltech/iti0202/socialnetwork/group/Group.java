@@ -9,12 +9,13 @@ import java.util.Set;
 public class Group {
     private String name;
     private User owner;
-    private Set<User> grup = new HashSet<>();
+    private Set<User> groupList = new HashSet<>();
     private List<Message> messages = new ArrayList<>();
 
     public Group(String name, User owner) {
         this.name = name;
         this.owner = owner;
+        groupList.add(owner);
     }
 
     public String getName() {
@@ -26,19 +27,23 @@ public class Group {
     }
 
     public User getOwner() {
-        return owner;
+        if (groupList.contains(owner)) {
+            return owner;
+        } else {
+            return null;
+        }
     }
 
     public void addUser(User user) {
-        grup.add(user);
+        groupList.add(user);
     }
 
     public Set<User> getParticipants() {
-        return grup;
+        return groupList;
     }
 
     public void publishMessage(Message message) {
-//        if (grup.contains(user)) {
+//        if (groupList.contains(user)) {
         messages.add(message);
     }
 
