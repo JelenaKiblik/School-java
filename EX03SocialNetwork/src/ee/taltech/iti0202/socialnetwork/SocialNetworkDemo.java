@@ -30,11 +30,11 @@ public class SocialNetworkDemo {
 
         group1.addUser(user2);
         System.out.println(group1.getParticipants()); // [user1, user2]
-//
-//        Message message1 = new Message("title1", "content1", user2);
-//        System.out.println(message1.getTitle()); // title1
-//        System.out.println(message1.getMessage()); // content1
-//        System.out.println(message1.getAuthor()); // user2
+
+        Message message1 = new Message("title1", "content1", user2);
+        System.out.println(message1.getTitle()); // title1
+        System.out.println(message1.getMessage()); // content1
+        System.out.println(message1.getAuthor()); // user2
 //
 //        group1.publishMessage(message1);
 //        System.out.println(group1.getMessages()); // [title1]
