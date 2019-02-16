@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SocialNetwork {
-    Set<Group> socialNetwork = new HashSet<>();
+    private Set<Group> socialNetworkList = new HashSet<>();
 
     public void registerGroup(Group group) {
-        socialNetwork.add(group);
+        socialNetworkList.add(group);
     }
 
     public Set<Group> getGroups() {
-        return socialNetwork;
+        return socialNetworkList;
     }
 
     public Feed getFeedForUser(User user) {

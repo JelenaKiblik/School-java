@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Feed {
-    User user;
-    Set<Message> messages = new HashSet<>();
+    private User user;
+    private Set<Message> messages = new HashSet<>();
 
     public Feed(User user, Set<Message> messages) {
         this.user = user;
