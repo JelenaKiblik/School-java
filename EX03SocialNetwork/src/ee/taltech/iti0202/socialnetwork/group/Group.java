@@ -9,8 +9,9 @@ import java.util.Set;
 public class Group {
     private String name;
     private User owner;
-    private Set<User> groupList = new HashSet<>();
+    private HashSet<User> groupList = new HashSet<>();
     private List<Message> messages = new ArrayList<>();
+    private Object user;
 
     public Group(String name, User owner) {
         this.name = name;
@@ -43,7 +44,7 @@ public class Group {
     }
 
     public void publishMessage(Message message) {
-        if (!groupList.isEmpty()) messages.add(message);
+        if (!groupList.isEmpty() && groupList.contains(user)) messages.add(message);
     }
 
     public List<Message> getMessages() {
