@@ -10,8 +10,9 @@ import java.util.Set;
 public class Group {
     private String name;
     private User owner;
-    private Set<User> grup = new HashSet<>();
+    private Set<User> group = new HashSet<>();
     private List<Message> messages = new ArrayList<>();
+    private User user;
 
     public Group(String name, User owner) {
         this.name = name;
@@ -31,16 +32,17 @@ public class Group {
     }
 
     public void addUser(User user) {
-        grup.add(user);
+        group.add(user);
     }
 
     public Set<User> getParticipants() {
-        return grup;
+        return group;
     }
 
     public void publishMessage(Message message) {
-//        if (grup.contains(user)) {
+        if (group.contains(this.user)) {
             messages.add(message);
+        }
     }
 
     public List<Message> getMessages() {
