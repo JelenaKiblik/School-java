@@ -10,7 +10,10 @@ public class Feed {
     User user;
     Set<Message> messages = new HashSet<>();
 
-    public Feed(User user, Set<Message> messages) { }
+    public Feed(User user, Set<Message> messages) {
+        this.user = user;
+        this.messages = messages;
+    }
 
     public User getUser() {
         return user;
