@@ -11,7 +11,7 @@ public class Group {
     private User owner;
     private Set<User> groupList = new HashSet<>();
     private List<Message> messages = new ArrayList<>();
-    private User commonUser;
+    private User user;
 
 
     public Group(String name, User owner) {
@@ -37,8 +37,8 @@ public class Group {
     }
 
     public void addUser(User user) {
-        this.commonUser = user;
-        groupList.add(this.commonUser);
+        this.user = user;
+        groupList.add(user);
     }
 
     public Set<User> getParticipants() {
@@ -46,7 +46,7 @@ public class Group {
     }
 
     public void publishMessage(Message message) {
-        if ((groupList.size() == 0) || (groupList.contains(commonUser))) messages.add(message);
+        if (!groupList.isEmpty() && groupList.contains(user)) messages.add(message);
     }
 
     public List<Message> getMessages() {
