@@ -11,7 +11,6 @@ public class Group {
     private User owner;
     private Set<User> groupList = new HashSet<>();
     private List<Message> messages = new ArrayList<>();
-    private User user;
 
 
     public Group(String name, User owner) {
@@ -37,7 +36,6 @@ public class Group {
     }
 
     public void addUser(User user) {
-        this.user = user;
         groupList.add(user);
     }
 
@@ -46,7 +44,7 @@ public class Group {
     }
 
     public void publishMessage(Message message) {
-        if (!groupList.isEmpty() && groupList.contains(user)) messages.add(message);
+        if (!groupList.isEmpty()) messages.add(message);
     }
 
     public List<Message> getMessages() {
