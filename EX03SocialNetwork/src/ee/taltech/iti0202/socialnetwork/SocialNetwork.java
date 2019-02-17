@@ -23,7 +23,7 @@ public class SocialNetwork {
 
     public Feed getFeedForUser(User user) {
         if (user != null) {
-            return new Feed(user, userMessages);
+            return new Feed(user, null);
         } else {
             return null;
         }
