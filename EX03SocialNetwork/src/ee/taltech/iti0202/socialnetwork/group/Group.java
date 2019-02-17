@@ -44,7 +44,7 @@ public class Group {
     }
 
     public void publishMessage(Message message) {
-        if (!groupList.isEmpty()) messages.add(message);
+        if (!groupList.isEmpty() && groupList.contains(message.getAuthor()))  messages.add(message);
     }
 
     public List<Message> getMessages() {
