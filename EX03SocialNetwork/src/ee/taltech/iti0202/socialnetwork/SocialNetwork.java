@@ -26,7 +26,8 @@ public class SocialNetwork {
             if (group.getParticipants().contains(user)
                     && group.getMessages().contains(message)
                     && user == message.getAuthor()) {
-                 userMessages.add(message); }
+                 userMessages.add(message);
+            }
         }
         return new Feed(user, userMessages);
     }
