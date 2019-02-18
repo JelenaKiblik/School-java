@@ -9,6 +9,7 @@ import java.util.Set;
 public class SocialNetwork {
     private Set<Group> socialNetworkList = new HashSet<>();
     private Set<Message> messages;
+    private Message message;
 
     public void registerGroup(Group group) {
         socialNetworkList.add(group);
@@ -19,6 +20,10 @@ public class SocialNetwork {
     }
 
     public Feed getFeedForUser(User user) {
-        return new Feed(user, messages);
+        if (user == message.getAuthor()) {
+            return new Feed(user, messages);
+        } else {
+            return null;
         }
+    }
 }
