@@ -35,18 +35,18 @@ public class SocialNetworkDemo {
         System.out.println(message1.getTitle()); // title1
         System.out.println(message1.getMessage()); // content1
         System.out.println(message1.getAuthor()); // user2
-//
-//        group1.publishMessage(message1);
-//        System.out.println(group1.getMessages()); // [title1]
-//
-//        Message message2 = new Message("title2", "content2", user3);
-//        group2.publishMessage(message2);
-//
-//        SocialNetwork socialNetworkList = new SocialNetwork();
-//        socialNetworkList.registerGroup(group1);
-//        socialNetworkList.registerGroup(group2);
-//        System.out.println(socialNetworkList.getGroups()); // [group1, newGroup]
-//
-//        System.out.println(socialNetworkList.getFeedForUser(user2)); // [title1]
+
+        group1.publishMessage(message1);
+        System.out.println(group1.getMessages()); // [title1]
+
+        Message message2 = new Message("title2", "content2", user3);
+        group2.publishMessage(message2);
+
+        SocialNetwork socialNetworkList = new SocialNetwork();
+        socialNetworkList.registerGroup(group1);
+        socialNetworkList.registerGroup(group2);
+        System.out.println(socialNetworkList.getGroups()); // [group1, newGroup]
+
+        System.out.println(socialNetworkList.getFeedForUser(user2)); // [title1]
     }
 }
