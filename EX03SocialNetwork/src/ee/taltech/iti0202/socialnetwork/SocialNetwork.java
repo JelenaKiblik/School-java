@@ -22,12 +22,13 @@ public class SocialNetwork {
     }
 
     public Feed getFeedForUser(User user) {
-        for (Group group : socialNetworkList)
+        for (Group group : socialNetworkList) {
             if (group.getParticipants().contains(user)
                     && group.getMessages().contains(message)
                     && user == message.getAuthor()) {
-                 userMessages.add(message);
-            }
+                 userMessages.add(message); }
+        }
         return new Feed(user, userMessages);
     }
 }
+
