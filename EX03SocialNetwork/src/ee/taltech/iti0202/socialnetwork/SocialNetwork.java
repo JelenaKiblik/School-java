@@ -21,6 +21,7 @@ public class SocialNetwork {
 
     public Feed getFeedForUser(User user) {
         if (user == message.getAuthor()) {
+            messages.add(message);
             return new Feed(user, messages);
         } else {
             return null;
