@@ -6,15 +6,21 @@ import ee.taltech.iti0202.stock.stock.Stock;
 import java.util.Optional;
 
 public class StockDemo {
+    private static final int PRICE1 = 3;
+    private static final int PRICE2 = 9;
+    private static final int PRICE3 = 5;
+    private static final int PRICE4 = 6;
+    private static final int PRICE5 = 4;
+    private static final int MAX_CAPACITY = 4;
 
     public static void main(String[] args) throws StockException {
-        Stock fruitStock = new Stock("fruit-stock-1", 4);
+        Stock fruitStock = new Stock("fruit-stock-1", MAX_CAPACITY);
 
-        Product cheapApple = new Product("apple", 3);
-        Product expensiveApple = new Product("apple", 9);
-        Product orange = new Product("orange", 5);
-        Product mango = new Product("mango", 6);
-        Product pear = new Product("pear", 4);
+        Product cheapApple = new Product("apple", PRICE1);
+        Product expensiveApple = new Product("apple", PRICE2);
+        Product orange = new Product("orange", PRICE3);
+        Product mango = new Product("mango", PRICE4);
+        Product pear = new Product("pear", PRICE5);
         System.out.println(pear.getId()); // 5
 
         fruitStock.addProduct(expensiveApple);

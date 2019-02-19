@@ -2,8 +2,7 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * The stock class.
@@ -21,7 +20,15 @@ import java.util.Optional;
 
 public class Stock {
 
+    private final String name;
+    private final int maxCapacity;
+    private List<Product> productList = new ArrayList<>();
+    private int totalPrice;
+    private Product product;
+
     public Stock(String name, int maxCapacity) {
+        this.name = name;
+        this.maxCapacity = maxCapacity;
     }
 
     /**
@@ -36,6 +43,14 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
+        try {
+            productList.add(product);
+        } catch (Exception e) {
+            if (productList.size() == maxCapacity)
+                throw new StockException(StockException.Reason.STOCK_IS_FULL);
+            if (productList.contains(product))
+                throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
+        }
     }
 
     /**
@@ -73,7 +88,7 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts() {
-        return null;
+        return productList;
     }
 
     /**
@@ -84,7 +99,13 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts(String name) {
-        return null;
+        List<Product> filtered = new ArrayList<>();
+        for (Product product : productList) {
+            if (product.getName().equals(name)) {
+                filtered.add(product);
+            }
+        }
+        return filtered;
     }
 
     /**
@@ -93,7 +114,10 @@ public class Stock {
      * @return Total price.
      */
     public int getTotalPrice() {
-        return -1;
+        for (Product product : productList) {
+            totalPrice += product.getPrice();
+        }
+        return totalPrice;
     }
 
     /**
@@ -102,7 +126,6 @@ public class Stock {
      * @return boolean
      */
     public boolean isFull() {
-        return false;
+        return (productList.size() >= maxCapacity);
     }
-
 }
