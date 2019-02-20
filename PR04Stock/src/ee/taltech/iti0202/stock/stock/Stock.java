@@ -66,7 +66,7 @@ public class Stock {
      * @return Optional
      */
     public Optional<Product> getProduct(String name) {
-        return Optional.empty();
+        return null;
     }
 
     /**
@@ -82,7 +82,12 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        return Optional.empty();
+        if (productList.contains(name)) {
+            productList.remove(name);
+            return getProduct(name);
+        } else {
+            return Optional.empty();
+        }
     }
 
     /**
