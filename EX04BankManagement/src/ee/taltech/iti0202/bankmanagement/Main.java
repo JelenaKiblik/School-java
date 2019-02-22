@@ -26,36 +26,36 @@ public class Main {
         BankCard peepDebitCard = BankCard.createCard(BankCard.CardType.DEBIT, SEB, peep);
 
         System.out.println(peep.getBankCard().isEmpty()); // false
-        System.out.println(peepDebitCard == peep.getBankCard().get()); // true
-        System.out.println(SEB.getCustomers().contains(peep)); // true
-
-        boolean exceptionThrown = false;
-        try {
-            peepDebitCard.deposit(BigDecimal.TEN);
-        } catch (TransactionException e) {
-            exceptionThrown = true;
-        }
-
-        System.out.println(exceptionThrown); // false
-        System.out.println(peepDebitCard.getBalance().equals(BigDecimal.TEN)); // true
-
-        exceptionThrown = false;
-        try {
-            peepDebitCard.withdraw(BigDecimal.valueOf(11));
-        } catch (TransactionException e) {
-            exceptionThrown = true;
-        }
-
-        System.out.println(exceptionThrown); // true
-        System.out.println(peepDebitCard.getBalance().equals(BigDecimal.TEN)); // true
-
-
-        System.out.println("- - - - CREDIT - - - -");
-
-        BankCard peepCreditCard = BankCard.createCard(BankCard.CardType.CREDIT, LHV, peep);
-
-        // ...
-
+//        System.out.println(peepDebitCard == peep.getBankCard().get()); // true
+//        System.out.println(SEB.getCustomers().contains(peep)); // true
+//
+//        boolean exceptionThrown = false;
+//        try {
+//            peepDebitCard.deposit(BigDecimal.TEN);
+//        } catch (TransactionException e) {
+//            exceptionThrown = true;
+//        }
+//
+//        System.out.println(exceptionThrown); // false
+//        System.out.println(peepDebitCard.getBalance().equals(BigDecimal.TEN)); // true
+//
+//        exceptionThrown = false;
+//        try {
+//            peepDebitCard.withdraw(BigDecimal.valueOf(11));
+//        } catch (TransactionException e) {
+//            exceptionThrown = true;
+//        }
+//
+//        System.out.println(exceptionThrown); // true
+//        System.out.println(peepDebitCard.getBalance().equals(BigDecimal.TEN)); // true
+//
+//
+//        System.out.println("- - - - CREDIT - - - -");
+//
+//        BankCard peepCreditCard = BankCard.createCard(BankCard.CardType.CREDIT, LHV, peep);
+//
+//        // ...
+//
 
     }
 }
