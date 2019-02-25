@@ -1,10 +1,10 @@
 package ee.taltech.iti0202.bankmanagement;
-import ee.taltech.iti0202.bankmanagement.bank.Bank;
-import ee.taltech.iti0202.bankmanagement.card.BankCard;
-import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
-import ee.taltech.iti0202.bankmanagement.person.Person;
-
-import java.math.BigDecimal;
+//import ee.taltech.iti0202.bankmanagement.bank.Bank;
+//import ee.taltech.iti0202.bankmanagement.card.BankCard;
+//import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
+//import ee.taltech.iti0202.bankmanagement.person.Person;
+//
+//import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
