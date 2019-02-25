@@ -1,16 +1,19 @@
 package ee.taltech.iti0202.bankmanagement.bank;
+import ee.taltech.iti0202.bankmanagement.card.CreditCard;
+import ee.taltech.iti0202.bankmanagement.card.DebitCard;
 import ee.taltech.iti0202.bankmanagement.person.Person;
 
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Bank {
 
     private String name;
+    private Set<Person> customers = new HashSet<>();
+    private List<DebitCard> debitCards = new ArrayList<>();
+    private List<CreditCard> creditCards = new ArrayList<>();
 
     public Bank(String name) {
         this.name = name;
-
     }
 
     public String getName() {
@@ -25,7 +28,7 @@ public class Bank {
         return null;
     }
 
-    public Boolean removeCustomer(Person person){
+    public Boolean removeCustomer(Person person) {
         return null;
     }
 

@@ -7,7 +7,11 @@ import java.math.BigDecimal;
 
 public abstract class BankCard {
 
-    public enum CardType {CREDIT, DEBIT}
+    protected BigDecimal balance;
+    private Bank bank;
+    private Person person;
+
+    public enum CardType { CREDIT, DEBIT }
 
     /**
      * Constructor factory. Return a CreditCard or DebitCard object according to parameter cardType.
@@ -18,7 +22,14 @@ public abstract class BankCard {
      * @return
      */
     public static BankCard createCard(CardType cardType, Bank bank, Person person) {
-        return null;
+        BankCard newCard;
+        if (cardType == CardType.DEBIT) {
+            newCard = new DebitCard();
+        } else {
+            newCard = new CreditCard();
+        }
+        person.getBankCard();
+        return newCard;
     }
 
     /**
@@ -28,7 +39,10 @@ public abstract class BankCard {
      * @throws TransactionException Thrown if given value is zero or less.
      */
     public void deposit(BigDecimal value) throws TransactionException {
-
+        BigDecimal zero = new BigDecimal("0");
+        if (value.compareTo(zero) > -1) {
+            balance = balance.add(value);
+        }
     }
 
     /**
@@ -43,14 +57,14 @@ public abstract class BankCard {
 
 
     public Bank getBank() {
-        return null;
+        return bank;
     }
 
     public BigDecimal getBalance() {
-        return null;
+        return balance;
     }
 
     public Person getPerson() {
-        return null;
+        return person;
     }
 }

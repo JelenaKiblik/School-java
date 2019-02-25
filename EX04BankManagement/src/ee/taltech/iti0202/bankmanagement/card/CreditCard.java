@@ -5,21 +5,38 @@ import java.math.BigDecimal;
 
 public final class CreditCard extends BankCard {
 
-    CreditCard() {
+    private final BigDecimal startingBalance = BigDecimal.valueOf(10000);
+    private final BigDecimal allowedDebt = BigDecimal.valueOf(5000);
+    private BigDecimal balance;
 
+    CreditCard() {
+        super.balance = startingBalance;
     }
 
     @Override
     public BigDecimal withdraw(BigDecimal value) throws TransactionException {
-        return null;
+        if (value.compareTo(BigDecimal.valueOf(0)) <= 0) {
+        }
+
+        if (value.compareTo(balance.add(allowedDebt)) <= 0) {
+            balance = balance.subtract(value);
+        }
+        return value;
     }
 
     @Override
     public BigDecimal getBalance() {
-        return null;
+        if (balance.compareTo(BigDecimal.valueOf(0)) < 0) {
+            return BigDecimal.valueOf(0);
+        } else {
+            return balance;
+        }
     }
 
     public BigDecimal getDebt() {
-        return null;
+        if (balance.compareTo(BigDecimal.valueOf(0)) < 0) {
+            return balance.negate();
+        }
+        return BigDecimal.valueOf(0);
     }
 }
