@@ -36,24 +36,20 @@ public class Exam {
         if (a >= 0 && b >= 0) {
             if (a > MAX_SUM && b <= MAX_SUM) {
                 result += b;
-                return result;
             }
             if (a <= MAX_SUM && b > MAX_SUM) {
                 result += a;
-                return result;
             }
             if (a > MAX_SUM && b > MAX_SUM) {
                 result += 0;
-                return result;
             }
             if (a < MAX_SUM && b < MAX_SUM) {
                 if (a >= b) {
                     result += a;
-                    return result;
                 } else {
                     result += b;
-                    return result;
                 }
+                return result;
             }
         }
         return result;
