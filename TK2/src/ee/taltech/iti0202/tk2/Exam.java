@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class Exam {
 
-    private final static int ZERO = 0;
-    private final static int MAX_SUM = 21;
+    private static final int ZERO = 0;
+    private static final int MAX_SUM = 21;
 
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
@@ -36,18 +36,19 @@ public class Exam {
         if (a > MAX_SUM && b <= MAX_SUM) {
             result = b;
         }
-        if (a <= MAX_SUM && b > MAX_SUM) {
+        else if (a <= MAX_SUM && b > MAX_SUM) {
             result = a;
         }
-        if (a > MAX_SUM && b > MAX_SUM) {
+        else if (a > MAX_SUM && b > MAX_SUM) {
             result = 0;
         }
-        if (a < MAX_SUM && b < MAX_SUM) {
+        else if (a < MAX_SUM && b < MAX_SUM) {
             if (a > b) {
                 result = a;
             } else {
                 result = b;
             }
+            return result;
         }
         return result;
     }
@@ -63,12 +64,14 @@ public class Exam {
      repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
-        String end = str.substring(-n);
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < n + 1; i++) {
-            result.append(end);
-        }
-        return result.toString();
+//        String end = str.substring(-n);
+//        StringBuilder result = new StringBuilder();
+//        for (int i = 0; i < n + 1; i++) {
+//            result.append(end);
+//        }
+//        return result.toString();
+
+        return str;
     }
 
     /**
@@ -85,6 +88,6 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(repeatEnd("llollollo", 3));
+        System.out.println(blackjack(4, 3));
     }
 }
