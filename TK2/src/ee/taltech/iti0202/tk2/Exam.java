@@ -35,18 +35,20 @@ public class Exam {
         int result = ZERO;
         if (a >= 0 && b >= 0) {
             if (a > MAX_SUM && b <= MAX_SUM) {
-                result = b;
-            } else if (a <= MAX_SUM && b > MAX_SUM) {
-                result = a;
-            } else if (a > MAX_SUM && b > MAX_SUM) {
-                result = 0;
-            } else if (a < MAX_SUM && b < MAX_SUM) {
-                if (a > b) {
-                    result = a;
+                result += b;
+            }
+            if (a <= MAX_SUM && b > MAX_SUM) {
+                result += a;
+            }
+            if (a > MAX_SUM && b > MAX_SUM) {
+                result += 0;
+            }
+            if (a < MAX_SUM && b < MAX_SUM) {
+                if (a >= b ) {
+                    result += a;
                 } else {
-                    result = b;
+                    result += b;
                 }
-                return result;
             }
         }
         return result;
