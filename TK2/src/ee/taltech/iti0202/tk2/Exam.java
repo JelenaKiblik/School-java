@@ -2,8 +2,6 @@ package ee.taltech.iti0202.tk2;
 
 import java.util.*;
 
-import static java.util.Collections.*;
-
 public class Exam {
 
 
@@ -50,7 +48,7 @@ public class Exam {
     public static String repeatEnd(String str, int n) {
         String end = str.substring(-n);
         String result = "";
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n+1; i++) {
             result += end;
         }
         return result;
