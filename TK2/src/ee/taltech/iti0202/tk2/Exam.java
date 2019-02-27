@@ -1,9 +1,13 @@
 package ee.taltech.iti0202.tk2;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.util.Collections.*;
+
 public class Exam {
 
+
+    private static int average;
 
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
@@ -16,7 +20,8 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        return 0;
+        average = 0;
+        return average;
     }
 
 
@@ -43,8 +48,12 @@ public class Exam {
      repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
-        return "";
-
+        String end = str.substring(-n);
+        String result = "";
+        for (int i = 0; i < n; i++) {
+            result += end;
+        }
+        return result;
     }
 
     /**
@@ -58,5 +67,9 @@ public class Exam {
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
         return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(repeatEnd("llollollo", 3));
     }
 }
