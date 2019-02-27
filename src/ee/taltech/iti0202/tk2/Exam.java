@@ -18,7 +18,7 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        return 0;
+        return 2;
     }
 
 
