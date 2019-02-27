@@ -44,7 +44,7 @@ public class Exam {
                 result += 0;
             }
             if (a < MAX_SUM && b < MAX_SUM) {
-                if (a >= b ) {
+                if (a >= b) {
                     result += a;
                 } else {
                     result += b;
