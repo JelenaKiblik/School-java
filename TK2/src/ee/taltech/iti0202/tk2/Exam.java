@@ -65,10 +65,11 @@ public class Exam {
      repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
-        String end = str.substring(-n);
+        int end = -n;
+        String substring = str.substring(end);
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < n; i++) {
-            result.append(end);
+            result.append(substring);
         }
         return result.toString();
     }
