@@ -1,8 +1,12 @@
 package ee.taltech.iti0202.tk2;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 public class Exam {
+
+    public final static int ZERO = 0;
+    public final static int MAX_SUM = 21;
 
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
@@ -15,8 +19,7 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        int average = 0;
-        return average;
+        return 0;
     }
 
 
@@ -29,17 +32,17 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        int result = 0;
-        if (a > 21 && b <= 21) {
+        int result = ZERO;
+        if (a > MAX_SUM && b <= MAX_SUM) {
             result = b;
         }
-        if (a <= 21 && b > 21) {
+        if (a <= MAX_SUM && b > MAX_SUM) {
             result = a;
         }
-        if (a > 21 && b > 21) {
+        if (a > MAX_SUM && b > MAX_SUM) {
             result = 0;
         }
-        if (a < 21 && b < 21) {
+        if (a < MAX_SUM && b < MAX_SUM) {
             if (a > b) {
                 result = a;
             } else {
@@ -61,11 +64,11 @@ public class Exam {
      */
     public static String repeatEnd(String str, int n) {
         String end = str.substring(-n);
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < n+1; i++) {
-            result += end;
+            result.append(end);
         }
-        return result;
+        return result.toString();
     }
 
     /**
