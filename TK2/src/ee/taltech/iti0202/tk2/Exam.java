@@ -88,8 +88,4 @@ public class Exam {
     public static Map<String, String> mapAB(Map<String, String> map) {
         return null;
     }
-
-    public static void main(String[] args) {
-        System.out.println(blackjack(21, 3));
-    }
 }
