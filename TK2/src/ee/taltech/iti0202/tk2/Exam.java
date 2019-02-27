@@ -64,14 +64,12 @@ public class Exam {
      repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
-//        String end = str.substring(-n);
-//        StringBuilder result = new StringBuilder();
-//        for (int i = 0; i < n + 1; i++) {
-//            result.append(end);
-//        }
-//        return result.toString();
-
-        return str;
+        String end = str.substring(-n);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < n + 1; i++) {
+            result.append(end);
+        }
+        return result.toString();
     }
 
     /**
