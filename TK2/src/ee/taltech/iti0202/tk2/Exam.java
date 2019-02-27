@@ -68,8 +68,10 @@ public class Exam {
         int end = -n;
         String substring = str.substring(end);
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            result.append(substring);
+        if ((n != 0) && (str.length() != 0)) {
+            for (int i = 0; i < n; i++) {
+                result.append(substring);
+            }
         }
         return result.toString();
     }
@@ -88,6 +90,6 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(blackjack(4, 3));
+        System.out.println(blackjack(21, 3));
     }
 }
