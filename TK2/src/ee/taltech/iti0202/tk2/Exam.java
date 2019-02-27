@@ -4,9 +4,6 @@ import java.util.*;
 
 public class Exam {
 
-
-    private static int average;
-
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
      * except ignoring the largest and smallest values in the array. If there are multiple copies of the
@@ -18,7 +15,7 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        average = 0;
+        int average = 0;
         return average;
     }
 
