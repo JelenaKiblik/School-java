@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class Exam {
 
-    public final static int ZERO = 0;
-    public final static int MAX_SUM = 21;
+    private final static int ZERO = 0;
+    private final static int MAX_SUM = 21;
 
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
@@ -65,7 +65,7 @@ public class Exam {
     public static String repeatEnd(String str, int n) {
         String end = str.substring(-n);
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < n+1; i++) {
+        for (int i = 0; i < n + 1; i++) {
             result.append(end);
         }
         return result.toString();
