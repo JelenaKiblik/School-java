@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class Exam {
 
+    private static final int MAX_SUM = 21;
+
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
      * except ignoring the largest and smallest values in the array. If there are multiple copies of the
@@ -37,12 +39,13 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        if (a > 21) {
-            if(b > 21)
+        if (a > MAX_SUM) {
+            if (b > MAX_SUM) {
                 return 0;
+            }
             return b;
         }
-        if (a < b && b <= 21) {
+        if (a < b && b <= MAX_SUM) {
             return b;
         }
         return a;
