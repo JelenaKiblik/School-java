@@ -30,6 +30,8 @@ public abstract class BankCard {
 
         if (cardType == CardType.DEBIT) {
             BankCard bankCard = new DebitCard();
+            bankCard.bank = bank;
+            bankCard.person = person;
             person.setBankCard(bankCard);
             if (!bank.customers.contains(person)) {
                 bank.customers.add(person);
@@ -39,6 +41,8 @@ public abstract class BankCard {
         }
         if (cardType == CardType.CREDIT) {
             BankCard bankCard = new CreditCard();
+            bankCard.bank = bank;
+            bankCard.person = person;
             person.setBankCard(bankCard);
             if (!bank.customers.contains(person)) {
                 bank.customers.add(person);
