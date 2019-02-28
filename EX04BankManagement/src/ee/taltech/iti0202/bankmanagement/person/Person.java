@@ -11,7 +11,6 @@ public class Person {
     private final Gender gender;
     private final double monthlyIncome;
     private BankCard bankCard;
-
     public enum Gender { MALE, FEMALE }
 
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
