@@ -34,10 +34,10 @@ public class Exam {
     public static int blackjack(int a, int b) {
         int result = ZERO;
         if (a >= 0 && b >= 0) {
-            if (a > MAX_SUM && b <= MAX_SUM) {
+            if ((a > MAX_SUM && b == MAX_SUM) || (a < MAX_SUM && b == MAX_SUM)) {
                 result += b;
             }
-            if (a <= MAX_SUM && b > MAX_SUM) {
+            if ((a == MAX_SUM && b > MAX_SUM) || (a == MAX_SUM && b < MAX_SUM)) {
                 result += a;
             }
             if (a > MAX_SUM && b > MAX_SUM) {
@@ -49,7 +49,6 @@ public class Exam {
                 } else {
                     result += b;
                 }
-                return result;
             }
         }
         return result;
@@ -66,7 +65,7 @@ public class Exam {
      repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
-        int end = -n;
+        int end = str.length()- n;
         String substring = str.substring(end);
         StringBuilder result = new StringBuilder();
         if ((n != 0) && (str.length() != 0)) {
@@ -88,5 +87,12 @@ public class Exam {
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
         return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(blackjack(21, 8));
+//        System.out.println(repeatEnd("Hello", 3));
+//        System.out.println(repeatEnd("Hello", 2));
+//        System.out.println(repeatEnd("Hello", 1));
     }
 }
