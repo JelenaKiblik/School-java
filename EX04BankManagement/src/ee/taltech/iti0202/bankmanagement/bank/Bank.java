@@ -13,9 +13,10 @@ import java.util.Optional;
 public class Bank {
 
     private String name;
-    private Set<Person> customers = new HashSet<>();
+    public Set<Person> customers = new HashSet<>();
     private List<DebitCard> debitCards = new ArrayList<>();
     private List<CreditCard> creditCards = new ArrayList<>();
+    private Person person;
 
     public Bank(String name) {
         this.name = name;
@@ -26,15 +27,26 @@ public class Bank {
     }
 
     public Set<Person> getCustomers() {
-        return null;
+        return customers;
     }
 
     public Boolean addCustomer(Person person) {
-        return null;
+        if (!customers.contains(person)) {
+            customers.add(person);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Boolean removeCustomer(Person person) {
-        return null;
+        if (customers.contains(person)) {
+            customers.remove(person);
+            person.setBankCard(null);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public double getAverageCustomerMonthlyIncome() {

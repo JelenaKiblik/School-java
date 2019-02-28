@@ -22,13 +22,22 @@ public abstract class BankCard {
      * @return
      */
     public static BankCard createCard(CardType cardType, Bank bank, Person person) {
-        BankCard newCard;
+        BankCard newCard = null;
+
         if (cardType == CardType.DEBIT) {
             newCard = new DebitCard();
-        } else {
-            newCard = new CreditCard();
+            person.setBankCard(newCard);
+            if (!bank.customers.contains(person)) {
+                bank.customers.add(person);
+            }
         }
-        person.getBankCard();
+        if (cardType == CardType.CREDIT) {
+            newCard = new CreditCard();
+            person.setBankCard(newCard);
+            if (!bank.customers.contains(person)) {
+                bank.customers.add(person);
+            }
+        }
         return newCard;
     }
 

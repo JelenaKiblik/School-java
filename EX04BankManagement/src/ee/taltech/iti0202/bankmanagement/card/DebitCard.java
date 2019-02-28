@@ -20,6 +20,4 @@ public final class DebitCard extends BankCard {
         }
         return value;
     }
-
-
 }
