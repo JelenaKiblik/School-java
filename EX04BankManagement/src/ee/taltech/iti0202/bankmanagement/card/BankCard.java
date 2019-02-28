@@ -9,12 +9,12 @@ import java.util.List;
 
 public abstract class BankCard {
 
-    private BankCard bankCard;
-    protected BigDecimal balance;
-    private Bank bank;
-    private Person person;
-    private static List<DebitCard> debitCards = new ArrayList<>();
-    private static List<CreditCard> creditCards = new ArrayList<>();
+    public static BankCard bankCard;
+    public BigDecimal balance;
+    public Bank bank;
+    public Person person;
+    public static List<DebitCard> debitCards = new ArrayList<>();
+    public static List<CreditCard> creditCards = new ArrayList<>();
 
     public enum CardType { CREDIT, DEBIT }
 
@@ -35,7 +35,6 @@ public abstract class BankCard {
                 bank.customers.add(person);
             }
             debitCards.add((DebitCard) bankCard);
-            return bankCard;
         }
         if (cardType == CardType.CREDIT) {
             BankCard bankCard = new CreditCard();
@@ -44,34 +43,33 @@ public abstract class BankCard {
                 bank.customers.add(person);
             }
             creditCards.add((CreditCard) bankCard);
-            return bankCard;
         }
-        return null;
+        return bankCard;
     }
 
-//    /**
-//     * Deposit given amount to the card.
-//     *
-//     * @param value Value to be deposited.
-//     * @throws TransactionException Thrown if given value is zero or less.
-//     */
-//    public void deposit(BigDecimal value) throws TransactionException {
-//        BigDecimal zero = new BigDecimal("0");
-//        if (value.compareTo(zero) > -1) {
-//            balance = balance.add(value);
-//        }
-//    }
+    /**
+     * Deposit given amount to the card.
+     *
+     * @param value Value to be deposited.
+     * @throws TransactionException Thrown if given value is zero or less.
+     */
+    public void deposit(BigDecimal value) throws TransactionException {
+        BigDecimal zero = new BigDecimal("0");
+        if (value.compareTo(zero) > -1) {
+            balance = balance.add(value);
+        }
+    }
 
-//    /**
-//     * Withdraw the given amount from the card. Abstract function - implemented in subclasses CreditCard and DebitCard.
-//     *
-//     * @param value Value to be withdrawn.
-//     * @return Amount withdrawn.
-//     * @throws TransactionException Thrown if given value cannot be withdrawn for
-//     *                              various reasons - specified in subclasses.
-//     */
-//    public abstract BigDecimal withdraw(BigDecimal value) throws TransactionException;
-//
+    /**
+     * Withdraw the given amount from the card. Abstract function - implemented in subclasses CreditCard and DebitCard.
+     *
+     * @param value Value to be withdrawn.
+     * @return Amount withdrawn.
+     * @throws TransactionException Thrown if given value cannot be withdrawn for
+     *                              various reasons - specified in subclasses.
+     */
+    public abstract BigDecimal withdraw(BigDecimal value) throws TransactionException;
+
 
     public Bank getBank() {
         return bank;
