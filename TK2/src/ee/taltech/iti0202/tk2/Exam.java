@@ -90,7 +90,8 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(blackjack(21, 8));
+//        System.out.println(blackjack(MAX_SUM, 8));
+//        System.out.println(blackjack(22, MAX_SUM));
 //        System.out.println(repeatEnd("Hello", 3));
 //        System.out.println(repeatEnd("Hello", 2));
 //        System.out.println(repeatEnd("Hello", 1));
