@@ -3,13 +3,18 @@ import ee.taltech.iti0202.bankmanagement.bank.Bank;
 import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 import ee.taltech.iti0202.bankmanagement.person.Person;
 
+import javax.swing.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BankCard {
 
     protected BigDecimal balance;
     private Bank bank;
     private Person person;
+    private static List<DebitCard> debitCards = new ArrayList<>();
+    private static List<CreditCard> creditCards = new ArrayList<>();
 
     public enum CardType { CREDIT, DEBIT }
 
@@ -22,23 +27,25 @@ public abstract class BankCard {
      * @return
      */
     public static BankCard createCard(CardType cardType, Bank bank, Person person) {
-        BankCard newCard = null;
+
 
         if (cardType == CardType.DEBIT) {
-            newCard = new DebitCard();
+            BankCard newCard = new DebitCard();
             person.setBankCard(newCard);
             if (!bank.customers.contains(person)) {
                 bank.customers.add(person);
             }
+            debitCards.add((DebitCard) newCard);
         }
         if (cardType == CardType.CREDIT) {
-            newCard = new CreditCard();
+            BankCard newCard = new CreditCard();
             person.setBankCard(newCard);
             if (!bank.customers.contains(person)) {
                 bank.customers.add(person);
             }
+            creditCards.add((CreditCard) newCard);
         }
-        return newCard;
+        return null;
     }
 
     /**
