@@ -5,9 +5,6 @@ import java.util.Map;
 
 public class Exam {
 
-    private static final int ZERO = 0;
-    private static final int MAX_SUM = 21;
-
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
      * except ignoring the largest and smallest values in the array. If there are multiple copies of the
@@ -19,7 +16,15 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        return 0;
+        int min = nums.get(0);
+        int max = nums.get(0);
+        int sum = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            min = nums.get(i) < min ? nums.get(i) : min;
+            max = nums.get(i) > max ? nums.get(i) : max;
+            sum = sum + nums.get(i);
+        }
+        return (sum - (min + max)) / (nums.size() - 2);
     }
 
 
@@ -32,26 +37,15 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        int result = ZERO;
-        if (a >= 0 && b >= 0) {
-            if ((a > MAX_SUM && b == MAX_SUM) || (a < MAX_SUM && b == MAX_SUM)) {
-                result += b;
-            }
-            if ((a == MAX_SUM && b > MAX_SUM) || (a == MAX_SUM && b < MAX_SUM)) {
-                result += a;
-            }
-            if (a > MAX_SUM && b > MAX_SUM) {
-                result += 0;
-            }
-            if (a < MAX_SUM && b < MAX_SUM) {
-                if (a >= b) {
-                    result += a;
-                } else {
-                    result += b;
-                }
-            }
+        if (a > 21) {
+            if(b > 21)
+                return 0;
+            return b;
         }
-        return result;
+        if (a < b && b <= 21) {
+            return b;
+        }
+        return a;
     }
 
 
@@ -86,14 +80,10 @@ public class Exam {
      mapAB2({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
-        return null;
-    }
-
-    public static void main(String[] args) {
-//        System.out.println(blackjack(MAX_SUM, 8));
-//        System.out.println(blackjack(22, MAX_SUM));
-//        System.out.println(repeatEnd("Hello", 3));
-//        System.out.println(repeatEnd("Hello", 2));
-//        System.out.println(repeatEnd("Hello", 1));
+        if (map.containsKey("a") && map.containsKey("b") && map.get("a").equals(map.get("b"))) {
+            map.remove("a");
+            map.remove("b");
+        }
+        return map;
     }
 }
