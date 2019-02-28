@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class BankCard {
 
-    private static BankCard bankCard;
+    private BankCard bankCard;
     protected BigDecimal balance;
     private Bank bank;
     private Person person;
@@ -30,8 +30,6 @@ public abstract class BankCard {
 
         if (cardType == CardType.DEBIT) {
             BankCard bankCard = new DebitCard();
-            bankCard.bank = bank;
-            bankCard.person = person;
             person.setBankCard(bankCard);
             if (!bank.customers.contains(person)) {
                 bank.customers.add(person);
@@ -41,8 +39,6 @@ public abstract class BankCard {
         }
         if (cardType == CardType.CREDIT) {
             BankCard bankCard = new CreditCard();
-            bankCard.bank = bank;
-            bankCard.person = person;
             person.setBankCard(bankCard);
             if (!bank.customers.contains(person)) {
                 bank.customers.add(person);
@@ -50,7 +46,7 @@ public abstract class BankCard {
             creditCards.add((CreditCard) bankCard);
             return bankCard;
         }
-        return bankCard;
+        return null;
     }
 
     /**
