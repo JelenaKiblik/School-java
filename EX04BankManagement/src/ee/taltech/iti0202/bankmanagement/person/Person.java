@@ -11,7 +11,7 @@ public class Person {
     private int age;
     private Gender gender;
     private double monthlyIncome;
-    private BankCard bankCard ;
+    private BankCard bankCard;
     public enum Gender { MALE, FEMALE }
 
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
@@ -20,7 +20,6 @@ public class Person {
         this.age = age;
         this.monthlyIncome = monthlyIncome;
         this.gender = gender;
-
     }
 
     public String getFirstName() {
