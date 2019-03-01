@@ -14,9 +14,6 @@ public class Bank {
 
     private String name;
     public Set<Person> customers = new HashSet<>();
-    private List<DebitCard> debitCards = new ArrayList<>();
-    private List<CreditCard> creditCards = new ArrayList<>();
-    private Person person;
 
     public Bank(String name) {
         this.name = name;

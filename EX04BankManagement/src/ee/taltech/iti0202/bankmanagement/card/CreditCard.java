@@ -31,7 +31,7 @@ public final class CreditCard extends BankCard {
         if (balance.compareTo(BigDecimal.valueOf(0)) < 0) {
             return BigDecimal.valueOf(0);
         } else {
-            return balance;
+            return super.getBalance();
         }
     }
 

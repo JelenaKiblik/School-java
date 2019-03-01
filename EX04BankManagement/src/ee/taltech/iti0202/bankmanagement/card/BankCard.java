@@ -9,14 +9,12 @@ import java.util.List;
 
 public abstract class BankCard {
 
-    public static BankCard bankCard;
-    public CardType type;
     public Bank bank;
     public BigDecimal balance;
     public static List<DebitCard> debitCards = new ArrayList<>();
     public static List<CreditCard> creditCards = new ArrayList<>();
     public Person person;
-
+    public CardType type;
     public enum CardType { CREDIT, DEBIT }
 
     /**
@@ -28,19 +26,22 @@ public abstract class BankCard {
      * @return
      */
     public static BankCard createCard(CardType cardType, Bank bank, Person person) {
+        BankCard bankCard = null;
         if (cardType == CardType.DEBIT) {
-            BankCard bankCard = new DebitCard();
+            bankCard = new DebitCard();
+            bankCard.type = cardType;
             person.setBankCard(bankCard);
             if (!bank.customers.contains(person)) {
-                bank.customers.add(person);
+                bank.addCustomer(person);
             }
             debitCards.add((DebitCard) bankCard);
         }
         if (cardType == CardType.CREDIT) {
-            BankCard bankCard = new CreditCard();
+            bankCard = new CreditCard();
+            bankCard.type = cardType;
             person.setBankCard(bankCard);
             if (!bank.customers.contains(person)) {
-                bank.customers.add(person);
+                bank.addCustomer(person);
             }
             creditCards.add((CreditCard) bankCard);
         }
