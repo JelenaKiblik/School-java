@@ -28,10 +28,12 @@ public abstract class BankCard {
         BankCard bankCard = null;
         if (cardType == CardType.DEBIT) {
             bankCard = new DebitCard();
-            debitCards.add((DebitCard) bankCard);}
+            debitCards.add((DebitCard) bankCard);
+        }
         if (cardType == CardType.CREDIT) {
             bankCard = new CreditCard();
-            creditCards.add((CreditCard) bankCard);}
+            creditCards.add((CreditCard) bankCard);
+        }
         bankCard.bank = bank;
         bankCard.person = person;
         person.setBankCard(bankCard);
