@@ -57,7 +57,10 @@ public abstract class BankCard {
      * @throws TransactionException Thrown if given value is zero or less.
      */
     public void deposit(BigDecimal value) throws TransactionException {
-        if (value.compareTo(BigDecimal.valueOf(0)) > 0) balance = balance.add(value);
+        BigDecimal zero = new BigDecimal("0");
+        if (value.compareTo(zero) > -1) {
+            balance = balance.add(value);
+        }
     }
 
     /**
