@@ -6,11 +6,11 @@ import java.util.Optional;
 
 public class Person {
 
-    private final String firstName;
-    private final String lastName;
-    private final int age;
-    private final Gender gender;
-    private final double monthlyIncome;
+    private  String firstName;
+    private  String lastName;
+    private  int age;
+    private  Gender gender;
+    private  double monthlyIncome;
     private BankCard bankCard = null;
     public enum Gender { MALE, FEMALE }
 
