@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.bankmanagement.person;
 import ee.taltech.iti0202.bankmanagement.card.BankCard;
+import ee.taltech.iti0202.bankmanagement.exceptions.PersonException;
 
 import java.util.Optional;
 
@@ -31,7 +32,11 @@ public class Person {
     }
 
     public int getAge() {
-        return age;
+        if (age > 0) {
+            return age;
+        } else {
+            throw new PersonException("Error");
+        }
     }
 
     public Gender getGender() {
@@ -39,7 +44,11 @@ public class Person {
     }
 
     public double getMonthlyIncome() {
-        return monthlyIncome;
+        if (monthlyIncome > 0) {
+            return monthlyIncome;
+        } else {
+            throw new PersonException("Error");
+        }
     }
 
     /**

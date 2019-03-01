@@ -11,13 +11,24 @@ public final class DebitCard extends BankCard {
 
     @Override
     public BigDecimal withdraw(BigDecimal value) throws TransactionException {
-        if (value.compareTo(BigDecimal.valueOf(0)) <= 0) {
+        BigDecimal zero = new BigDecimal("0");
+        if (balance.subtract(value).compareTo(zero) < 0 || value.compareTo(zero) < 1) { //newBalance < 0 or value <= 0
             throw new TransactionException("Error");
-        }
-        if (value.compareTo(balance) <= 0) {
+        } else {
             balance = balance.subtract(value);
-            throw new TransactionException("Error");
         }
-        return value;
+
+
+//        if (value.compareTo(BigDecimal.valueOf(0)) <= 0) {
+//            throw new TransactionException("Error");
+//        }
+//
+//        if (value.compareTo(balance) <= 0) {
+//            balance = balance.subtract(value);
+//        }
+//        return value;
+//    }
+        return zero;
     }
+
 }
