@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.bankmanagement.bank;
 
+import ee.taltech.iti0202.bankmanagement.card.BankCard;
 import ee.taltech.iti0202.bankmanagement.person.Person;
 
 import java.util.HashSet;
@@ -60,6 +61,9 @@ public class Bank {
     }
 
     public Set<Person> getAllCustomersWithCreditCards() {
+//        return this.customers.stream()
+//                .filter(person -> person.getBankCard().isPresent())
+//                .filter(person -> person.getBankCard() = BankCard.CardType.CREDIT);
         return null;
     }
 

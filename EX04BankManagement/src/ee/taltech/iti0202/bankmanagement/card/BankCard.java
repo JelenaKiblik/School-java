@@ -14,7 +14,6 @@ public abstract class BankCard {
     public static List<DebitCard> debitCards = new ArrayList<>();
     public static List<CreditCard> creditCards = new ArrayList<>();
     public Person person;
-    public CardType type;
     public enum CardType { CREDIT, DEBIT }
 
     /**
@@ -29,21 +28,15 @@ public abstract class BankCard {
         BankCard bankCard = null;
         if (cardType == CardType.DEBIT) {
             bankCard = new DebitCard();
-            bankCard.type = cardType;
-            person.setBankCard(bankCard);
-            if (!bank.customers.contains(person)) {
-                bank.addCustomer(person);
-            }
-            debitCards.add((DebitCard) bankCard);
-        }
+            debitCards.add((DebitCard) bankCard);}
         if (cardType == CardType.CREDIT) {
             bankCard = new CreditCard();
-            bankCard.type = cardType;
-            person.setBankCard(bankCard);
-            if (!bank.customers.contains(person)) {
-                bank.addCustomer(person);
-            }
-            creditCards.add((CreditCard) bankCard);
+            creditCards.add((CreditCard) bankCard);}
+        bankCard.bank = bank;
+        bankCard.person = person;
+        person.setBankCard(bankCard);
+        if (!bank.customers.contains(person)) {
+            bank.addCustomer(person);
         }
         return bankCard;
     }
