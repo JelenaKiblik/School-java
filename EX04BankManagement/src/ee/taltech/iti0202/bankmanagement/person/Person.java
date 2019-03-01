@@ -10,7 +10,7 @@ public class Person {
     private final int age;
     private final Gender gender;
     private final double monthlyIncome;
-    private BankCard bankCard;
+    private BankCard bankCard = null;
     public enum Gender { MALE, FEMALE }
 
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
