@@ -1,11 +1,8 @@
 package ee.taltech.iti0202.bankmanagement.bank;
-import ee.taltech.iti0202.bankmanagement.card.CreditCard;
-import ee.taltech.iti0202.bankmanagement.card.DebitCard;
+
 import ee.taltech.iti0202.bankmanagement.person.Person;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.Optional;
 
