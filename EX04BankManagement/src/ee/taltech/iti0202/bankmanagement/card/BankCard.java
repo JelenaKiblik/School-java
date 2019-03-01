@@ -9,12 +9,13 @@ import java.util.List;
 
 public abstract class BankCard {
 
+    public static BankCard bankCard;
     public CardType type;
-    Bank bank;
-    BigDecimal balance;
-    static List<DebitCard> debitCards = new ArrayList<>();
-    static List<CreditCard> creditCards = new ArrayList<>();
-    private Person person;
+    public Bank bank;
+    public BigDecimal balance;
+    public static List<DebitCard> debitCards = new ArrayList<>();
+    public static List<CreditCard> creditCards = new ArrayList<>();
+    public Person person;
 
     public enum CardType { CREDIT, DEBIT }
 
@@ -27,27 +28,23 @@ public abstract class BankCard {
      * @return
      */
     public static BankCard createCard(CardType cardType, Bank bank, Person person) {
-        switch (cardType) {
-            case DEBIT:
-                DebitCard debitCard = new DebitCard();
-                debitCard.type = cardType;
-                debitCards.add(debitCard);
-                debitCard.bank = bank;
-                person.setBankCard(debitCard);
-                return debitCard;
-
-            case CREDIT:
-                CreditCard creditCard = new CreditCard();
-                creditCard.type = cardType;
-                creditCards.add(creditCard);
-                creditCard.bank = bank;
-                person.setBankCard(creditCard);
-                return creditCard;
-
-            default: break;
+        if (cardType == CardType.DEBIT) {
+            BankCard bankCard = new DebitCard();
+            person.setBankCard(bankCard);
+            if (!bank.customers.contains(person)) {
+                bank.customers.add(person);
+            }
+            debitCards.add((DebitCard) bankCard);
         }
-
-        return null;
+        if (cardType == CardType.CREDIT) {
+            BankCard bankCard = new CreditCard();
+            person.setBankCard(bankCard);
+            if (!bank.customers.contains(person)) {
+                bank.customers.add(person);
+            }
+            creditCards.add((CreditCard) bankCard);
+        }
+        return bankCard;
     }
 
     /**
@@ -58,7 +55,7 @@ public abstract class BankCard {
      */
     public void deposit(BigDecimal value) throws TransactionException {
         BigDecimal zero = new BigDecimal("0");
-        if (value.compareTo(zero) > - 1) {
+        if (value.compareTo(zero) > -1) {
             balance = balance.add(value);
         }
     }
