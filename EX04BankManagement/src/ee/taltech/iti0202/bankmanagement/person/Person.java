@@ -16,19 +16,22 @@ public class Person {
     public enum Gender { MALE, FEMALE }
 
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.monthlyIncome = monthlyIncome;
-        this.gender = gender;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {
@@ -39,8 +42,16 @@ public class Person {
         }
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public Gender getGender() {
         return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public double getMonthlyIncome() {
@@ -49,6 +60,10 @@ public class Person {
         } else {
             throw new PersonException("Error");
         }
+    }
+
+    public void setMonthlyIncome(double monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
     }
 
     /**
