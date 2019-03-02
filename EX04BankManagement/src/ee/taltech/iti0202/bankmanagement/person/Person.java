@@ -11,8 +11,7 @@ public class Person {
     private int age;
     private Gender gender;
     private double monthlyIncome;
-    private BankCard bankCard = null;
-
+    private BankCard bankCard;
 
     public enum Gender { MALE, FEMALE }
 
@@ -57,7 +56,11 @@ public class Person {
      * @return Optional of BankCard
      */
     public Optional<BankCard> getBankCard() {
-        return Optional.ofNullable(bankCard);
+        if (bankCard == null) {
+            return Optional.empty();
+        } else {
+            return Optional.ofNullable(bankCard);
+        }
     }
 
     public void setBankCard(BankCard bankCard) {
