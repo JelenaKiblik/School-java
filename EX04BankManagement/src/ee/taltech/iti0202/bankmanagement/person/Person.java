@@ -11,7 +11,7 @@ public class Person {
     private int age;
     private Gender gender;
     private double monthlyIncome;
-    private BankCard bankCard;
+    private BankCard bankCard = null;
 
 
     public enum Gender { MALE, FEMALE }
