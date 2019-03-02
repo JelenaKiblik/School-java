@@ -1,6 +1,6 @@
 package ee.taltech.iti0202.bankmanagement.card;
-import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 
+import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 import java.math.BigDecimal;
 
 public final class DebitCard extends BankCard {
@@ -17,18 +17,6 @@ public final class DebitCard extends BankCard {
         } else {
             balance = balance.subtract(value);
         }
-
-
-//        if (value.compareTo(BigDecimal.valueOf(0)) <= 0) {
-//            throw new TransactionException("Error");
-//        }
-//
-//        if (value.compareTo(balance) <= 0) {
-//            balance = balance.subtract(value);
-//        }
-//        return value;
-//    }
         return zero;
     }
-
 }

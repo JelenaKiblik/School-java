@@ -1,4 +1,5 @@
 package ee.taltech.iti0202.bankmanagement.card;
+
 import ee.taltech.iti0202.bankmanagement.bank.Bank;
 import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 import ee.taltech.iti0202.bankmanagement.person.Person;
@@ -9,11 +10,12 @@ import java.util.List;
 
 public abstract class BankCard {
 
-    Bank bank;
-    BigDecimal balance;
-    static List<DebitCard> debitCards = new ArrayList<>();
-    static List<CreditCard> creditCards = new ArrayList<>();
-    Person person;
+    public Bank bank;
+    public Person person;
+    public BigDecimal balance;
+    public static List<DebitCard> debitCards = new ArrayList<>();
+    public static List<CreditCard> creditCards = new ArrayList<>();
+
     public enum CardType { CREDIT, DEBIT }
 
     /**
@@ -64,7 +66,6 @@ public abstract class BankCard {
      *                              various reasons - specified in subclasses.
      */
     public abstract BigDecimal withdraw(BigDecimal value) throws TransactionException;
-
 
     public Bank getBank() {
         return bank;

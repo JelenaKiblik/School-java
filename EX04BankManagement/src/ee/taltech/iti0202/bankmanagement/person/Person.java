@@ -1,7 +1,7 @@
 package ee.taltech.iti0202.bankmanagement.person;
+
 import ee.taltech.iti0202.bankmanagement.card.BankCard;
 import ee.taltech.iti0202.bankmanagement.exceptions.PersonException;
-
 import java.util.Optional;
 
 public class Person {
@@ -12,6 +12,8 @@ public class Person {
     private Gender gender;
     private double monthlyIncome;
     private BankCard bankCard;
+
+
     public enum Gender { MALE, FEMALE }
 
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
