@@ -15,45 +15,54 @@ public class Person {
     public enum Gender { MALE, FEMALE }
 
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
-        if (age > 0 && monthlyIncome > 0) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.age = age;
-            this.monthlyIncome = monthlyIncome;
-            this.gender = gender;
-        }
-    }
-
-    public String getFirstName() {
-        return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getLastName() {
         return lastName;
     }
 
-    public int getAge() {
+    public void setAge(int age) {
         if (age > 0) {
-            return age;
+            this.age = age;
         } else {
-            throw new PersonException("Error");
+            throw new PersonException("error");
         }
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public Gender getGender() {
         return gender;
     }
 
-    public double getMonthlyIncome() {
+    public void setMonthlyIncome(double monthlyIncome) {
         if (monthlyIncome > 0) {
-            return monthlyIncome;
+            this.monthlyIncome = monthlyIncome;
         } else {
-            throw new PersonException("Error");
+            throw new PersonException("error");
         }
+    }
+
+    public double getMonthlyIncome() {
+        return monthlyIncome;
     }
 
     /**
