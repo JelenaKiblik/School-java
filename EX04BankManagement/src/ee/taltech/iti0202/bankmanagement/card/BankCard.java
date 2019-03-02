@@ -9,11 +9,11 @@ import java.util.List;
 
 public abstract class BankCard {
 
-    public Bank bank;
-    public BigDecimal balance;
-    public static List<DebitCard> debitCards = new ArrayList<>();
-    public static List<CreditCard> creditCards = new ArrayList<>();
-    public Person person;
+    Bank bank;
+    BigDecimal balance;
+    static List<DebitCard> debitCards = new ArrayList<>();
+    static List<CreditCard> creditCards = new ArrayList<>();
+    Person person;
     public enum CardType { CREDIT, DEBIT }
 
     /**
