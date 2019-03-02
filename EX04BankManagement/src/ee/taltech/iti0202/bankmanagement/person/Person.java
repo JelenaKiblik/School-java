@@ -5,17 +5,23 @@ import ee.taltech.iti0202.bankmanagement.exceptions.PersonException;
 import java.util.Optional;
 
 public class Person {
-
     private String firstName;
     private String lastName;
     private int age;
-    private Gender gender;
     private double monthlyIncome;
     private BankCard bankCard;
+    private Gender gender;
 
     public enum Gender { MALE, FEMALE }
 
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
+        if (age > 0 && monthlyIncome > 0) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.monthlyIncome = monthlyIncome;
+            this.gender = gender;
+        }
     }
 
     public String getFirstName() {
@@ -30,10 +36,6 @@ public class Person {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public int getAge() {
         if (age > 0) {
             return age;
@@ -42,16 +44,8 @@ public class Person {
         }
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public Gender getGender() {
         return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public double getMonthlyIncome() {
@@ -60,10 +54,6 @@ public class Person {
         } else {
             throw new PersonException("Error");
         }
-    }
-
-    public void setMonthlyIncome(double monthlyIncome) {
-        this.monthlyIncome = monthlyIncome;
     }
 
     /**
