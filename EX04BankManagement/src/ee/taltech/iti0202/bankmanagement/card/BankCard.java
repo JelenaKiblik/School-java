@@ -35,7 +35,6 @@ public abstract class BankCard {
             creditCards.add((CreditCard) bankCard);
         }
         bankCard.bank = bank;
-        bankCard.person = person;
         person.setBankCard(bankCard);
         if (!bank.customers.contains(person)) {
             bank.addCustomer(person);
