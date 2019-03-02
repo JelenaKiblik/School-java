@@ -17,9 +17,7 @@ public class Person {
     public Person(String firstName, String lastName, int age, Gender gender, double monthlyIncome) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
         this.gender = gender;
-        this.monthlyIncome = monthlyIncome;
     }
 
     public String getFirstName() {
