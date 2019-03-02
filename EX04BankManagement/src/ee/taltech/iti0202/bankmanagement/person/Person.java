@@ -65,9 +65,7 @@ public class Person {
     }
 
     public void setBankCard(BankCard bankCard) {
-//        if (bankCard != null) {
-//            bank.removeCustomer(this);
-//        }
+        bank.removeCustomer(this);
         this.bankCard = bankCard;
     }
 
