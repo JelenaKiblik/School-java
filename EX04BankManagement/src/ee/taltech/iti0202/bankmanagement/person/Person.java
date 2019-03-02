@@ -19,7 +19,7 @@ public class Person {
         this.lastName = lastName;
         this.gender = gender;
 
-        if(age <= 0) {
+        if (age <= 0) {
             throw new PersonException("Age is not allowed");
         }
         this.age = age;
@@ -34,47 +34,21 @@ public class Person {
         return firstName;
     }
 
-//    public void setFirstName(String firstName) {
-//        this.firstName = firstName;
-//    }
-
     public String getLastName() {
         return lastName;
     }
-
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
 
     public int getAge() {
         return age;
     }
 
-//    public void setAge(int age) {
-//        if (age < 0) {
-//            throw new PersonException("Age cannot ba e negative number");
-//        }
-//        this.age = age;
-//    }
-
     public Gender getGender() {
         return gender;
     }
 
-//    public void setGender(Gender gender) {
-//        this.gender = gender;
-//    }
-
     public double getMonthlyIncome() {
         return monthlyIncome;
     }
-
-//    public void setMonthlyIncome(double monthlyIncome) {
-//        if (monthlyIncome < 0) {
-//            throw new PersonException("Monthly income can'not ba e negative number");
-//        }
-//        this.monthlyIncome = monthlyIncome;
-//    }
 
     /**
      * Return Optional.empty() if person has no bankcard.

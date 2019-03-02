@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class Bank {
 
     private String name;
-    public static Set<Person> customers = new HashSet<>();
+    public Set<Person> customers = new HashSet<>();
     private Person person;
     private CreditCard creditCard;
     private DebitCard debitCard;
