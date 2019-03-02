@@ -8,10 +8,9 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
+
 
 public class Bank {
-
     public String name;
     public Set<Person> customers = new HashSet<>();
     public Person person;
@@ -51,7 +50,6 @@ public class Bank {
 
     public double getAverageCustomerMonthlyIncome() {
         if (customers.size() == 0) {
-            System.out.println(customers);
             return 0.0;
         } else {
             Double averageMonthlyIncome = customers.stream()
@@ -65,11 +63,11 @@ public class Bank {
         if (customers.size() == 0) {
             return 0.0;
         } else {
-            Double averageMonthlyIncomeMaxAge = customers
-                    .stream()
+            Double averageMonthlyIncome = customers.stream()
                     .filter(p -> p.getAge() <= maxAge)
-                    .collect(Collectors.averagingInt(p -> (int) person.getMonthlyIncome()));
-            return averageMonthlyIncomeMaxAge;
+                    .mapToInt(person -> (int) person.getMonthlyIncome())
+                    .average().getAsDouble();
+            return averageMonthlyIncome;
         }
     }
 
@@ -77,11 +75,11 @@ public class Bank {
         if (customers.size() == 0) {
             return 0.0;
         } else {
-            Double averageMonthlyIncomeMinMaxAge = customers
-                    .stream()
-                    .filter(p -> p.getAge() <= maxAge && p.getAge() >= minAge)
-                    .collect(Collectors.averagingInt(p -> (int) person.getMonthlyIncome()));
-            return averageMonthlyIncomeMinMaxAge;
+            Double averageMonthlyIncome = customers.stream()
+                    .filter(p -> p.getAge() <= maxAge  && p.getAge() >= minAge)
+                    .mapToInt(person -> (int) person.getMonthlyIncome())
+                    .average().getAsDouble();
+            return averageMonthlyIncome;
         }
     }
 
@@ -90,16 +88,16 @@ public class Bank {
             return 0.0;
         } else {
             if (gender.equals(Person.Gender.FEMALE)) {
-                Double averageMonthlyIncomeGender = customers
-                        .stream()
+                Double averageMonthlyIncomeGender = customers.stream()
                         .filter(p -> p.getGender() == Person.Gender.FEMALE)
-                        .collect(Collectors.averagingInt(p -> (int) person.getMonthlyIncome()));
+                        .mapToInt(person -> (int) person.getMonthlyIncome())
+                        .average().getAsDouble();
                 return averageMonthlyIncomeGender;
             } else {
-                Double averageMonthlyIncomeGender = customers
-                        .stream()
+                Double averageMonthlyIncomeGender = customers.stream()
                         .filter(p -> p.getGender() == Person.Gender.MALE)
-                        .collect(Collectors.averagingInt(p -> (int) person.getMonthlyIncome()));
+                        .mapToInt(person -> (int) person.getMonthlyIncome())
+                        .average().getAsDouble();
                 return averageMonthlyIncomeGender;
             }
         }
