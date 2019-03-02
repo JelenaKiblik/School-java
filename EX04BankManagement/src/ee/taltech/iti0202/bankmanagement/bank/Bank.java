@@ -116,17 +116,17 @@ public class Bank {
     }
 
     public Optional<Person> getRichestCustomerByGender(Person.Gender gender) {
-        if (gender.equals(Person.Gender.FEMALE)) {
-            Optional<Person> richestCustomer = customers.stream()
-                    .filter(p -> p.getGender() == Person.Gender.FEMALE)
-                    .max(Comparator.comparing(Person::getMonthlyIncome));
-            return richestCustomer;
-        } else {
-            Optional<Person> richestCustomer = customers.stream()
-                    .filter(p -> p.getGender() == Person.Gender.MALE)
-                    .max(Comparator.comparing(Person::getMonthlyIncome));
-            return richestCustomer;
-        }
+            if (gender.equals(Person.Gender.FEMALE)) {
+                Optional<Person> richestCustomer = customers.stream()
+                        .filter(person -> person.getGender() == Person.Gender.FEMALE)
+                        .max(Comparator.comparing(Person::getMonthlyIncome));
+                return richestCustomer;
+            } else {
+                Optional<Person> richestCustomer = customers.stream()
+                        .filter(p -> p.getGender() == Person.Gender.MALE)
+                        .max(Comparator.comparing(Person::getMonthlyIncome));
+                return richestCustomer;
+            }
     }
 
     @Override
