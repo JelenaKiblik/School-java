@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 
 public class Bank {
 
-    private String name;
+    public String name;
     public Set<Person> customers = new HashSet<>();
-    private Person person;
-    private CreditCard creditCard;
-    private DebitCard debitCard;
+    public Person person;
+    public CreditCard creditCard;
+    public DebitCard debitCard;
 
     public Bank(String name) {
         this.name = name;
@@ -31,11 +31,11 @@ public class Bank {
     }
 
     public Boolean addCustomer(Person person) {
-        if (!customers.contains(person)) {
+        if (customers.contains(person)) {
+            return false;
+        } else {
             customers.add(person);
             return true;
-        } else {
-            return false;
         }
     }
 
@@ -51,11 +51,12 @@ public class Bank {
 
     public double getAverageCustomerMonthlyIncome() {
         if (customers.size() == 0) {
+            System.out.println(customers);
             return 0.0;
         } else {
-            Double averageMonthlyIncome = customers
-                    .stream()
-                    .collect(Collectors.averagingInt(p -> (int) person.getMonthlyIncome()));
+            Double averageMonthlyIncome = customers.stream()
+                    .mapToInt(person -> (int) person.getMonthlyIncome())
+                    .average().getAsDouble();
             return averageMonthlyIncome;
         }
     }
