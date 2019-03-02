@@ -5,8 +5,6 @@ import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 import ee.taltech.iti0202.bankmanagement.person.Person;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class BankCard {
 
