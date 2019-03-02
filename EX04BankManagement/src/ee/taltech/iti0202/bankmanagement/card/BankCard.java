@@ -5,12 +5,16 @@ import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 import ee.taltech.iti0202.bankmanagement.person.Person;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BankCard {
 
     public Bank bank;
     public Person person;
     public BigDecimal balance;
+    public static List<DebitCard> debitCards = new ArrayList<>();
+    public static List<CreditCard> creditCards = new ArrayList<>();
 
     public enum CardType { CREDIT, DEBIT }
 
@@ -26,20 +30,17 @@ public abstract class BankCard {
         BankCard bankCard = null;
         if (cardType == CardType.DEBIT) {
             bankCard = new DebitCard();
-            bankCard.person = person;
-            bankCard.bank = bank;
+            debitCards.add((DebitCard) bankCard);
         }
-
         if (cardType == CardType.CREDIT) {
             bankCard = new CreditCard();
-            bankCard.person = person;
-            bankCard.bank = bank;
+            creditCards.add((CreditCard) bankCard);
         }
-
+        bankCard.bank = bank;
+        person.setBankCard(bankCard);
         if (!bank.customers.contains(person)) {
             bank.addCustomer(person);
         }
-
         return bankCard;
     }
 
