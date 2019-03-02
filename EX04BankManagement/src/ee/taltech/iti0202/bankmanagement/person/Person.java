@@ -54,7 +54,7 @@ public class Person {
     }
 
     public void setMonthlyIncome(double monthlyIncome) {
-        if (monthlyIncome > 0) {
+        if (monthlyIncome >= 0) {
             this.monthlyIncome = monthlyIncome;
         } else {
             throw new PersonException("error");
