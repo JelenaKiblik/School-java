@@ -13,8 +13,6 @@ public abstract class BankCard {
     public Bank bank;
     public Person person;
     public BigDecimal balance;
-    public static List<DebitCard> debitCards = new ArrayList<>();
-    public static List<CreditCard> creditCards = new ArrayList<>();
 
     public enum CardType { CREDIT, DEBIT }
 
@@ -30,17 +28,20 @@ public abstract class BankCard {
         BankCard bankCard = null;
         if (cardType == CardType.DEBIT) {
             bankCard = new DebitCard();
-            debitCards.add((DebitCard) bankCard);
+            bankCard.person = person;
+            bankCard.bank = bank;
         }
+
         if (cardType == CardType.CREDIT) {
             bankCard = new CreditCard();
-            creditCards.add((CreditCard) bankCard);
+            bankCard.person = person;
+            bankCard.bank = bank;
         }
-        bankCard.bank = bank;
-        person.setBankCard(bankCard);
+
         if (!bank.customers.contains(person)) {
             bank.addCustomer(person);
         }
+
         return bankCard;
     }
 
