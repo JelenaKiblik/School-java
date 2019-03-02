@@ -1,13 +1,11 @@
 package ee.taltech.iti0202.bankmanagement.bank;
 
+import ee.taltech.iti0202.bankmanagement.card.BankCard;
 import ee.taltech.iti0202.bankmanagement.card.CreditCard;
 import ee.taltech.iti0202.bankmanagement.card.DebitCard;
 import ee.taltech.iti0202.bankmanagement.person.Person;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 
 public class Bank {
@@ -16,6 +14,7 @@ public class Bank {
     public Person person;
     public CreditCard creditCard;
     public DebitCard debitCard;
+    public BankCard bankCard;
 
     public Bank(String name) {
         this.name = name;

@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.bankmanagement.person;
 
+import ee.taltech.iti0202.bankmanagement.bank.Bank;
 import ee.taltech.iti0202.bankmanagement.card.BankCard;
 import ee.taltech.iti0202.bankmanagement.exceptions.PersonException;
 import java.util.Optional;
@@ -11,6 +12,7 @@ public class Person {
     private double monthlyIncome;
     private BankCard bankCard;
     private Gender gender;
+    private Bank bank;
 
     public enum Gender { MALE, FEMALE }
 
@@ -63,6 +65,9 @@ public class Person {
     }
 
     public void setBankCard(BankCard bankCard) {
+        if (bankCard != null) {
+            bank.removeCustomer(this);
+        }
         this.bankCard = bankCard;
     }
 
