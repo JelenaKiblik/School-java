@@ -18,64 +18,74 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+
+        if(age <= 0) {
+            throw new PersonException("Age is not allowed");
+        }
+        this.age = age;
+
+        if (monthlyIncome < 0) {
+            throw new PersonException("Monthly income can'not ba e negative number");
+        }
+        this.monthlyIncome = monthlyIncome;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+//    public void setFirstName(String firstName) {
+//        this.firstName = firstName;
+//    }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        if (age < 0) {
-            throw new PersonException("Age can'not ba e negative number");
-        }
-        this.age = age;
-    }
+//    public void setAge(int age) {
+//        if (age < 0) {
+//            throw new PersonException("Age cannot ba e negative number");
+//        }
+//        this.age = age;
+//    }
 
     public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+//    public void setGender(Gender gender) {
+//        this.gender = gender;
+//    }
 
     public double getMonthlyIncome() {
         return monthlyIncome;
     }
 
-    public void setMonthlyIncome(double monthlyIncome) {
-        if (monthlyIncome < 0) {
-            throw new PersonException("monthly income can'not ba e negative number");
-        }
-        this.monthlyIncome = monthlyIncome;
-    }
+//    public void setMonthlyIncome(double monthlyIncome) {
+//        if (monthlyIncome < 0) {
+//            throw new PersonException("Monthly income can'not ba e negative number");
+//        }
+//        this.monthlyIncome = monthlyIncome;
+//    }
 
     /**
      * Return Optional.empty() if person has no bankcard.
      * @return Optional of BankCard
      */
     public Optional<BankCard> getBankCard() {
-//        if (bankCard == null) {
-//            return Optional.empty();
-//        } else {
-        return Optional.ofNullable(bankCard);
-
+        if (bankCard == null) {
+            return Optional.empty();
+        } else {
+            return Optional.ofNullable(bankCard);
+        }
     }
 
     public void setBankCard(BankCard bankCard) {
