@@ -42,7 +42,7 @@ public class Person {
 
     public void setAge(int age) {
         if (age < 0) {
-            throw new PersonException("error");
+            throw new PersonException("Age can'not ba e negative number");
         }
         this.age = age;
     }
@@ -61,7 +61,7 @@ public class Person {
 
     public void setMonthlyIncome(double monthlyIncome) {
         if (monthlyIncome < 0) {
-            throw new PersonException("error");
+            throw new PersonException("monthly income can'not ba e negative number");
         }
         this.monthlyIncome = monthlyIncome;
     }
@@ -71,11 +71,11 @@ public class Person {
      * @return Optional of BankCard
      */
     public Optional<BankCard> getBankCard() {
-        if (bankCard == null) {
-            return Optional.empty();
-        } else {
-            return Optional.ofNullable(bankCard);
-        }
+//        if (bankCard == null) {
+//            return Optional.empty();
+//        } else {
+        return Optional.ofNullable(bankCard);
+
     }
 
     public void setBankCard(BankCard bankCard) {
