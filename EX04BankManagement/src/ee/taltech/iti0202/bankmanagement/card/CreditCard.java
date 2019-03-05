@@ -9,7 +9,7 @@ public final class CreditCard extends BankCard {
     BigDecimal balance;
 
     CreditCard() {
-        super.balance = startingBalance;
+        balance = new BigDecimal("10000");
     }
 
     @Override
@@ -26,12 +26,13 @@ public final class CreditCard extends BankCard {
 
     @Override
     public BigDecimal getBalance() {
-//        if (balance.compareTo(BigDecimal.valueOf(0)) < 0) {
-//            return BigDecimal.valueOf(0);
-//        } else {
-//            return super.getBalance();
-//        }
-        return null;
+        BigDecimal zero = new BigDecimal(0);
+
+        if (balance.compareTo(zero) < 0) { // balance < 0
+            return zero;
+        } else {
+            return balance;
+        }
     }
 
     public BigDecimal getDebt() {
