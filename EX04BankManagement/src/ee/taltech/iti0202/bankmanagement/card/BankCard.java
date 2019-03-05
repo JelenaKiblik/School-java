@@ -79,6 +79,14 @@ public abstract class BankCard {
         return balance;
     }
 
+    public BigDecimal getDebt() {
+        return null;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
     public Person getPerson() {
         return person;
     }

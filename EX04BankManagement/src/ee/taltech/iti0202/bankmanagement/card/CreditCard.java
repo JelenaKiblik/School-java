@@ -10,27 +10,27 @@ public final class CreditCard extends BankCard {
     BigDecimal balance;
 
     CreditCard() {
-        super.balance = startingBalance;
+        balance = BigDecimal.valueOf(10000);
     }
 
     @Override
     public BigDecimal withdraw(BigDecimal value) throws TransactionException {
-//        if (value.compareTo(BigDecimal.valueOf(0)) <= 0) {
-//            throw new TransactionException("Error");
-//        }
-//
-//        if (value.compareTo(balance.add(allowedDebt)) <= 0) {
-//            balance = balance.subtract(value);
-//        }
-        return value;
+        BigDecimal zero = new BigDecimal("0");
+        if (balance.subtract(value).compareTo(zero) < -5000 || value.compareTo(zero) < 1) {
+            throw new TransactionException("Error!!!");
+        } else {
+            balance = balance.subtract(value);
+        }
+        return zero;
     }
 
     @Override
     public BigDecimal getBalance() {
-        if (balance.compareTo(BigDecimal.valueOf(0)) < 0) {
-            return BigDecimal.valueOf(0);
+        BigDecimal zero = new BigDecimal(0);
+        if (balance.compareTo(zero) < 0) { // balance < 0
+            return zero;
         } else {
-            return super.getBalance();
+            return balance;
         }
     }
 
