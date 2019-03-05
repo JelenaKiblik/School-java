@@ -128,7 +128,7 @@ public class Bank {
             if (gender.equals(Person.Gender.FEMALE)) {
                 Optional<Person> richestCustomer = customers.stream()
                         .filter(person -> person.getGender() == Person.Gender.FEMALE)
-                        .max(Comparator.comparing(Person::getMonthlyIncome));
+                        .max(Comparator.comparing(p -> p.bankCard.getBalance()));
                 return richestCustomer;
             } else {
                 Optional<Person> richestCustomer = customers.stream()

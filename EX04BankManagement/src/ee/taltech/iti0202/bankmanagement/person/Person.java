@@ -6,11 +6,11 @@ import ee.taltech.iti0202.bankmanagement.exceptions.PersonException;
 import java.util.Optional;
 
 public class Person {
+    public BankCard bankCard;
     private String firstName;
     private String lastName;
     private int age;
     private double monthlyIncome;
-    private BankCard bankCard;
     private Gender gender;
     private Bank bank;
 
