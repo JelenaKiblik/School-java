@@ -26,10 +26,8 @@ public final class CreditCard extends BankCard {
 
     @Override
     public BigDecimal getBalance() {
-        BigDecimal zero = new BigDecimal(0);
-
-        if (balance.compareTo(zero) < 0) { // balance < 0
-            return zero;
+        if (balance.compareTo(BigDecimal.valueOf(0)) < 0) {
+            return BigDecimal.valueOf(0);
         } else {
             return balance;
         }
