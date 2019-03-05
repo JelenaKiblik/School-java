@@ -55,11 +55,12 @@ public abstract class BankCard {
      * @throws TransactionException Thrown if given value is zero or less.
      */
     public void deposit(BigDecimal value) throws TransactionException {
-        BigDecimal zero = new BigDecimal("0");
-        if (value.compareTo(zero) > -1) {
-            balance = balance.add(value);
-        }
+//        BigDecimal zero = new BigDecimal("0");
+//        if (value.compareTo(zero) > -1) {
+//            balance = balance.add(value);
+//        }
     }
+
 
     /**
      * Withdraw the given amount from the card. Abstract function - implemented in subclasses CreditCard and DebitCard.
