@@ -14,13 +14,14 @@ public final class CreditCard extends BankCard {
 
     @Override
     public BigDecimal withdraw(BigDecimal value) throws TransactionException {
-        BigDecimal zero = new BigDecimal("0");
-        if (balance.subtract(value).compareTo(zero) < -5000 || value.compareTo(zero) < 1) {
-            throw new TransactionException("Error!!!");
-        } else {
-            balance = balance.subtract(value);
-        }
-        return zero;
+//        BigDecimal zero = new BigDecimal("0");
+//        if (balance.subtract(value).compareTo(zero) < -5000 || value.compareTo(zero) < 1) {
+//            throw new TransactionException("Error!!!");
+//        } else {
+//            balance = balance.subtract(value);
+//        }
+//        return zero;
+        return value;
     }
 
     @Override
