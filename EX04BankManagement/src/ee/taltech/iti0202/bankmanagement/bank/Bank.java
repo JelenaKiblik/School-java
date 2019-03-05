@@ -133,7 +133,7 @@ public class Bank {
             } else {
                 Optional<Person> richestCustomer = customers.stream()
                         .filter(p -> p.getGender() == Person.Gender.MALE)
-                        .max(Comparator.comparing(Person::getMonthlyIncome));
+                        .max(Comparator.comparing(p -> p.bankCard.getBalance()));
                 return richestCustomer;
             }
     }
