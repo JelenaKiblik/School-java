@@ -15,6 +15,7 @@ public abstract class BankCard {
     public BigDecimal balance;
     public static List<DebitCard> debitCards = new ArrayList<>();
     public static List<CreditCard> creditCards = new ArrayList<>();
+    public CardType cardType;
 
     public enum CardType { CREDIT, DEBIT }
 
@@ -31,10 +32,12 @@ public abstract class BankCard {
         BankCard bankCard = null;
         if (cardType == CardType.DEBIT) {
             bankCard = new DebitCard();
+            bankCard.cardType = cardType;
             debitCards.add((DebitCard) bankCard);
         }
         if (cardType == CardType.CREDIT) {
             bankCard = new CreditCard();
+            bankCard.cardType = cardType;
             creditCards.add((CreditCard) bankCard);
         }
         bankCard.bank = bank;

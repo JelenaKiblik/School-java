@@ -65,7 +65,7 @@ public class Bank {
             return 0.0;
         } else {
             Double averageMonthlyIncome = customers.stream()
-                    .filter(p -> p.getAge() <= maxAge)
+                    .filter(person -> person.getAge() <= maxAge)
                     .mapToInt(person -> (int) person.getMonthlyIncome())
                     .average().getAsDouble();
             return averageMonthlyIncome;
@@ -77,7 +77,7 @@ public class Bank {
             return 0.0;
         } else {
             Double averageMonthlyIncome = customers.stream()
-                    .filter(p -> p.getAge() <= maxAge  && p.getAge() >= minAge)
+                    .filter(p -> person.getAge() <= maxAge  && person.getAge() >= minAge)
                     .mapToInt(person -> (int) person.getMonthlyIncome())
                     .average().getAsDouble();
             return averageMonthlyIncome;
@@ -90,13 +90,13 @@ public class Bank {
         } else {
             if (gender.equals(Person.Gender.FEMALE)) {
                 Double averageMonthlyIncomeGender = customers.stream()
-                        .filter(p -> p.getGender() == Person.Gender.FEMALE)
+                        .filter(person -> person.getGender() == Person.Gender.FEMALE)
                         .mapToInt(person -> (int) person.getMonthlyIncome())
                         .average().getAsDouble();
                 return averageMonthlyIncomeGender;
             } else {
                 Double averageMonthlyIncomeGender = customers.stream()
-                        .filter(p -> p.getGender() == Person.Gender.MALE)
+                        .filter(person -> person.getGender() == Person.Gender.MALE)
                         .mapToInt(person -> (int) person.getMonthlyIncome())
                         .average().getAsDouble();
                 return averageMonthlyIncomeGender;
@@ -105,15 +105,23 @@ public class Bank {
     }
 
     public Set<Person> getAllCustomersWithCreditCards() {
-        return (Set<Person>) customers.stream()
-                .filter(p -> person.getBankCard().isPresent())
-                .filter(p -> person.getBankCard().get() instanceof CreditCard);
+        Set<Person> customersWithCreditCard = new HashSet<>();
+        for (Person person : customers) {
+            if (person.getBankCard().get() instanceof CreditCard) {
+                customersWithCreditCard.add(person);
+            }
+        }
+        return customersWithCreditCard;
     }
 
     public Set<Person> getAllCustomersWithDebitCards() {
-        return (Set<Person>) customers.stream()
-                .filter(p -> person.getBankCard().isPresent())
-                .filter(p -> person.getBankCard().get() instanceof DebitCard);
+        Set<Person> customersWithDebitCard = new HashSet<>();
+        for (Person person : customers) {
+            if (person.getBankCard().get() instanceof DebitCard) {
+                customersWithDebitCard.add(person);
+            }
+        }
+        return customersWithDebitCard;
     }
 
     public Optional<Person> getRichestCustomerByGender(Person.Gender gender) {
