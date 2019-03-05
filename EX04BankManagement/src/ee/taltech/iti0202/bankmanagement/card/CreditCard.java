@@ -1,5 +1,4 @@
 package ee.taltech.iti0202.bankmanagement.card;
-
 import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 import java.math.BigDecimal;
 
@@ -10,7 +9,7 @@ public final class CreditCard extends BankCard {
     BigDecimal balance;
 
     CreditCard() {
-        balance = BigDecimal.valueOf(10000);
+        super.balance = startingBalance;
     }
 
     @Override
@@ -26,12 +25,12 @@ public final class CreditCard extends BankCard {
 
     @Override
     public BigDecimal getBalance() {
-        BigDecimal zero = new BigDecimal(0);
-        if (balance.compareTo(zero) < 0) { // balance < 0
-            return zero;
-        } else {
-            return balance;
-        }
+//        if (balance.compareTo(BigDecimal.valueOf(0)) < 0) {
+//            return BigDecimal.valueOf(0);
+//        } else {
+//            return super.getBalance();
+//        }
+        return null;
     }
 
     public BigDecimal getDebt() {

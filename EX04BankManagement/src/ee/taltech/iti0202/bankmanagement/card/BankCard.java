@@ -1,5 +1,4 @@
 package ee.taltech.iti0202.bankmanagement.card;
-
 import ee.taltech.iti0202.bankmanagement.bank.Bank;
 import ee.taltech.iti0202.bankmanagement.exceptions.TransactionException;
 import ee.taltech.iti0202.bankmanagement.person.Person;
@@ -55,12 +54,11 @@ public abstract class BankCard {
      * @throws TransactionException Thrown if given value is zero or less.
      */
     public void deposit(BigDecimal value) throws TransactionException {
-//        BigDecimal zero = new BigDecimal("0");
-//        if (value.compareTo(zero) > -1) {
-//            balance = balance.add(value);
-//        }
+        BigDecimal zero = new BigDecimal("0");
+        if (value.compareTo(zero) > -1) {
+            balance = balance.add(value);
+        }
     }
-
 
     /**
      * Withdraw the given amount from the card. Abstract function - implemented in subclasses CreditCard and DebitCard.
@@ -78,14 +76,6 @@ public abstract class BankCard {
 
     public BigDecimal getBalance() {
         return balance;
-    }
-
-    public BigDecimal getDebt() {
-        return null;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
     }
 
     public Person getPerson() {
