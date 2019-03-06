@@ -2,6 +2,7 @@ package ee.taltech.iti0202.shelter.shelter;
 import ee.taltech.iti0202.shelter.animal.Animal;
 import ee.taltech.iti0202.shelter.animalprovider.AnimalProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalShelter {
@@ -26,7 +27,7 @@ public class AnimalShelter {
      * @return Maximum {@code count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
-        return null;
+        return new ArrayList<Animal>();
     }
 }
 
