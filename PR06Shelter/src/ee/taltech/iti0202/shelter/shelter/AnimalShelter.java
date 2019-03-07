@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalShelter {
+    private AnimalProvider animalProvider;
+    private List<Animal> allAnimals = new ArrayList<>();
+
     public AnimalShelter(AnimalProvider animalProvider) {
+        this.animalProvider = animalProvider;
     }
 
     /**
@@ -27,7 +31,15 @@ public class AnimalShelter {
      * @return Maximum {@code count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
-        return new ArrayList<Animal>();
+        List<Animal> animals = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            for (Animal animal: animalProvider.provide(animalType)) {
+                if (animal.getColor() == color) {
+                    animals.add(animal);
+                }
+            }
+        }
+        return animals;
     }
 }
 
