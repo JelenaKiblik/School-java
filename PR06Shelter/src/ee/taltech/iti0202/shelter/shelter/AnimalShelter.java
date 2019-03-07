@@ -26,20 +26,29 @@ public class AnimalShelter {
      * See {@link AnimalProvider#provide(Animal.Type)}.
      *
      * @param animalType Type, see {@link Animal.Type}.
-     * @param color Color used when filtering.
-     * @param count Maximum number of result to return.
+     * @param color      Color used when filtering.
+     * @param count      Maximum number of result to return.
      * @return Maximum {@code count} number of animals with the given type and color.
      */
     public List<Animal> getAnimals(Animal.Type animalType, String color, int count) {
         List<Animal> animals = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            for (Animal animal: animalProvider.provide(animalType)) {
+            for (Animal animal : animalProvider.provide(animalType)) {
                 if (animal.getColor().equals(color)) {
                     animals.add(animal);
+                }
+            }
+        }
+
+        if (animals.size() < count) {
+            for (int n = 0; n < count - animals.size(); n++) {
+                for (Animal moreAnimal : animalProvider.provide(animalType)) {
+                    if (moreAnimal.getColor().equals(color)) {
+                        animals.add(moreAnimal);
+                    }
                 }
             }
         }
         return animals;
     }
 }
-
