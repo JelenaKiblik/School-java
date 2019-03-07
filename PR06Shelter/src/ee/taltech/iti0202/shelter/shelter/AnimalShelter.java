@@ -34,7 +34,7 @@ public class AnimalShelter {
         List<Animal> animals = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             for (Animal animal: animalProvider.provide(animalType)) {
-                if (animal.getColor() == color) {
+                if (animal.getColor().equals(color)) {
                     animals.add(animal);
                 }
             }
