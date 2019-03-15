@@ -4,7 +4,7 @@ import ee.taltech.iti0202.logger.level.Level;
 public class Log {
     public String message;
     public String tag;
-    public Level level;
+    public static Level level;
 
     public Log(String message, String tag, Level level) {
         this.message = message;
