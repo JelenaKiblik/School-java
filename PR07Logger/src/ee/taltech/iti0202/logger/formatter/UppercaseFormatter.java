@@ -6,6 +6,6 @@ public class UppercaseFormatter implements LogFormatter  {
 
     @Override
     public String format(Log log) {
-        return (String.format(log.level.name + "\t" + log.tag + "\t" + log.message)).toUpperCase();
+        return (log.level.name + "\t" + log.tag + "\t" + log.message).toUpperCase();
     }
 }
