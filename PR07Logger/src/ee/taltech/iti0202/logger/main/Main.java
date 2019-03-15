@@ -25,10 +25,10 @@ public class Main {
         testLogger(logger);
         System.out.println();
 
-//        System.out.println("Custom formatter in uppercase");
-//        logger = new ConsoleLogger("CAPS LOCK!", Level.DEBUG, new UppercaseFormatter());
-//        testLogger(logger);
-//        System.out.println();
+        System.out.println("Custom formatter in uppercase");
+        logger = new ConsoleLogger("CAPS LOCK!", Level.DEBUG, new UppercaseFormatter());
+        testLogger(logger);
+        System.out.println();
 
         System.out.println("Custom formatter with dates");
         LogFormatter dateFormatter = log -> {
