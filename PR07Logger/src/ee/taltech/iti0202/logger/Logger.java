@@ -1,13 +1,15 @@
 package ee.taltech.iti0202.logger;
 
-//import ee.taltech.iti0202.logger.filter.LevelFilter;
+import ee.taltech.iti0202.logger.filter.LevelFilter;
 import ee.taltech.iti0202.logger.filter.LogFilter;
 import ee.taltech.iti0202.logger.formatter.LogFormatter;
-//import ee.taltech.iti0202.logger.formatter.SimpleFormatter;
+import ee.taltech.iti0202.logger.formatter.SimpleFormatter;
 import ee.taltech.iti0202.logger.level.Level;
-//import ee.taltech.iti0202.logger.log.Log;
+import ee.taltech.iti0202.logger.log.Log;
 
 public abstract class Logger {
+
+    private Level level;
 
     /**
      * Creates logger that logs messages with Level.Warning or higher.
@@ -27,6 +29,8 @@ public abstract class Logger {
      * @see ee.taltech.iti0202.logger.level.Level
      */
     public Logger(String tag, Level level) {
+//        if (this.level <= level)
+//        this();
     }
 
     /**
@@ -38,6 +42,7 @@ public abstract class Logger {
      * @see ee.taltech.iti0202.logger.level.Level
      */
     public Logger(String tag, Level level, LogFormatter formatter) {
+        this(tag, level);
     }
 
     /**
@@ -47,18 +52,12 @@ public abstract class Logger {
      * @param filter    custom filter
      * @param formatter custom formatter.
      */
-    public Logger(String tag, LogFilter filter, LogFormatter formatter) {
-    }
+    public Logger(String tag, LogFilter filter, LogFormatter formatter) { }
 
     /**
      * Logs the message.
      */
-    public final void log(Level level, String message) {
-
-        // check if should log
-        // get formatted message from formatter
-        // tell subclass to log the message
-    }
+    public final void log(Level level, String message) { }
 
     /**
      * Abstract method that is called with formatted message.

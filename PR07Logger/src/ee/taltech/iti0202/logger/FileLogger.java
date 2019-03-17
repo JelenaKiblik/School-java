@@ -11,6 +11,8 @@ import java.nio.file.Paths;
 
 public class FileLogger extends Logger {
 
+    private String logFilePath;
+
     public FileLogger(String tag, String logFilePath) {
         super(tag);
         Path path = Paths.get(logFilePath, "to", "example.txt");
@@ -37,7 +39,7 @@ public class FileLogger extends Logger {
 
     @Override
     protected void writeLog(String message) {
-        Path path = Paths.get("path", "to", "example.txt");
+        Path path = Paths.get(logFilePath, "to", "example.txt");
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             writer.write(message);
         } catch (IOException e) {
