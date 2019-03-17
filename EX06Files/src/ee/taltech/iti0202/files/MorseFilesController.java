@@ -10,12 +10,12 @@ public class MorseFilesController {
 
     public static void main(String[] args) {
         InputFilesScanner scanner = new InputFilesScanner();
-        List<String> lines = scanner.readTextFromFile("ee/taltech/iti0202/files/morse.txt");
-        lines.forEach(System.out::println); //lines in morse.txt which contains Morse codes
+        List<String> lines = scanner.readTextFromFile("EX06Files/src/ee/taltech/iti0202/files/morse.txt");
+//        lines.forEach(System.out::println); //lines in morse.txt which contains Morse codes
 
         InputFilesBufferReader bufferReader = new InputFilesBufferReader();
-        List<String> lines2 = bufferReader.readTextFromFile("ee/taltech/iti0202/files/morse.txt");
-        lines2.forEach(System.out::println); //lines in morse.txt which contains Morse codes
+        List<String> lines2 = bufferReader.readTextFromFile("EX06Files/src/ee/taltech/iti0202/files/morse.txt");
+//        lines2.forEach(System.out::println); //lines in morse.txt which contains Morse codes
 
         MorseTranslator translator = new MorseTranslator();
         Map<String, String> codes = translator.addMorseCodes(lines);

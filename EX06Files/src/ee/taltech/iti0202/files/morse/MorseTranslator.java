@@ -10,9 +10,13 @@ public class MorseTranslator {
     private Map<String, String> morseCode = new HashMap<>();
 
     public Map<String, String> addMorseCodes(List<String> lines) {
-        Iterator<String> it = lines.iterator();
-        while (it.hasNext()) {
-            morseCode.put(it.next(), it.next());
+//        Iterator<String> it = lines.iterator();
+//        while (it.hasNext()) {
+//            morseCode.put(it.next(), it.next());
+//        }
+//        return morseCode;
+        for (int i = 0; i < lines.size()-1; i ++) {
+            morseCode.put(lines.get(i), lines.get(i+1));
         }
         return morseCode;
     }
@@ -34,22 +38,22 @@ public class MorseTranslator {
     }
 
     private String translateLineToMorse(String line) {
-        StringBuilder newText = new StringBuilder();
+        String newText = "";
         String selectedChar;
         String convertedChar;
         for (int i = 0; i < line.length(); i++) {
             selectedChar = line.charAt(i) + "";
             convertedChar = encode(selectedChar);
             if (convertedChar.equals(" ")) {
-                newText.append("\t");
+                newText = newText + "\t";
             } else {
-                newText.append(convertedChar);
+                newText = newText + convertedChar;
                 if (!convertedChar.equals(" ")) {
-                    newText.append(" ");
+                    newText = newText + " ";
                 }
             }
         }
-        return newText.toString();
+        return newText;
     }
 
     private String translateLineFromMorse(String line) {
