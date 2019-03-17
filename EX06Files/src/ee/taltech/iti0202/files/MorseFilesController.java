@@ -3,7 +3,6 @@ import ee.taltech.iti0202.files.input.InputFilesBufferReader;
 import ee.taltech.iti0202.files.input.InputFilesScanner;
 import ee.taltech.iti0202.files.morse.MorseTranslator;
 import ee.taltech.iti0202.files.output.OutputFilesWriter;
-
 import java.util.List;
 import java.util.Map;
 
@@ -11,11 +10,11 @@ public class MorseFilesController {
 
     public static void main(String[] args) {
         InputFilesScanner scanner = new InputFilesScanner();
-        List<String> lines = scanner.readTextFromFile("morse.txt");
+        List<String> lines = scanner.readTextFromFile("ee/taltech/iti0202/files/morse.txt");
         lines.forEach(System.out::println); //lines in morse.txt which contains Morse codes
 
         InputFilesBufferReader bufferReader = new InputFilesBufferReader();
-        List<String> lines2 = bufferReader.readTextFromFile("morse.txt");
+        List<String> lines2 = bufferReader.readTextFromFile("ee/taltech/iti0202/files/morse.txt");
         lines2.forEach(System.out::println); //lines in morse.txt which contains Morse codes
 
         MorseTranslator translator = new MorseTranslator();
