@@ -1,6 +1,5 @@
 package ee.taltech.iti0202.files.morse;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -10,13 +9,8 @@ public class MorseTranslator {
     private Map<String, String> morseCode = new HashMap<>();
 
     public Map<String, String> addMorseCodes(List<String> lines) {
-//        Iterator<String> it = lines.iterator();
-//        while (it.hasNext()) {
-//            morseCode.put(it.next(), it.next());
-//        }
-//        return morseCode;
-        for (int i = 0; i < lines.size()-1; i ++) {
-            morseCode.put(lines.get(i), lines.get(i+1));
+        for (int i = 0; i < lines.size() - 1; i++) {
+            morseCode.put(lines.get(i), lines.get(i + 1));
         }
         return morseCode;
     }
