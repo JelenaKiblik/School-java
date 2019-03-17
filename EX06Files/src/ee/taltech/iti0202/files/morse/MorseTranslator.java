@@ -7,22 +7,22 @@ import java.util.HashMap;
 
 public class MorseTranslator {
 
-    private Map<String, String> morseCodeMap = new HashMap<>();
+    private Map<String, String> morseCode = new HashMap<>();
 
     public Map<String, String> addMorseCodes(List<String> lines) {
         Iterator<String> it = lines.iterator();
         while (it.hasNext()) {
-            morseCodeMap.put(it.next(), it.next());
+            morseCode.put(it.next(), it.next());
         }
-        return morseCodeMap;
+        return morseCode;
     }
 
     public List<String> translateLinesToMorse(List<String> lines) {
-        List<String> morseCodeList = new ArrayList<>();
+        List<String> toMorseCode = new ArrayList<>();
         for (String line : lines) {
-            morseCodeList.add(translateLineToMorse(line));
+            toMorseCode.add(translateLineToMorse(line));
         }
-        return morseCodeList;
+        return toMorseCode;
     }
 
     public List<String> translateLinesFromMorse(List<String> lines) {
@@ -34,63 +34,68 @@ public class MorseTranslator {
     }
 
     private String translateLineToMorse(String line) {
-        StringBuilder text = new StringBuilder();
+        String newText = "";
         String selectedChar;
         String convertedChar;
         for (int i = 0; i < line.length(); i++) {
             selectedChar = line.charAt(i) + "";
             convertedChar = encode(selectedChar);
             if (convertedChar.equals(" ")) {
-                text.append("\t");
+                newText = newText + "\t";
             } else {
-                text.append(convertedChar);
-                text.append(" ");
+                newText = newText + convertedChar;
+                if (!convertedChar.equals(" ")) {
+                    newText = newText + " ";
+                }
             }
         }
-        return text.toString();
+        return newText;
     }
 
     private String translateLineFromMorse(String line) {
-        StringBuilder text = new StringBuilder();
+        String text = "";
         String selectedChar;
         String convertedChar;
-        ArrayList<String> wordArrayList = new ArrayList<>();
+        ArrayList<String> wordsList = new ArrayList<>();
         for (String word : line.trim().split(" ")) {
             if (!word.equals("")) {
-                wordArrayList.add(word);
+                wordsList.add(word);
             }
         }
-        for (String s : wordArrayList) {
-            selectedChar = s;
+        for (int i = 0; i < wordsList.size(); i++) {
+            selectedChar = wordsList.get(i);
             convertedChar = decode(selectedChar);
             if (convertedChar.equals(" ")) {
-                text.append(" ");
+                text = text + " ";
             } else {
-                text.append(convertedChar);
+                text = text + convertedChar;
+                if (!convertedChar.equals(" ")) {
+                    text = text;
+                }
             }
         }
-        return text.toString();
+        return text;
 
     }
 
     private String encode(String toEncode) {
-        StringBuilder morse = new StringBuilder();
-        for (Map.Entry<String, String> codes : morseCodeMap.entrySet()) {
+        String morse = "";
+        for (Map.Entry<String, String> codes : morseCode.entrySet()) {
             if (codes.getKey().toLowerCase().contains(toEncode.toLowerCase())) {
-                morse.append(codes.getValue());
+                morse += codes.getValue();
             }
         }
-        return morse.toString();
+        return morse;
     }
     private String decode(String toDecode) {
-        StringBuilder decode = new StringBuilder();
+        String decode = "";
         ArrayList<String> something = new ArrayList<>();
-        for (Map.Entry<String, String> codes : morseCodeMap.entrySet()) {
+        for (Map.Entry<String, String> codes : morseCode.entrySet()) {
             if (!something.contains(codes.getValue())) {
                 something.add(codes.getValue());
             }
             if (something.contains(toDecode)) {
-                decode.append(codes.getKey());
+                decode += codes.getKey();
             }
         }
         return Character.toString(decode.charAt(0)).toLowerCase();
