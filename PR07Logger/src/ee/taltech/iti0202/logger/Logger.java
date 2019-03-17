@@ -54,7 +54,10 @@ public abstract class Logger {
      * Logs the message.
      */
     public final void log(Level level, String message) {
-        log(level, message);
+
+        // check if should log
+        // get formatted message from formatter
+        // tell subclass to log the message
     }
 
     /**
