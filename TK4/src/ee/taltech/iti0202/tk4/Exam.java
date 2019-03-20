@@ -29,12 +29,12 @@ public class Exam {
      * closeFar(4, 1, 3) => true
      */
     public static boolean closeFar(int a, int b, int c) {
-        if (a - b <= 1 || b - a <= 1) {
+        if (a - b == 1 || b - a == 1) {
             if ((c - b > 1 || b - c > 1) && (c - a > 1 || a - c > 1)) {
                 return true;
             }
         }
-        if (a - c <= 1 || c - a <= 1) {
+        if (a - c == 1 || c - a == 1) {
             if ((c - b > 1 || b - c > 1) && (b - a > 1 || a - b > 1)) {
                 return true;
             }
@@ -54,9 +54,12 @@ public class Exam {
      */
     public static String starOut(String str) {
         String newStr = "";
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '*') {
-
+        for (int i = 0; i < str.length() - 1; i += 2) {
+            if (str.charAt(i) != '*' && str.charAt(i + 1) !=  '*') {
+                newStr += str.charAt(i);
+            }
+            else if (str.charAt(i) == '*' && str.charAt(i + 2) != '*') {
+                newStr += str.charAt(i + 2);
             }
         }
         return newStr;
