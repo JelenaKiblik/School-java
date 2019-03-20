@@ -5,11 +5,11 @@ public class Car {
     private int size;
     private String name;
 
-    public Car (String name) {
+    public Car(String name) {
         this.name = name;
     }
 
-    public Car (String name, int size) {
+    public Car(String name, int size) {
         this.name = name;
         this.size = size;
     }

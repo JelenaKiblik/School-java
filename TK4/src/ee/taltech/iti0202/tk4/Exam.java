@@ -29,14 +29,7 @@ public class Exam {
      * closeFar(4, 1, 3) => true
      */
     public static boolean closeFar(int a, int b, int c) {
-        if ((a - b <= 1 || b - a <= 1) && (a - c >= 2 ||  c - a  >= 2)) {
-            return true;
-        }
-        else if ((a - c <= 1 || c - a <= 1) && (b - a >= 2 ||  a - b  >= 2)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (a - b <= 1 || b - a <= 1) && (a - c >= 2 || c - a >= 2) || (a - c <= 1 || c - a <= 1) && (b - a >= 2 || a - b >= 2);
     }
 
     /**

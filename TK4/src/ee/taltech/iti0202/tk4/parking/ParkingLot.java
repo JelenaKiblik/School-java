@@ -1,5 +1,4 @@
 package ee.taltech.iti0202.tk4.parking;
-import ee.taltech.iti0202.tk4.parking.Car;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +24,7 @@ public class ParkingLot {
         }
     }
 
-    public Optional<Car> unpark(String model){
+    public Optional<Car> unpark(String model) {
         if (cars.contains(car)) {
             cars.remove(car);
             return Optional.ofNullable(car);
