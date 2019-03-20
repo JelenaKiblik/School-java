@@ -16,7 +16,7 @@ public class Exam {
      * tenRun([10, 1, 9, 20]) => [10, 10, 10, 20]
      */
     public static List<Integer> tenRun(List<Integer> nums) {
-        return null;
+        return nums;
     }
 
     /**
@@ -58,11 +58,9 @@ public class Exam {
         for (int i = 0; i < str.length() - 1; i += 1) {
             if (str.charAt(i) != '*' && str.charAt(i + 1) != '*') {
                 newStr += str.charAt(i);
-            }
-            else if (str.charAt(i) == '*' && str.charAt(i + 1) == '*') {
+            } else if (str.charAt(i) == '*' && str.charAt(i + 1) == '*') {
                 newStr += str.charAt(i + 2);
-            }
-            else if (str.charAt(i) == '*' && str.charAt(i + 2) != '*') {
+            } else if (str.charAt(i) == '*' && str.charAt(i + 2) != '*') {
                 newStr += str.charAt(i + 2);
             }
         }
