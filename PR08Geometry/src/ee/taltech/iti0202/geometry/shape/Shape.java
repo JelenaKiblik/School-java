@@ -2,10 +2,10 @@ package ee.taltech.iti0202.geometry.shape;
 
 public class Shape {
 
-    public String name;
-    public int angles;
-    public Color color;
-    public int size;
+    private String name;
+    private int angles;
+    private Color color;
+    private int size;
 
     public enum Color {
         Blue, Green, Red, Yellow, Black
