@@ -1,7 +1,5 @@
 package ee.taltech.iti0202.geometry;
 
-import ee.taltech.iti0202.geometry.shape.Triangle;
-
 public class Main {
 
     public static void main(String[] args) {
