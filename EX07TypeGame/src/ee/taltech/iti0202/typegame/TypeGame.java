@@ -1,5 +1,4 @@
 package ee.taltech.iti0202.typegame;
-
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -21,24 +20,23 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TypeGame extends Application {
-
-    private static final HashMap<StackPane, String> symbols = new HashMap<>();
-    private Pane root = new Pane();
-    private String symbol;
-    private int score;
+    public static final HashMap<StackPane, String> symbols = new HashMap<>();
+    public Pane root = new Pane();
+    public String symbol;
+    public int score;
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    private Color makeColor() {
+    public Color makeColor() {
         int red = ThreadLocalRandom.current().nextInt(100, 252);
         int green = ThreadLocalRandom.current().nextInt(100, 252);
         int blue = ThreadLocalRandom.current().nextInt(100, 252);
         return Color.rgb(red, green, blue);
     }
 
-    private StackPane makeCircle() {
+    public StackPane makeCircle() {
         Circle circle = new Circle(70, 70, 40);
         circle.setFill(makeColor());
         Random x = new Random();
@@ -56,7 +54,7 @@ public class TypeGame extends Application {
         return stack;
     }
 
-    private StackPane makeScoreBoard() {
+    public StackPane makeScoreBoard() {
         Rectangle rectangle = new Rectangle(100, 30);
         rectangle.setFill(Color.WHITE);
         Text text = new Text("Score: " + score);
@@ -69,7 +67,7 @@ public class TypeGame extends Application {
         return stack;
     }
 
-    private void makeCircles() {
+    public void makeCircles() {
         while (symbols.size() < 3) {
             StackPane circles = makeCircle();
             checkPosition(circles);
@@ -78,7 +76,7 @@ public class TypeGame extends Application {
         }
     }
 
-    private void checkPosition(StackPane circles) {
+    public void checkPosition(StackPane circles) {
         boolean collisionDetected = false;
         for (Map.Entry < StackPane, String > j : symbols.entrySet()) {
             if (circles.getBoundsInParent().intersects(j.getKey().getBoundsInParent())) {
@@ -93,7 +91,7 @@ public class TypeGame extends Application {
         }
     }
 
-    private void animation(StackPane pane) {
+    public void animation(StackPane pane) {
         FadeTransition circleAnimation = new FadeTransition(Duration.millis(1000), pane);
         circleAnimation.setFromValue(1.0);
         circleAnimation.setToValue(0.0);
