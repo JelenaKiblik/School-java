@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.typegame;
+package typegame;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
