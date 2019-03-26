@@ -7,9 +7,11 @@ public class Shape {
     public Color color;
     public int size;
 
-    public enum Color {Blue, Green, Red, Yellow, Black};
+    public enum Color {
+        Blue, Green, Red, Yellow, Black
+    }
 
-    public Shape (String name, int angles, Color color, int size) {
+    public Shape(String name, int angles, Color color, int size) {
         this.name = name;
         this.angles = angles;
         this.color = color;
