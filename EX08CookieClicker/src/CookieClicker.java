@@ -12,7 +12,6 @@ public class CookieClicker extends JFrame {
     // non graphical variables
     private int cookies = 0;
     private int clicker = 1;
-    private int clickerPrice = 50;
     private static final int TIME  = 25;
     private static final int PERIOD2  = 2000;
     private static final int PERIOD3  = 1000;
@@ -32,6 +31,7 @@ public class CookieClicker extends JFrame {
     private boolean cursorUnlocked;
 
     public CookieClicker() {
+        int clickerPrice = 50;
         container = getContentPane();
         container.setLayout(new GridLayout(5, 1));
 
@@ -52,6 +52,7 @@ public class CookieClicker extends JFrame {
             }
 
             private void increaseClicker() {
+                int clickerPrice = 50;
                 if (cookies >= clickerPrice) {
                     clicker++;
                     cookies -= clickerPrice;
