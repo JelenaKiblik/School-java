@@ -1,14 +1,18 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.TimerTask;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class CookieClicker extends JFrame {
     // non graphical variables
     private int cookies = 0;
     private int clicker = 1;
-    private int clickerPrice = 10;
+    private int clickerPrice = 50;
     private static final int TIME  = 25;
     private static final int PERIOD2  = 2000;
     private static final int PERIOD3  = 1000;
@@ -24,25 +28,15 @@ public class CookieClicker extends JFrame {
     private JButton increaseClickerButton;
 
     // buildings
-    private Building bakery;
-    private boolean bakeryUnlocked;
-    private Building robot;
-    private boolean robotUnlocked;
-    private Building factory;
-    private boolean factoryUnlocked;
+    private Building cursor;
+    private boolean cursorUnlocked;
 
     public CookieClicker() {
         container = getContentPane();
         container.setLayout(new GridLayout(5, 1));
 
-        bakery = new Building("Bakery", 0, 1, 10);
-        bakeryUnlocked = false;
-
-        robot = new Building("Robot", 0, 5, 10);
-        robotUnlocked = false;
-
-        factory = new Building("Factory", 0, 10, 10);
-        factoryUnlocked = false;
+        cursor = new Building("Cursor", 0, 1, 10);
+        cursorUnlocked = false;
 
         // produce cookies by hand
         cookieLabel = new JLabel("Cookies: " + cookies);
@@ -81,17 +75,9 @@ public class CookieClicker extends JFrame {
         java.util.Timer getMoreBuildings = new java.util.Timer();
         getMoreBuildings.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                if (!bakeryUnlocked && clicker >= 2) {
-                    bakery.unlock();
-                    bakeryUnlocked = true;
-                }
-                if (!robotUnlocked && bakery.getLevel() >= 2) {
-                    robot.unlock();
-                    robotUnlocked = true;
-                }
-                if (!factoryUnlocked && robot.getLevel() >= 2) {
-                    factory.unlock();
-                    factoryUnlocked = true;
+                if (!cursorUnlocked && clicker >= 2) {
+                    cursor.unlock();
+                    cursorUnlocked = true;
                 }
             }
         }, 0, PERIOD2);
@@ -99,7 +85,7 @@ public class CookieClicker extends JFrame {
         java.util.Timer produceWithBuildings = new java.util.Timer();
         produceWithBuildings.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                cookies += bakery.getProductionRate() + robot.getProductionRate() + factory.getProductionRate();
+                cookies += cursor.getProductionRate();
             }
         }, 0, PERIOD3);
 
@@ -164,7 +150,7 @@ public class CookieClicker extends JFrame {
         }
 
         public void actualize() {
-            label.setText(name + " Prod. Rate: " + getProductionRate());
+            label.setText(name + " Rate: " + getProductionRate());
             button.setText("Improve (costs: " + costs + ")");
         }
     }
