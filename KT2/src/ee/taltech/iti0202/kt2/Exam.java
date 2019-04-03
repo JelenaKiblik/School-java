@@ -28,7 +28,16 @@ public class Exam {
      * repeatSeparator("This", "And", 1) => "This"
      */
     public static String repeatSeparator(String word, String sep, int count) {
-        return "wat";
+        StringBuilder newString = new StringBuilder();
+        String onePart = word + sep;
+        if (count == 1) {
+            return word;
+        } else {
+            for (int i = 0; i < count; i++) {
+                newString.append(onePart);
+            }
+            return newString + word;
+        }
     }
 
 }
