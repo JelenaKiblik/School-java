@@ -9,6 +9,7 @@ public class University {
     private String name;
     public List<Student> studentsInUniver = new ArrayList<>();
     public List<Course> courses = new ArrayList<>();
+    private Course cource;
 
     public University(String name) {
         this.name = name;
@@ -25,8 +26,11 @@ public class University {
 
 
     public Optional<Course> createCourse(String name, int eap) {
-//        if ((eap > 0) && name )
-        return null;
+        if (!courses.contains(cource)) {
+            courses.add(cource);
+            return Optional.ofNullable(cource);
+        }
+        return Optional.empty();
     }
 
     public List<Student> getStudents()  {

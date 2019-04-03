@@ -2,8 +2,6 @@ package ee.taltech.iti0202.kt2.university;
 
 import java.util.ArrayList;
 import java.util.List;
-import ee.taltech.iti0202.kt2.university.University;
-import ee.taltech.iti0202.kt2.university.Student;
 
 public class Course {
 
