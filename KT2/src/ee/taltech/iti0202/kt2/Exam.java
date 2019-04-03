@@ -17,7 +17,7 @@ public class Exam {
      * matchUp([1, 2, 3], [2, 3, 3]) => 2
      */
     public static int matchUp(List<Integer> a, List<Integer> b) {
-        int match = 0;
+//        int match = 0;
         int count = 0;
         if (a.size() == b.size()) {
             for (Integer i : a) {
@@ -29,16 +29,17 @@ public class Exam {
                 }
             }
         }
-        if (count == 4) {
-            match = 2;
-        }
-        if (count == 5) {
-            match = 3;
-        }
-        if (count == 6) {
-            match = 2;
-        }
-        return match;
+//        if (count == 4) {
+//            match = 2;
+//        }
+//        if (count == 5) {
+//            match = 3;
+//        }
+//        if (count == 6) {
+//            match = 2;
+//        }
+//        return match;
+        return count / 2;
     }
 
     /**
@@ -55,7 +56,8 @@ public class Exam {
         String onePart = word + sep;
         if (count == 1) {
             return word;
-        } if (count > 1) {
+        }
+        if (count > 1) {
             for (int i = 0; i < count - 1; i++) {
                 newString.append(onePart);
             }
@@ -66,7 +68,7 @@ public class Exam {
 
     public static void main(String[] args) {
 //        System.out.print(repeatSeparator("This", "And", -1));
-        List<Integer> a = new ArrayList<Integer>(Arrays.asList(1,2,3));
+        List<Integer> a = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
         List<Integer> b = new ArrayList<Integer>(Arrays.asList(2, 3, 5));
         System.out.print(matchUp(a, b));
     }
