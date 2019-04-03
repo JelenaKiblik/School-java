@@ -17,7 +17,7 @@ public class Exam {
      * matchUp([1, 2, 3], [2, 3, 3]) => 2
      */
     public static int matchUp(List<Integer> a, List<Integer> b) {
-//        int match = 0;
+        int match = 0;
         int count = 0;
         if (a.size() == b.size()) {
             for (Integer i : a) {
@@ -29,17 +29,16 @@ public class Exam {
                 }
             }
         }
-//        if (count == 4) {
-//            match = 2;
-//        }
-//        if (count == 5) {
-//            match = 3;
-//        }
-//        if (count == 6) {
-//            match = 2;
-//        }
-//        return match;
-        return count / 2;
+        if (count == 4) {
+            match = 2;
+        }
+        if (count == 5) {
+            match = 3;
+        }
+        if (count == 6) {
+            match = 2;
+        }
+        return match;
     }
 
     /**
