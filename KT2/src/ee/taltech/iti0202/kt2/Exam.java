@@ -69,9 +69,9 @@ public class Exam {
 
     public static void main(String[] args) {
 //        System.out.print(repeatSeparator("This", "And", -1));
-        List<Integer> a = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
-        List<Integer> b = new ArrayList<Integer>(Arrays.asList(6, 6, 8));
-        System.out.print(matchUp(a, b));
+//        List<Integer> a = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+//        List<Integer> b = new ArrayList<Integer>(Arrays.asList(6, 6, 8));
+//        System.out.print(matchUp(a, b));
     }
 
 }
