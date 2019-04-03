@@ -7,6 +7,7 @@ import ee.taltech.iti0202.kt2.university.Student;
 
 public class Course {
 
+    private int eap;
     private String name;
     public List<Student> studentsInCourse = new ArrayList<>();
     public List<Student> studentsInUniver;
@@ -14,6 +15,7 @@ public class Course {
 
     public Course(String name) {
         this.name = name;
+        this.eap = eap;
     }
 
     public boolean addStudent(Student student) {
@@ -33,7 +35,12 @@ public class Course {
     }
 
     public boolean finish() {
-        return false;
+        if (!isFinished()) {
+            student.eap += eap;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isFinished() {
