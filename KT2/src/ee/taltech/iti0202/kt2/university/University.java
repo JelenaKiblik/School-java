@@ -46,7 +46,7 @@ public class University {
         return name;
     }
 
-    public List<Course> getFinishedCourses(){
+    public List<Course> getFinishedCourses() {
         return null;
     }
 
