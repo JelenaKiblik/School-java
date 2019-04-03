@@ -1,7 +1,5 @@
 package ee.taltech.iti0202.kt2;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Exam {
@@ -75,4 +73,3 @@ public class Exam {
     }
 
 }
-
