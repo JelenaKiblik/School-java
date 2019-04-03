@@ -32,6 +32,10 @@ public class Course {
         return studentsInCourse;
     }
 
+    public List<Student> getStudents() {
+        return studentsInCourse;
+    }
+
     public boolean finish() {
         if (!isFinished()) {
             student.eap += eap;
