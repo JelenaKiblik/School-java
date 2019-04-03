@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Exam {
+
+    public static final int NUMBER = 6;
     /**
      * Given lists nums1 and nums2 of the same length,
      * for every element in nums1, consider the corresponding
@@ -35,7 +37,7 @@ public class Exam {
         if (count == 5) {
             match = 3;
         }
-        if (count == 6) {
+        if (count == NUMBER) {
             match = 2;
         }
         return match;
@@ -68,7 +70,7 @@ public class Exam {
     public static void main(String[] args) {
 //        System.out.print(repeatSeparator("This", "And", -1));
         List<Integer> a = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
-        List<Integer> b = new ArrayList<Integer>(Arrays.asList(2, 3, 5));
+        List<Integer> b = new ArrayList<Integer>(Arrays.asList(6, 6, 8));
         System.out.print(matchUp(a, b));
     }
 
