@@ -32,16 +32,17 @@ public class Exam {
         String onePart = word + sep;
         if (count == 1) {
             return word;
-        } else {
+        } if (count > 1) {
             for (int i = 0; i < count - 1; i++) {
                 newString.append(onePart);
             }
             return newString + word;
         }
+        return word;
     }
 
     public static void main(String[] args) {
-        System.out.print(repeatSeparator("Word", "X", 3));
+        System.out.print(repeatSeparator("This", "And", -1));
     }
 
 }
