@@ -9,7 +9,7 @@ public class Exam {
      * element in nums2 (at the same index).
      * Return the count of the number of times
      * that the two elements differ by 2 or less, but are not equal.
-     *
+     * <p>
      * matchUp([1, 2, 3], [2, 3, 10]) => 2
      * matchUp([1, 2, 3], [2, 3, 5]) => 3
      * matchUp([1, 2, 3], [2, 3, 3]) => 2
@@ -22,7 +22,7 @@ public class Exam {
      * Given two strings, word and a separator sep,
      * return a big string made of count occurrences of the word,
      * separated by the separator string.
-     *
+     * <p>
      * repeatSeparator("Word", "X", 3) => "WordXWordXWord"
      * repeatSeparator("This", "And", 2) => "ThisAndThis"
      * repeatSeparator("This", "And", 1) => "This"
@@ -33,11 +33,15 @@ public class Exam {
         if (count == 1) {
             return word;
         } else {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < count - 1; i++) {
                 newString.append(onePart);
             }
             return newString + word;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.print(repeatSeparator("Word", "X", 3));
     }
 
 }
