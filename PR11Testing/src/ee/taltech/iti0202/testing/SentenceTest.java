@@ -1,11 +1,11 @@
 package ee.taltech.iti0202.testing;
 
-import ee.taltech.iti0202.sentence.Sentence;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class SentenceTest {
+    
 
     @Test
     public void testToString_EmptySentence_IsEmptyString() {
