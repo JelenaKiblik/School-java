@@ -1,8 +1,9 @@
 package ee.taltech.iti0202.testing;
 
-import static org.junit.Assert.*;
 import ee.taltech.iti0202.sentence.Sentence;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class SentenceTest {
 
@@ -14,6 +15,5 @@ public class SentenceTest {
 
         assertEquals("", actual); // Assert
     }
-
-
 }
+
