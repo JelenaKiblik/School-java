@@ -129,7 +129,7 @@ public class SentenceTest {
     public void testAddEmptyPunctuation() {
         Sentence sentence = new Sentence();
         sentence.addWord("Apple");
-        boolean result = sentence.addPunctuation(" ");
+        boolean result = sentence.addPunctuation("1");
         assertFalse(result);
     }
 
