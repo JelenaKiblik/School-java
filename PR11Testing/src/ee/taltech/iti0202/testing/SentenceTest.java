@@ -179,8 +179,8 @@ public class SentenceTest {
 
     @Test
     public void testEqualsTwoSentencePunctuationIgnoredFirstSentence2() {
-        Sentence sentence = new Sentence("I LIKE ORANGE!");
-        Sentence sentence2 = new Sentence("I LIK ORANGE!");
+        Sentence sentence = new Sentence("I like orange.");
+        Sentence sentence2 = new Sentence("I like orange");
         boolean result = sentence.equals(sentence2);
         assertFalse(result);
     }
