@@ -78,7 +78,7 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_RemovePunctuationEvenIfNoPunctuation() {
+    public void testToString_RemovePunctuation() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
         sentence.addPunctuation(".");
@@ -96,10 +96,11 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_RemovePunctuation() {
+    public void testToString_RemovePunctuationTwice() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hi");
-        sentence.addWord(".");
+        sentence.addPunctuation(".");
+        sentence.removePunctuation();
         boolean result = sentence.removePunctuation();
         assertFalse(result);
     }
