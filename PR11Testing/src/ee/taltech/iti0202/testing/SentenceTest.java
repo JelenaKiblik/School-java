@@ -57,6 +57,16 @@ public class SentenceTest {
     }
 
     @Test
+    public void testToString_RemovePunctuationDoesNotRemove2() {
+        Sentence sentence = new Sentence();
+        sentence.addWord("Hi");
+        sentence.addPunctuation(".");
+        sentence.addWord("Hi");
+        boolean result = sentence.removePunctuation();
+        assertFalse(result);
+    }
+
+    @Test
     public void testToString_AddWordSpace() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addWord(" ");
