@@ -141,9 +141,16 @@ public class SentenceTest {
     }
 
     @Test
-    public void testPunctuation() {
+    public void testConstructorPunctuation() {
         Sentence sentence = new Sentence("i don't like apple.");
         String actual = sentence.toString();
         assertEquals("I don't like apple.", actual);
+    }
+
+    @Test
+    public void testConstructorPunctuation2() {
+        Sentence sentence = new Sentence("i don't like apple???hello???");
+        String actual = sentence.toString();
+        assertEquals("I don't like apple???hello???", actual);
     }
 }
