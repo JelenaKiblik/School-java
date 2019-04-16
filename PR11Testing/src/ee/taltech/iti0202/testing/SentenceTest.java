@@ -14,14 +14,14 @@ public class SentenceTest {
     }
 
     @Test
-    public void testAddWord_EmptySentenceNoPunctuation_IsTrue() {
+    public void testEmptySentenceNoPunctuation_IsTrue() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addWord("Hello");
         assertTrue(result);
     }
 
     @Test
-    public void testToString_RemoveWordTrue() {
+    public void testRemoveWordTrue() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
         boolean result = sentence.removeWord("Hei");
@@ -29,7 +29,7 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_RemoveWordFalse() {
+    public void testRemoveWordFalse() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
         boolean result = sentence.removeWord("He");
@@ -37,14 +37,14 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_RemoveWord_Empty() {
+    public void testRemoveWord_Empty() {
         Sentence sentence = new Sentence();
         boolean result = sentence.removeWord("He");
         assertFalse(result);
     }
 
     @Test
-    public void testToString_RemoveWordWithPunctuationFalse() {
+    public void testRemoveWordWithPunctuationFalse() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
         sentence.addPunctuation(".");
@@ -53,7 +53,7 @@ public class SentenceTest {
     }
 
     @Test
-    public void testAddWord_SentenceWithPunctuation_IsFalse() {
+    public void testSentenceWithPunctuation_IsFalse() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hello");
         sentence.addPunctuation(".");
@@ -62,7 +62,7 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_AddPunctuationAfterPunctuation() {
+    public void testAddPunctuationAfterPunctuation() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hello");
         sentence.addPunctuation(".");
@@ -71,14 +71,14 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_AddPunctuationNotPunctuation() {
+    public void testAddPunctuationNotPunctuation() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addPunctuation("hello");
         assertFalse(result);
     }
 
     @Test
-    public void testToString_RemovePunctuation() {
+    public void testRemovePunctuation() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
         sentence.addPunctuation(".");
@@ -86,9 +86,8 @@ public class SentenceTest {
         assertTrue(result);
     }
 
-
     @Test
-    public void testToString_RemovePunctuationDoesNotRemove() {
+    public void testRemovePunctuationDoesNotRemove() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hi");
         boolean result = sentence.removePunctuation();
@@ -96,7 +95,7 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_RemovePunctuationTwice() {
+    public void testRemovePunctuationTwice() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hi");
         sentence.addPunctuation(".");
@@ -106,23 +105,31 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_AddWordSpace() {
+    public void testAddWordSpace() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addWord(" ");
         assertFalse(result);
     }
 
     @Test
-    public void testToString_AddWordWithSpace() {
+    public void testAddWordWithSpace() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addWord("Hei ");
         assertFalse(result);
     }
 
     @Test
-    public void testToString_AddPunctuationFirst() {
+    public void testAddPunctuationFirst() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addPunctuation(".");
+        assertFalse(result);
+    }
+
+    @Test
+    public void testAddEmptyPunctuation() {
+        Sentence sentence = new Sentence();
+        sentence.addWord("Apple");
+        boolean result = sentence.addPunctuation(" ");
         assertFalse(result);
     }
 
