@@ -31,38 +31,37 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_Capital_Letter() {
+    public void testToString_ADD_PUNCTUATION_AFTER_PUNCTUATION() {
         Sentence sentence = new Sentence();
-    }
-
-    @Test
-    public void testToString_ADD_WORD_RETURNS_FALSE() {
-        Sentence sentence = new Sentence();
+        sentence.addWord("Hello");
+        sentence.addPunctuation(".");
+        boolean result = sentence.addPunctuation(".");
+        assertFalse(result);
     }
 
     @Test
     public void testToString_REMOVE_PUNCTUATION_EVEN_IF_NO_PUNCTUATION() {
         Sentence sentence = new Sentence();
-    }
+        sentence.addWord("Hello");
+        sentence.addPunctuation(".");
+        boolean result = sentence.removePunctuation();
+        assertTrue(result);
 
-    @Test
-    public void testToString_EQUALS_PUNCTUATION_IGNORED_FIRST_SENTENCE() {
-        Sentence sentence = new Sentence();
-    }
-
-    @Test
-    public void testToString_CONSTRUCTOR_PUNCTUATION() {
-        Sentence sentence = new Sentence();
     }
 
     @Test
     public void testToString_REMOVE_PUNCTUATION_DOES_NOT_REMOVE() {
         Sentence sentence = new Sentence();
+        sentence.addWord("Hello");
+        boolean result = sentence.removePunctuation();
+        assertFalse(result);
     }
 
     @Test
     public void testToString_ADD_WORD_SPACE() {
         Sentence sentence = new Sentence();
+        boolean result = sentence.addWord(" ");
+        assertTrue(result);
     }
 
     @Test
@@ -77,39 +76,30 @@ public class SentenceTest {
 
 
     @Test
-    public void testToString_ADD_WORD_AFTER_PUNCTUATION () {
+    public void testToString_ADD_PUNCTUATION_FIRST() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addPunctuation(".");
+        assertFalse(result);
+    }
+
+    @Test
+    public void testToString_CONSTRUCTOR_VERY_SHORT_WORD() {
         Sentence sentence = new Sentence();
     }
 
     @Test
-    public void testToString_ADD_PUNCTUATION_FIRST () {
-        Sentence sentence = new Sentence();
-    }
-
-
-    @Test
-    public void testToString_REMOVE_PUNCTUATION_RETURNS_FALSE () {
-        Sentence sentence = new Sentence();
-    }
-
-    @Test
-    public void testToString_CONSTRUCTOR_VERY_SHORT_WORD () {
-        Sentence sentence = new Sentence();
-    }
-
-    @Test
-    public void testToString_CONSTRUCTOR_WORDS_AFTER_PUNCTUATION () {
-        Sentence sentence = new Sentence();
-    }
-
-    @Test
-    public void testToString_ADD_PUNCTUATION_AFTER_PUNCTUATION() {
+    public void testToString_CONSTRUCTOR_WORDS_AFTER_PUNCTUATION() {
         Sentence sentence = new Sentence();
     }
 
 
     @Test
-    public void testToString_SPLIT_MULTIPLE_WHITESPACE () {
+    public void testToString_SPLIT_MULTIPLE_WHITESPACE() {
+        Sentence sentence = new Sentence();
+    }
+
+    @Test
+    public void testToString_Capital_Letter() {
         Sentence sentence = new Sentence();
     }
 }
