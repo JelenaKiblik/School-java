@@ -1,5 +1,4 @@
 package ee.taltech.iti0202.testing;
-
 import org.junit.Test;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -9,17 +8,9 @@ public class SentenceTest {
 
     @Test
     public void testToString_EmptySentence_IsEmptyString() {
-        Sentence sentence = new Sentence();
-        String actual = sentence.toString();
-        assertEquals("", actual);
-    }
-
-    @Test
-    public void testToString_EmptySentence_NotEmptyString() {
-        Sentence sentence = new Sentence();
-        sentence.addWord("Hello");
-        String actual = sentence.toString();
-        assertEquals("Hello...", actual);
+        Sentence sentence = new Sentence(); // Arrange
+        String actual = sentence.toString(); // Act
+        assertEquals("", actual); // Assert
     }
 
     @Test
@@ -30,31 +21,8 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_AddWordSpace() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addWord(" ");
-        assertFalse(result);
-    }
-
-    @Test
-    public void testToString_AddWordWithSpace() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addWord("Hei ");
-        assertFalse(result);
-    }
-
-    @Test
     public void testToString_RemoveWordTrue() {
         Sentence sentence = new Sentence();
-        sentence.addWord("Hei");
-        boolean result = sentence.removeWord("Hei");
-        assertTrue(result);
-    }
-
-    @Test
-    public void testToString_RemoveWordTrue2() {
-        Sentence sentence = new Sentence();
-        sentence.addWord("Hei");
         sentence.addWord("Hei");
         boolean result = sentence.removeWord("Hei");
         assertTrue(result);
@@ -114,17 +82,11 @@ public class SentenceTest {
     @Test
     public void testToString_RemovePunctuationDoesNotRemove() {
         Sentence sentence = new Sentence();
+        sentence.addWord("Hi");
         boolean result = sentence.removePunctuation();
         assertFalse(result);
     }
 
-    @Test
-    public void testToString_RemovePunctuationDoesNotRemove2() {
-        Sentence sentence = new Sentence();
-        sentence.addWord(".");
-        boolean result = sentence.removePunctuation();
-        assertFalse(result);
-    }
     @Test
     public void testToString_RemovePunctuation() {
         Sentence sentence = new Sentence();
@@ -132,6 +94,20 @@ public class SentenceTest {
         sentence.addPunctuation(".");
         boolean result = sentence.removePunctuation();
         assertTrue(result);
+    }
+
+    @Test
+    public void testToString_AddWordSpace() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addWord(" ");
+        assertFalse(result);
+    }
+
+    @Test
+    public void testToString_AddWordWithSpace() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addWord(" Hei ");
+        assertFalse(result);
     }
 
     @Test
