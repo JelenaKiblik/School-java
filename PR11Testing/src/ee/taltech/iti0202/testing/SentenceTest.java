@@ -80,6 +80,14 @@ public class SentenceTest {
     }
 
     @Test
+    public void testToString_RemovePunctuationAfterPunctuation() {
+        Sentence sentence = new Sentence();
+        sentence.addWord("Hei.");
+        boolean result = sentence.addPunctuation(".");
+        assertFalse(result);
+    }
+
+    @Test
     public void testToString_RemovePunctuationDoesNotRemove() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hi");
