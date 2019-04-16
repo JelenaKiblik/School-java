@@ -52,6 +52,15 @@ public class SentenceTest {
     }
 
     @Test
+    public void testToString_RemoveWordTrue2() {
+        Sentence sentence = new Sentence();
+        sentence.addWord("Hei");
+        sentence.addWord("Hei");
+        boolean result = sentence.removeWord("Hei");
+        assertTrue(result);
+    }
+
+    @Test
     public void testToString_RemoveWordFalse() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
@@ -109,6 +118,13 @@ public class SentenceTest {
         assertFalse(result);
     }
 
+    @Test
+    public void testToString_RemovePunctuationDoesNotRemove2() {
+        Sentence sentence = new Sentence();
+        sentence.addWord(".");
+        boolean result = sentence.removePunctuation();
+        assertFalse(result);
+    }
     @Test
     public void testToString_RemovePunctuation() {
         Sentence sentence = new Sentence();
