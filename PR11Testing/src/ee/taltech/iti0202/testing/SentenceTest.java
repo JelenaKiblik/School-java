@@ -180,7 +180,7 @@ public class SentenceTest {
     @Test
     public void testEqualsTwoSentencePunctuationIgnoredFirstSentence2() {
         Sentence sentence = new Sentence("I LIKE ORANGE!");
-        Sentence sentence2 = new Sentence("I LIKE ORANGE");
+        Sentence sentence2 = new Sentence("I LIK ORANGE!");
         boolean result = sentence.equals(sentence2);
         assertFalse(result);
     }
