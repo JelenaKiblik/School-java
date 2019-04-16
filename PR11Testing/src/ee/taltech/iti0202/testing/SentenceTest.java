@@ -80,10 +80,9 @@ public class SentenceTest {
     }
 
     @Test
-    public void testToString_AddPunctuationAfterPunctuation2() {
+    public void testToString_AddPunctuationNotPunctuation() {
         Sentence sentence = new Sentence();
-        sentence.addPunctuation(".");
-        boolean result = sentence.addPunctuation(".");
+        boolean result = sentence.addPunctuation("g");
         assertFalse(result);
     }
 
