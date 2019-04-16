@@ -153,4 +153,11 @@ public class SentenceTest {
         String actual = sentence.toString();
         assertEquals("I don't like apple???hello???", actual);
     }
+
+    @Test
+    public void testLowerCase() {
+        Sentence sentence = new Sentence("I LIKE ORANGE");
+        String actual = sentence.toString();
+        assertEquals("I like orange...", actual);
+    }
 }
