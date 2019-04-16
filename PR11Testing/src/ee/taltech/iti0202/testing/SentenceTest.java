@@ -176,4 +176,12 @@ public class SentenceTest {
         boolean result = sentence.equals(sentence2);
         assertTrue(result);
     }
+
+    @Test
+    public void testEqualsTwoSentencePunctuationIgnoredFirstSentence2() {
+        Sentence sentence = new Sentence("I LIKE ORANGE! And don't like apple.");
+        Sentence sentence2 = new Sentence("I LIKE ORANGE");
+        boolean result = sentence.equals(sentence2);
+        assertFalse(result);
+    }
 }
