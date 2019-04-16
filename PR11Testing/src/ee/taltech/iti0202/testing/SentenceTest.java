@@ -168,4 +168,12 @@ public class SentenceTest {
         boolean result = sentence.equals(sentence2);
         assertTrue(result);
     }
+
+    @Test
+    public void testEqualsTwoSentencePunctuationIgnoredFirstSentence() {
+        Sentence sentence = new Sentence("I LIKE ORANGE");
+        Sentence sentence2 = new Sentence("I LIKE ORANGE");
+        boolean result = sentence.equals(sentence2);
+        assertTrue(result);
+    }
 }
