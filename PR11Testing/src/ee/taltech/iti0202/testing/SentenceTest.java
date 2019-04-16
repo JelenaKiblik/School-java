@@ -56,17 +56,17 @@ public class SentenceTest {
         assertFalse(result);
     }
 
-    @Test
-    public void testToString_AddWordSpace() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addWord(" ");
-        assertTrue(result);
-    }
-
 //    @Test
-//    public void testToString_AddPunctuationFirst() {
+//    public void testToString_AddWordSpace() {
 //        Sentence sentence = new Sentence();
-//        boolean result = sentence.addPunctuation(".");
-//        assertFalse(result);
+//        boolean result = sentence.addWord(" ");
+//        assertTrue(result);
 //    }
+
+    @Test
+    public void testToString_AddPunctuationFirst() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addPunctuation(".");
+        assertFalse(result);
+    }
 }
