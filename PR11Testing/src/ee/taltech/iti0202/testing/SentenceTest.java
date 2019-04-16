@@ -56,12 +56,12 @@ public class SentenceTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testToString_AddWordSpace() {
-//        Sentence sentence = new Sentence();
-//        boolean result = sentence.addWord(" ");
-//        assertTrue(result);
-//    }
+    @Test
+    public void testToString_AddWordSpace() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addWord(" ");
+        assertFalse(result);
+    }
 
     @Test
     public void testToString_AddPunctuationFirst() {
