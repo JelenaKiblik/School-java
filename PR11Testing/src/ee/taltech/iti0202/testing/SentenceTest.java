@@ -106,7 +106,7 @@ public class SentenceTest {
     @Test
     public void testToString_AddWordWithSpace() {
         Sentence sentence = new Sentence();
-        boolean result = sentence.addWord(" Hei ");
+        boolean result = sentence.addWord("Hei ");
         assertFalse(result);
     }
 
@@ -115,5 +115,26 @@ public class SentenceTest {
         Sentence sentence = new Sentence();
         boolean result = sentence.addPunctuation(".");
         assertFalse(result);
+    }
+
+    @Test
+    public void SplitMultipleWhitespace() {
+        Sentence sentence = new Sentence("i   like       apple");
+        String actual = sentence.toString();
+        assertEquals("I like apple...", actual);
+    }
+
+    @Test
+    public void AddUpperCase() {
+        Sentence sentence = new Sentence("i don't like apple");
+        String actual = sentence.toString();
+        assertEquals("I don't like apple...", actual);
+    }
+
+    @Test
+    public void testPunctuation() {
+        Sentence sentence = new Sentence("i don't like apple.");
+        String actual = sentence.toString();
+        assertEquals("I don't like apple.", actual);
     }
 }
