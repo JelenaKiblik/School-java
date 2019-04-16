@@ -160,4 +160,12 @@ public class SentenceTest {
         String actual = sentence.toString();
         assertEquals("I LIKE ORANGE...", actual);
     }
+
+    @Test
+    public void testEqualsTwoSentence() {
+        Sentence sentence = new Sentence("I LIKE ORANGE...");
+        Sentence sentence2 = new Sentence("I LIKE ORANGE");
+        boolean result = sentence.equals(sentence2);
+        assertTrue(result);
+    }
 }
