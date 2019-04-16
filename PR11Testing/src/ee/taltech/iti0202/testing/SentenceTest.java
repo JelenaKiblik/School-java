@@ -115,7 +115,7 @@ public class SentenceTest {
     @Test
     public void testAddEmptyWord() {
         Sentence sentence = new Sentence();
-        boolean result = sentence.addWord("     ");
+        boolean result = sentence.addWord("");
         assertFalse(result);
     }
 
