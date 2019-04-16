@@ -126,10 +126,10 @@ public class SentenceTest {
     }
 
     @Test
-    public void testAddEmptyPunctuation() {
+    public void testAddIncorrectPunctuation() {
         Sentence sentence = new Sentence();
         sentence.addWord("Apple");
-        boolean result = sentence.addPunctuation("1");
+        boolean result = sentence.addPunctuation("hello hello hello");
         assertFalse(result);
     }
 
