@@ -71,9 +71,9 @@ public class SentenceTest {
     }
 
     @Test
-    public void testAddPunctuationNotPunctuation() {
+    public void testAddPunctuationFirst() {
         Sentence sentence = new Sentence();
-        boolean result = sentence.addPunctuation("hello");
+        boolean result = sentence.addPunctuation(".");
         assertFalse(result);
     }
 
@@ -115,21 +115,6 @@ public class SentenceTest {
     public void testAddWordWithSpace() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addWord("Hei ");
-        assertFalse(result);
-    }
-
-    @Test
-    public void testAddPunctuationFirst() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addPunctuation(".");
-        assertFalse(result);
-    }
-
-    @Test
-    public void testAddIncorrectPunctuation() {
-        Sentence sentence = new Sentence();
-        sentence.addWord("Apple");
-        boolean result = sentence.addPunctuation("hello hello hello");
         assertFalse(result);
     }
 
