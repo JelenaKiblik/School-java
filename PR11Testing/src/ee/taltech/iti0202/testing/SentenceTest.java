@@ -71,6 +71,14 @@ public class SentenceTest {
     }
 
     @Test
+    public void testAddPunctuationIsTrue() {
+        Sentence sentence = new Sentence();
+        sentence.addWord("Hello");
+        boolean result = sentence.addPunctuation(".");
+        assertTrue(result);
+    }
+
+    @Test
     public void testAddPunctuationFirst() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addPunctuation(".");
