@@ -63,10 +63,10 @@ public class SentenceTest {
         assertTrue(result);
     }
 
-    @Test
-    public void testToString_AddPunctuationFirst() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addPunctuation(".");
-        assertFalse(result);
-    }
+//    @Test
+//    public void testToString_AddPunctuationFirst() {
+//        Sentence sentence = new Sentence();
+//        boolean result = sentence.addPunctuation(".");
+//        assertFalse(result);
+//    }
 }
