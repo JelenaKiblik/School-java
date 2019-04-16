@@ -38,6 +38,13 @@ public class SentenceTest {
     }
 
     @Test
+    public void testToString_RemoveWord_Empty() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.removeWord("He");
+        assertFalse(result);
+    }
+
+    @Test
     public void testToString_RemoveWordWithPunctuationFalse() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
@@ -94,6 +101,13 @@ public class SentenceTest {
     public void testToString_AddWordSpace() {
         Sentence sentence = new Sentence();
         boolean result = sentence.addWord(" ");
+        assertFalse(result);
+    }
+
+    @Test
+    public void testToString_AddWordWithSpace() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addWord("Hei ");
         assertFalse(result);
     }
 
