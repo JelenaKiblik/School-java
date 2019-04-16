@@ -9,9 +9,17 @@ public class SentenceTest {
 
     @Test
     public void testToString_EmptySentence_IsEmptyString() {
-        Sentence sentence = new Sentence(); // Arrange
-        String actual = sentence.toString(); // Act
-        assertEquals("", actual); // Assert
+        Sentence sentence = new Sentence();
+        String actual = sentence.toString();
+        assertEquals("", actual);
+    }
+
+    @Test
+    public void testToString_EmptySentence_NotEmptyString() {
+        Sentence sentence = new Sentence();
+        sentence.addWord("Hello");
+        String actual = sentence.toString();
+        assertEquals("Hello...", actual);
     }
 
     @Test
@@ -19,6 +27,20 @@ public class SentenceTest {
         Sentence sentence = new Sentence();
         boolean result = sentence.addWord("Hello");
         assertTrue(result);
+    }
+
+    @Test
+    public void testToString_AddWordSpace() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addWord(" ");
+        assertFalse(result);
+    }
+
+    @Test
+    public void testToString_AddWordWithSpace() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addWord("Hei ");
+        assertFalse(result);
     }
 
     @Test
@@ -83,7 +105,6 @@ public class SentenceTest {
     @Test
     public void testToString_RemovePunctuationDoesNotRemove() {
         Sentence sentence = new Sentence();
-        sentence.addWord("Hi");
         boolean result = sentence.removePunctuation();
         assertFalse(result);
     }
@@ -95,20 +116,6 @@ public class SentenceTest {
         sentence.addPunctuation(".");
         boolean result = sentence.removePunctuation();
         assertTrue(result);
-    }
-
-    @Test
-    public void testToString_AddWordSpace() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addWord(" ");
-        assertFalse(result);
-    }
-
-    @Test
-    public void testToString_AddWordWithSpace() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addWord("Hei ");
-        assertFalse(result);
     }
 
     @Test
