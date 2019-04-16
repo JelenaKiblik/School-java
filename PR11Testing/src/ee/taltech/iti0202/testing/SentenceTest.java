@@ -158,6 +158,6 @@ public class SentenceTest {
     public void testLowerCase() {
         Sentence sentence = new Sentence("I LIKE ORANGE");
         String actual = sentence.toString();
-        assertEquals("I like orange...", actual);
+        assertEquals("I LIKE ORANGE...", actual);
     }
 }
