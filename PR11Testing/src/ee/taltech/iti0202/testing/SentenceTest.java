@@ -71,6 +71,13 @@ public class SentenceTest {
     }
 
     @Test
+    public void testToString_AddPunctuationNotPunctuation() {
+        Sentence sentence = new Sentence();
+        boolean result = sentence.addPunctuation("hello");
+        assertFalse(result);
+    }
+
+    @Test
     public void testToString_RemovePunctuationEvenIfNoPunctuation() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hei");
@@ -79,12 +86,6 @@ public class SentenceTest {
         assertTrue(result);
     }
 
-    @Test
-    public void testToString_AddPunctuationNotPunctuation() {
-        Sentence sentence = new Sentence();
-        boolean result = sentence.addPunctuation("g");
-        assertFalse(result);
-    }
 
     @Test
     public void testToString_RemovePunctuationDoesNotRemove() {
@@ -98,9 +99,9 @@ public class SentenceTest {
     public void testToString_RemovePunctuation() {
         Sentence sentence = new Sentence();
         sentence.addWord("Hi");
-        sentence.addPunctuation(".");
+        sentence.addWord(".");
         boolean result = sentence.removePunctuation();
-        assertTrue(result);
+        assertFalse(result);
     }
 
     @Test
