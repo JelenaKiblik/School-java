@@ -31,12 +31,12 @@ public class Recursion {
      * @return a word without any duplicates
      */
     public static String removeDuplicates(String word) {
-        if(word.length() <= 1) {
+        if (word.length() <= 1) {
             return word;
         }
 
         int i = 0;
-        for(i = 0; i + 1 < word.length(); i += 1) {
+        for (i = 0; i + 1 < word.length(); i += 1) {
             if (word.charAt(i) != word.charAt(i + 1)) break;
         }
         return word.charAt(i) + removeDuplicates(word.substring(i + 1));
@@ -56,17 +56,22 @@ public class Recursion {
 
         System.out.println(parentheses("I am useless text(Find me), yet again useless")); // "(Find me)"
         System.out.println(parentheses("This doesn't have any parentheses.")); // ""
-        System.out.println(parentheses("What do you do if (sentence has (many parentheses) and where it ends)")); // "(sentencce has (many parentheses) and where it ends)"
+        System.out.println(parentheses("What do you do if (sentence has (many parentheses) and where it ends)"));
+        // "(sentencce has (many parentheses) and where it ends)"
         System.out.println();
 
         System.out.println(removeDuplicates("aabbccddeeffgg")); // "abcdefg"
         System.out.println(removeDuplicates("foakfjdirmdogmvooasf")); // "foakfjdirmdogmvoasf"
-        System.out.println(removeDuplicates("ilIliiiiilIili1lilllliiilil1ilili111111lili1")); // "ilIlilIili1lililil1ilili1lili1"
+        System.out.println(removeDuplicates("ilIliiiiilIili1lilllliiilil1ilili111111lili1"));
+        // "ilIlilIili1lililil1ilili1lili1"
         System.out.println();
 
-        System.out.println(pidginfy("Kūle'a ka'ōpopo'ōpiopio ma luna o ka'īlio palaualelo.")); // "Kūle'a ka'ōpopo'ōpiopio ma luna o ka'lio palaualelo."
-        System.out.println(pidginfy("kasmdfastu naidsfnasidn weraiskdfm sdfasdf''assdffaksndfasdf")); // "kamau nainain weraikm a''aakna"
-        System.out.println(pidginfy("He nani ka'iliahi, akā,'a'ohe mea'ala, no ka mea he mea'alala'i ka raiki, pono nō ka'ohe."));
+        System.out.println(pidginfy("Kūle'a ka'ōpopo'ōpiopio ma luna o ka'īlio palaualelo."));
+        // "Kūle'a ka'ōpopo'ōpiopio ma luna o ka'lio palaualelo."
+        System.out.println(pidginfy("kasmdfastu naidsfnasidn weraiskdfm sdfasdf''assdffaksndfasdf"));
+        // "kamau nainain weraikm a''aakna"
+        System.out.println(pidginfy("He nani ka'iliahi, akā,'a'ohe mea'ala, no ka mea he mea'alala'i ka " +
+                "raiki, pono nō ka'ohe."));
 //        "He nani ka'iliahi, akā,'a'ohe mea'ala, no ka mea he mea'alala'i ka raiki, pono nō ka'ohe."
 
     }
