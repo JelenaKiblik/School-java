@@ -70,8 +70,8 @@ public class Recursion {
         // "Kūle'a ka'ōpopo'ōpiopio ma luna o ka'lio palaualelo."
         System.out.println(pidginfy("kasmdfastu naidsfnasidn weraiskdfm sdfasdf''assdffaksndfasdf"));
         // "kamau nainain weraikm a''aakna"
-        System.out.println(pidginfy("He nani ka'iliahi, akā,'a'ohe mea'ala, no ka mea he mea'alala'i ka " +
-                "raiki, pono nō ka'ohe."));
+        System.out.println(pidginfy("He nani ka'iliahi, akā,'a'ohe mea'ala, no ka mea he mea'alala'i ka "
+                + "raiki, pono nō ka'ohe."));
 //        "He nani ka'iliahi, akā,'a'ohe mea'ala, no ka mea he mea'alala'i ka raiki, pono nō ka'ohe."
 
     }
