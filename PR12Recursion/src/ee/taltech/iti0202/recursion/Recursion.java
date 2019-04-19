@@ -57,7 +57,7 @@ public class Recursion {
         }
         if (word.charAt(0) == 'b' || word.charAt(0) == 'd' || word.charAt(0) == 'f' || word.charAt(0) == 'g'
                 || word.charAt(0) == 'j' || word.charAt(0) == 's' || word.charAt(0) == 'z' || word.charAt(0) == 't'
-                || word.charAt(0) == 'v' || word.charAt(0) == 'ī') {
+                || word.charAt(0) == 'v' || word.charAt(0) == 'š' || word.charAt(0) == 'ž'|| word.charAt(0) == 'ī') {
             return pidginfy(word.substring(1));
         }
         return word.charAt(0) + pidginfy(word.substring(1));
