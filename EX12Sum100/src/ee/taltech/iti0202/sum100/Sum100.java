@@ -8,6 +8,10 @@ public class Sum100 {
     public static List<String> calcSums() {
         List<String> result = new ArrayList<>();
         helpFunction("123456789", new StringBuilder(), 0, 0, result);
+
+        for (String str : result) {
+            System.out.println(str);
+        }
         return result;
     }
 
