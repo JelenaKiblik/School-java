@@ -7,7 +7,7 @@ public class Sum100 {
 
     public static List<String> calcSums() {
         List<String> result = new ArrayList<>();
-        helpFunction("123456789", new StringBuilder(),0, 0, result);
+        helpFunction("123456789", new StringBuilder(), 0, 0, result);
         return result;
     }
 
@@ -26,15 +26,15 @@ public class Sum100 {
 
             if (sumInProcess == 0) {
                 builder.append(number);
-                helpFunction(str, builder,i + 1,sum + number, result);
+                helpFunction(str, builder, i + 1, sum + number, result);
 
             } else {
                 builder.append("+").append(number);
-                helpFunction(str, builder,i + 1,sum + number, result);
+                helpFunction(str, builder, i + 1, sum + number, result);
                 builder.setLength(length);
 
                 builder.append("-").append(number);
-                helpFunction(str, builder,i + 1,sum - number, result);
+                helpFunction(str, builder, i + 1, sum - number, result);
             }
             builder.setLength(length);
         }
