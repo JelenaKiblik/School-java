@@ -49,7 +49,8 @@ public class Shop {
     /**
      * Adds product to order.
      * Product is specified by name. Finds the cheapest available product with the given name.
-     * If the order does not exist or the order is cancelled or the order is finished or there are no products, returns false.
+     * If the order does not exist or the order is cancelled or the order is finished or there are no products,
+     * returns false.
      * Otherwise adds the cheapest product to the order and returns true.
      */
     public boolean addProductToOrder(int orderNumber, String itemName) {
