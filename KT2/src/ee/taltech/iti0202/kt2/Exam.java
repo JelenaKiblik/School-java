@@ -40,7 +40,7 @@ public class Exam {
         if (count == 0) {
             return "";
         }
-        for (int i=1; i < count; i++) {
+        for (int i = 1; i < count; i++) {
             result = result + sep + word;
         }
         return result;
