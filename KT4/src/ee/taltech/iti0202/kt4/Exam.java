@@ -32,34 +32,18 @@ public class Exam {
         if (word.length() == 0) {
             return "";
         }
-        String newStr = "";
-        if (word.length() == 1) {
-            for (int i = 0; i < str.length(); i++) {
-                if (str.substring(i, i+1).equals(word)) {
-                    System.out.println(str.substring(i));
+            String newStr = "";
+            for (int i = 0; i < str.length() - 1 ; i++) {
+                if (str.substring(i, word.length() + i).equals(word)) {
                     newStr += word;
                 } else {
-                    System.out.println(str.substring(i));
                     newStr += "+";
                 }
             }
+            return newStr;
         }
-        if (word.length() == 2) {
-            for (int i = 0; i < str.length(); i+=2) {
-                if (str.substring(i, i+2).equals(word)) {
-                    System.out.println(str.substring(i));
-                    newStr += word;
-                } else {
-                    System.out.println(str.substring(i));
-                    newStr += "++";
-                }
-            }
-        }
-        return newStr;
-    }
 
     public static void main(String[] args) {
         System.out.println(plusOut("12xy34", "xy"));
-        System.out.println(plusOut("12xy34", "1"));
     }
 }
