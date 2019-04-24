@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.kt4;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
@@ -15,8 +16,15 @@ public class Exam {
      * zeroMax([0, 1, 0]) => [1, 1, 0]
      */
     public static List<Integer> zeroMax(List<Integer> nums) {
-        return null;
-    }
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums.get(i) == 0) {
+                list.add(nums.get(i + 1));
+            } else {
+                list.add(nums.get(i));
+        }
+        return list;
+        }
 
     /**
      * Given a string and a non-empty word string,
