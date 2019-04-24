@@ -22,9 +22,10 @@ public class Exam {
                 list.add(nums.get(i + 1));
             } else {
                 list.add(nums.get(i));
+            }
         }
         return list;
-        }
+    }
 
     /**
      * Given a string and a non-empty word string,
