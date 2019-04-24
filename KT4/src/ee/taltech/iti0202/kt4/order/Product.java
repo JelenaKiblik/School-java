@@ -1,8 +1,8 @@
 package ee.taltech.iti0202.kt4.order;
 
 public class Product {
-    private final String name;
-    private final int price;
+    private String name;
+    private int price;
 
     public Product(String name, int price) {
         this.name = name;

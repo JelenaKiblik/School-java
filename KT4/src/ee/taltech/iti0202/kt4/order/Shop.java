@@ -54,19 +54,19 @@ public class Shop {
      * Otherwise adds the cheapest product to the order and returns true.
      */
     public boolean addProductToOrder(int orderNumber, String itemName) {
-        if (products.contains(itemName) && orders.contains(orderNumber)) {
-            Optional<Product> newProduct = products.stream()
-                    .filter(product -> product.getName() == itemName)
-                    .min(Comparator.comparing(product -> product.getPrice()));
-            productsInOrder.add(newProduct);
-            return true;
-        } else {
-            return false;
-        }
+//        if (products.contains(itemName) && orders.contains(orderNumber)) {
+//            Optional<Product> newProduct = products.stream()
+//                    .filter(product -> product.getName() == itemName)
+//                    .min(Comparator.comparing(product -> product.getPrice()));
+//            productsInOrder.add(newProduct);
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return false;
     }
 
-//    .filter(person -> person.getGender() == Person.Gender.FEMALE)
-//                        .max(Comparator.comparing(p -> p.bankCard.getBalance()));
+
 
     /**
      * Gets the total sum of an order. If order does not exist, returns -1.
