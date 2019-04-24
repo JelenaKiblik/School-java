@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.kt4.order;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +9,7 @@ public class Shop {
     public List<Product> products = new ArrayList<>();
     public List<Order> orders = new ArrayList<>();
     private static int orderNumber = 0;
-    Product product;
+    public Product product;
     public List<Optional<Product>> productsInOrder = new ArrayList<Optional<Product>>();
 
     /**

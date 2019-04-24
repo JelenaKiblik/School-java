@@ -33,7 +33,7 @@ public class Exam {
             return "";
         }
         String newStr = "";
-        for (int i = 0; i < str.length() - 1 ; i++) {
+        for (int i = 0; i < str.length() - 1; i++) {
             if (str.substring(i, word.length() + i).equals(word)) {
                 newStr += word;
             } else {
