@@ -1,23 +1,38 @@
 package ee.taltech.iti0202.kt4.order;
 
-
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Shop {
+
+    public List<Product> products = new ArrayList<>();
+    public List<Order> orders = new ArrayList<>();
+    private static int orderNumber = 0;
+    Product product;
+    public List<Optional<Product>> productsInOrder = new ArrayList<Optional<Product>>();
+
     /**
      * Adds product to shop.
      * If the same instance is already in the shop, returns false.
      * Otherwise adds the product and returns true.
      */
     public boolean addProduct(Product product) {
-        return true;
+        if (!products.contains(product)) {
+            products.add(product);
+            return true;
+        } else {
+            return false;
+        }
     }
     /**
      * Create a new order, take the next int as the order number.
      * Returns the order number.
      */
     public int createNewOrder() {
-        return -2;
+        orderNumber++;
+        return orderNumber;
     }
 
     /**
@@ -26,7 +41,10 @@ public class Shop {
      * If the order number is correct, then creates the order and returns the number.
      */
     public int createNewOrder(int newNumber) {
-        return -3;
+        Order order = new Order();
+        order.newNumber = createNewOrder();
+        orders.add(order);
+        return newNumber;
     }
 
     /**
@@ -36,8 +54,19 @@ public class Shop {
      * Otherwise adds the cheapest product to the order and returns true.
      */
     public boolean addProductToOrder(int orderNumber, String itemName) {
-        return false;
+        if (products.contains(itemName) && orders.contains(orderNumber)) {
+            Optional<Product> newProduct = products.stream()
+                    .filter(product -> product.getName() == itemName)
+                    .min(Comparator.comparing(product -> product.getPrice()));
+            productsInOrder.add(newProduct);
+            return true;
+        } else {
+            return false;
+        }
     }
+
+//    .filter(person -> person.getGender() == Person.Gender.FEMALE)
+//                        .max(Comparator.comparing(p -> p.bankCard.getBalance()));
 
     /**
      * Gets the total sum of an order. If order does not exist, returns -1.
@@ -83,4 +112,7 @@ public class Shop {
         return null;
     }
 
+    private class Order {
+        public int newNumber;
+    }
 }
