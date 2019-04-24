@@ -32,16 +32,16 @@ public class Exam {
         if (word.length() == 0) {
             return "";
         }
-            String newStr = "";
-            for (int i = 0; i < str.length() - 1 ; i++) {
-                if (str.substring(i, word.length() + i).equals(word)) {
-                    newStr += word;
-                } else {
-                    newStr += "+";
-                }
+        String newStr = "";
+        for (int i = 0; i < str.length() - 1 ; i++) {
+            if (str.substring(i, word.length() + i).equals(word)) {
+                newStr += word;
+            } else {
+                newStr += "+";
             }
-            return newStr;
         }
+        return newStr;
+    }
 
     public static void main(String[] args) {
         System.out.println(plusOut("12xy34", "xy"));
