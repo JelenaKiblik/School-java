@@ -36,15 +36,14 @@ public class Exam {
      * repeatSeparator("This", "And", 1) => "This"
      */
     public static String repeatSeparator(String word, String sep, int count) {
-        if (count == 1) {
-            return word;
+        String result = word;
+        if (count == 0) {
+            return "";
         }
-        if (count > 1) {
-            for (int i = 0; i < count - 1; i++) {
-                word = word + sep + word;
-            }
+        for (int i=1; i < count; i++) {
+            result = result + sep + word;
         }
-        return word;
+        return result;
     }
 
     public static void main(String[] args) {
