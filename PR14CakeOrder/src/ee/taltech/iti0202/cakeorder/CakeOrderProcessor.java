@@ -44,7 +44,7 @@ public class CakeOrderProcessor {
                 }
             }
         }
-        return result;
+        return "";
     }
 
     public static void main(String[] args) {
