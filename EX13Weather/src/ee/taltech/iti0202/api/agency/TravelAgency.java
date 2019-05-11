@@ -1,6 +1,10 @@
 package ee.taltech.iti0202.api.agency;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import ee.taltech.iti0202.api.destinations.City;
+import ee.taltech.iti0202.api.destinations.CityBuilder;
 import ee.taltech.iti0202.api.provider.OnlineDataController;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +52,41 @@ public class TravelAgency {
      * @return Optional city if the client was happy with it.
      */
     public Optional<City> findSuitableCitiesForClient(Client client) {
-        List<City> cityList = new ArrayList<>();
-        return Optional.empty();
+        List<City> cities = new ArrayList<>();
+        for (String city : cityNames) {
+            String jsonString = dataController.getCity(city);
+            JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
+            String cityName = jsonObject.getAsJsonObject("city").get("name").getAsString();
+            double cityLat = jsonObject.getAsJsonObject("city").getAsJsonObject("coord").get("lat").getAsDouble();
+            double cityLon = jsonObject.getAsJsonObject("city").getAsJsonObject("coord").get("lon").getAsDouble();
+            JsonArray arr = jsonObject.getAsJsonArray("list");
+            List<Integer> weatherCodes = new ArrayList<>();
+            List<Double> temperatures = new ArrayList<>();
+            List<Double> humidities = new ArrayList<>();
+            for (int index = 0; index < arr.size(); index++) {
+                double temperature = arr.get(index).getAsJsonObject().getAsJsonObject("main").get("temp").getAsDouble();
+                double humidity = arr.get(index).getAsJsonObject().getAsJsonObject("main").get("humidity")
+                        .getAsDouble();
+                int weatherCode = arr.get(index).getAsJsonObject().getAsJsonArray("weather").get(0)
+                        .getAsJsonObject().get("id").getAsInt();
+                weatherCodes.add(weatherCode);
+                temperatures.add(temperature);
+                humidities.add(humidity);
+            }
+            CityBuilder cityBuilder = new CityBuilder();
+            cityBuilder.setHumidity(humidities);
+            cityBuilder.setTemperatures(temperatures);
+            cityBuilder.setName(cityName);
+            cityBuilder.setLat(cityLat);
+            cityBuilder.setLon(cityLon);
+            cityBuilder.setWeatherCodes(weatherCodes);
+            cities.add(cityBuilder.createCity());
+        }
+        if (client.getClass().getSimpleName().equals("ChoosingClient") && client.getCitiesThatWantsToVisit()
+                .isEmpty()) {
+            return Optional.empty();
+        }
+        return client.chooseBestCity(cities);
     }
 
 }

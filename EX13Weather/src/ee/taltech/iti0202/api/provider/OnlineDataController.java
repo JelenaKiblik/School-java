@@ -17,8 +17,8 @@ public class OnlineDataController {
      */
     public String getCity(String cityName) {
 
-        final int TIME_OUT = 1000;
-        final int OK = 199;
+        final int TIME_OUT = 5000;
+        final int OK = 299;
         StringBuffer responseContent = new StringBuffer();
         String modifiedCityName = cityName.replaceAll(" ", "+");
         BufferedReader reader;
@@ -32,7 +32,6 @@ public class OnlineDataController {
             connection.setConnectTimeout(TIME_OUT);
             connection.setReadTimeout(TIME_OUT);
             int status = connection.getResponseCode();
-
             if (status > OK) {
                 reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                 while ((line = reader.readLine()) != null) {
@@ -46,7 +45,6 @@ public class OnlineDataController {
                 }
                 reader.close();
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
