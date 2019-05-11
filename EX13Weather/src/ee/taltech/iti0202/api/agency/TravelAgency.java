@@ -53,26 +53,30 @@ public class TravelAgency {
      */
     public Optional<City> findSuitableCitiesForClient(Client client) {
         List<City> cities = new ArrayList<>();
+
         for (String city : cityNames) {
             String jsonString = dataController.getCity(city);
             JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
             String cityName = jsonObject.getAsJsonObject("city").get("name").getAsString();
             double cityLat = jsonObject.getAsJsonObject("city").getAsJsonObject("coord").get("lat").getAsDouble();
             double cityLon = jsonObject.getAsJsonObject("city").getAsJsonObject("coord").get("lon").getAsDouble();
-            JsonArray arr = jsonObject.getAsJsonArray("list");
+            JsonArray array = jsonObject.getAsJsonArray("list");
+
             List<Integer> weatherCodes = new ArrayList<>();
             List<Double> temperatures = new ArrayList<>();
             List<Double> humidities = new ArrayList<>();
-            for (int index = 0; index < arr.size(); index++) {
-                double temperature = arr.get(index).getAsJsonObject().getAsJsonObject("main").get("temp").getAsDouble();
-                double humidity = arr.get(index).getAsJsonObject().getAsJsonObject("main").get("humidity")
-                        .getAsDouble();
-                int weatherCode = arr.get(index).getAsJsonObject().getAsJsonArray("weather").get(0)
+
+            for (int index = 0; index < array.size(); index++) {
+                int weatherCode = array.get(index).getAsJsonObject().getAsJsonArray("weather").get(0)
                         .getAsJsonObject().get("id").getAsInt();
+                double humidity = array.get(index).getAsJsonObject().getAsJsonObject("main").get("humidity")
+                        .getAsDouble();
+                double temperature = array.get(index).getAsJsonObject().getAsJsonObject("main").get("temp").getAsDouble();
                 weatherCodes.add(weatherCode);
                 temperatures.add(temperature);
                 humidities.add(humidity);
             }
+
             CityBuilder cityBuilder = new CityBuilder();
             cityBuilder.setHumidity(humidities);
             cityBuilder.setTemperatures(temperatures);
@@ -82,10 +86,12 @@ public class TravelAgency {
             cityBuilder.setWeatherCodes(weatherCodes);
             cities.add(cityBuilder.createCity());
         }
+
         if (client.getClass().getSimpleName().equals("ChoosingClient") && client.getCitiesThatWantsToVisit()
                 .isEmpty()) {
             return Optional.empty();
         }
+
         return client.chooseBestCity(cities);
     }
 

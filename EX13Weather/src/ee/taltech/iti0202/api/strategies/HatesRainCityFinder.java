@@ -10,11 +10,12 @@ import java.util.stream.Collectors;
 public class HatesRainCityFinder implements CityFinderStrategy {
     @Override
     public Optional<City> findBestCity(List<City> candidateCities) {
+        final int HIGH_ALLOWED_HUMIDITY = 80;
+        final int MAX_ALLOWED_RAIN = 8;
         final int RAIN_NUMBER_START = 500;
         final int RAIN_NUMBER_END = 531;
-        final int HIGHEST_ALLOWED_HUMIDITY = 80;
-        final int MAX_ALLOWED_RAIN = 8;
         List<City> notRaining = new ArrayList<>();
+
         for (City city : candidateCities) {
             int hasRained = 0;
             for (Integer weatherCode : city.getWeatherCodes()) {
@@ -24,9 +25,11 @@ public class HatesRainCityFinder implements CityFinderStrategy {
             }
             if (hasRained <= MAX_ALLOWED_RAIN) notRaining.add(city);
         }
+
         List<City> lowHumidity = notRaining.stream()
-                .filter(city -> city.getAverageHumidity() <= HIGHEST_ALLOWED_HUMIDITY)
+                .filter(city -> city.getAverageHumidity() <= HIGH_ALLOWED_HUMIDITY)
                 .collect(Collectors.toList());
+
         if (lowHumidity.isEmpty()) {
             return Optional.empty();
         } else {

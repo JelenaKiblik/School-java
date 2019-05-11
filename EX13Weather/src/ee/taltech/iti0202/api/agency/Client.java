@@ -45,11 +45,14 @@ public class Client {
     }
 
     public Optional<City> chooseBestCity(List<City> possibleCities) {
+
         List<City> viableCities = possibleCities.stream()
                 .filter(city -> !city.getName().equals(startingCity))
                 .collect(Collectors.toList());
+
         List<City> listWithPreferredCities = new ArrayList<>();
         List<City> listWithNormalCities = new ArrayList<>();
+
         for (City city : viableCities) {
             if (wantsToVisitCities.contains(city.getName())) {
                 listWithPreferredCities.add(city);
@@ -57,6 +60,7 @@ public class Client {
                 listWithNormalCities.add(city);
             }
         }
+
         if (listWithPreferredCities.isEmpty()) {
             return choosingStrategy.findBestCity(listWithNormalCities);
         } else {

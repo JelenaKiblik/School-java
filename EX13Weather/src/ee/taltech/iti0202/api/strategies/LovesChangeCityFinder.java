@@ -14,14 +14,20 @@ public class LovesChangeCityFinder implements CityFinderStrategy  {
         final int ONE_HUNDRED = 100;
         final int TWENTY = 20;
         final int TEN = 10;
+
         for (City city : candidateCities) {
-            double tempAverage = city.getAverageTemperature();
-            double humAverage = city.getAverageHumidity();
+            double temperatureAverage = city.getAverageTemperature();
+            double humidityAverage = city.getAverageHumidity();
             double score = 0;
+
             for (int index = 0; index < city.getWeatherCodes().size(); index++) {
-                if (index == city.getWeatherCodes().size() - 1) break;
+                if (index == city.getWeatherCodes().size() - 1) {
+                    break;
+                }
+
                 int currentCode = city.getWeatherCodes().get(index);
                 int nextCode = city.getWeatherCodes().get(index + 1);
+
                 if (nextCode == currentCode) {
                     score -= TEN;
                 } else if (!Integer.toString(currentCode).substring(0, 1)
@@ -31,13 +37,16 @@ public class LovesChangeCityFinder implements CityFinderStrategy  {
                     score += TWENTY;
                 }
             }
+
             for (int i = 0; i < city.getTemperatures().size(); i++) {
                 double currentTemp = city.getTemperatures().get(i);
                 double currentHum = city.getHumidity().get(i);
-                score += Math.abs(tempAverage - currentTemp) + Math.abs(humAverage - currentHum);
+                score += Math.abs(temperatureAverage - currentTemp) + Math.abs(humidityAverage - currentHum);
             }
+
             scoreMap.put(city, (int) score);
         }
+
         return Optional.of(Objects.requireNonNull(scoreMap.entrySet().stream()
                 .max(Map.Entry.comparingByValue())
                 .orElse(null))

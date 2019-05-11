@@ -47,15 +47,14 @@ public class City {
 
     public double getAverageTemperature() {
         return temperatures.stream()
-                .mapToDouble(val -> val)
+                .mapToDouble(v -> v)
                 .average()
                 .getAsDouble();
     }
 
-
     public double getAverageHumidity() {
         return humidity.stream()
-                .mapToDouble(val -> val)
+                .mapToDouble(v -> v)
                 .average()
                 .getAsDouble();
     }
