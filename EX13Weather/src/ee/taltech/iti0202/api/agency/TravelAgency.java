@@ -71,7 +71,8 @@ public class TravelAgency {
                         .getAsJsonObject().get("id").getAsInt();
                 double humidity = array.get(index).getAsJsonObject().getAsJsonObject("main").get("humidity")
                         .getAsDouble();
-                double temperature = array.get(index).getAsJsonObject().getAsJsonObject("main").get("temp").getAsDouble();
+                double temperature = array.get(index).getAsJsonObject().getAsJsonObject("main").get("temp")
+                        .getAsDouble();
                 weatherCodes.add(weatherCode);
                 temperatures.add(temperature);
                 humidities.add(humidity);
