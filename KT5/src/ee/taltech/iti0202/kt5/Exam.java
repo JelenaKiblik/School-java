@@ -19,13 +19,13 @@ public class Exam {
         boolean found = false;
 
         for (Integer nr : nrs) {
-            if (nr == 3 && found == true) {
+            if ((nr == 3) && (found == true)) {
                 return false;
             }
             if (nr != 3) {
                 found = false;
             }
-            if (nr == 3 && found == false) {
+            if ((nr == 3) && (found == false)) {
                 found = true;
                 count++;
             }
@@ -57,7 +57,7 @@ public class Exam {
 
 
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
         arrayList.add(3);
         arrayList.add(2);
         arrayList.add(3);
