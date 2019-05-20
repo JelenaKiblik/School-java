@@ -3,7 +3,6 @@ package ee.taltech.iti0202.kt5.university;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 public class University {
     String name;
@@ -25,7 +24,7 @@ public class University {
     }
 
     public Optional<Course> createCourse(String name, int eap) {
-        if (!courses.contains(course.name)) {
+        if (!courses.contains(course)) {
             courses.add(course);
         }
         return Optional.empty();
