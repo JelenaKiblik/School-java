@@ -16,16 +16,16 @@ public class Exam {
      */
     public static boolean haveThree(List<Integer> nrs) {
         int count = 0;
-        Boolean found = false;
+        boolean found = false;
 
-        for (int i = 0; i < nrs.size(); i++) {
-            if (nrs.get(i) == 3 && found == true) {
+        for (Integer nr : nrs) {
+            if (nr == 3 && found == true) {
                 return false;
             }
-            if (nrs.get(i) != 3) {
+            if (nr != 3) {
                 found = false;
             }
-            if (nrs.get(i) == 3 && found == false) {
+            if (nr == 3 && found == false) {
                 found = true;
                 count++;
             }
@@ -57,12 +57,12 @@ public class Exam {
 
 
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(3);
         arrayList.add(2);
         arrayList.add(3);
         arrayList.add(2);
-        arrayList.add(2);
+        arrayList.add(3);
         System.out.println(haveThree(arrayList));
 
         System.out.println(mixString("abc", "xyz"));
