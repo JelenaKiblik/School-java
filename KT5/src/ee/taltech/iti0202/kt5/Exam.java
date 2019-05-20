@@ -71,13 +71,13 @@ public class Exam {
 
 
     public static void main(String[] args) {
-//        ArrayList<Integer> arrayList = new ArrayList<>();
-//        arrayList.add(3);
-//        arrayList.add(2);
-//        arrayList.add(3);
-//        arrayList.add(2);
-//        arrayList.add(3);
-//        System.out.println(haveThree(arrayList));
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(3);
+        arrayList.add(2);
+        arrayList.add(3);
+        arrayList.add(2);
+        arrayList.add(3);
+        System.out.println(haveThree(arrayList));
 
         System.out.println(mixString("abc", "xyz"));
         System.out.println(mixString("Hi", "There"));  //"HT ih ere"
