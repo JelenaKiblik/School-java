@@ -46,11 +46,23 @@ public class Exam {
     public static String mixString(String a, String b) {
         String result = "";
 
-        for (int i = 0; i < a.length(); i++) {
-            result = result + a.charAt(i);
-        }
-        for (int i = 0; i < b.length(); i++) {
-            result = result + b.charAt(i);
+        if (a.length() == b.length()) {
+            for (int i = 0; i < a.length(); i++) {
+                result = result + a.charAt(i);
+                result = result + b.charAt(i);
+            }
+        } else if (a.length() > b.length()) {
+            for (int i = 0; i < b.length(); i++) {
+                result = result + a.charAt(i);
+                result = result + b.charAt(i);
+            }
+            result = result + a.substring(a.length() - b.length() - 1);
+        } else {
+            for (int i = 0; i < a.length(); i++) {
+                result = result + a.charAt(i);
+                result = result + b.charAt(i);
+            }
+            result = result + b.substring(b.length() - a.length() - 1);
         }
         return result;
     }
@@ -66,7 +78,7 @@ public class Exam {
         System.out.println(haveThree(arrayList));
 
         System.out.println(mixString("abc", "xyz"));
-        System.out.println(mixString("Hi", "There"));
+        System.out.println(mixString("Hi", "There"));  //"HTihere"
     }
 
 }
