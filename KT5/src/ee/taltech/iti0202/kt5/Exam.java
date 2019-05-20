@@ -56,29 +56,32 @@ public class Exam {
                 result = result + a.charAt(i);
                 result = result + b.charAt(i);
             }
-            result = result + a.substring(a.length() - b.length() - 1);
-        } else {
+            result = result + a.substring(b.length());
+
+        } else if (a.length() < b.length()) {
             for (int i = 0; i < a.length(); i++) {
                 result = result + a.charAt(i);
                 result = result + b.charAt(i);
             }
-            result = result + b.substring(b.length() - a.length() - 1);
+            result = result + b.substring(a.length());   ///   b.sub(5 - 4)  1 ...
         }
+
         return result;
     }
 
 
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        arrayList.add(3);
-        arrayList.add(2);
-        arrayList.add(3);
-        arrayList.add(2);
-        arrayList.add(3);
-        System.out.println(haveThree(arrayList));
+//        ArrayList<Integer> arrayList = new ArrayList<>();
+//        arrayList.add(3);
+//        arrayList.add(2);
+//        arrayList.add(3);
+//        arrayList.add(2);
+//        arrayList.add(3);
+//        System.out.println(haveThree(arrayList));
 
         System.out.println(mixString("abc", "xyz"));
-        System.out.println(mixString("Hi", "There"));  //"HTihere"
+        System.out.println(mixString("Hi", "There"));  //"HT ih ere"
+        System.out.println(mixString("xxxx", "There")); //"xT xh xe xr e"
     }
 
 }
