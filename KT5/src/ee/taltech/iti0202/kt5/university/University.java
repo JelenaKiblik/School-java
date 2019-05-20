@@ -51,4 +51,8 @@ public class University {
         }
         return finishedCourse;
     }
+
+    public List<Student> getStudentsOrderedByResults() {
+        return null;
+    }
 }
