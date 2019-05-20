@@ -3,6 +3,7 @@ package ee.taltech.iti0202.kt5.university;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class University {
     String name;
@@ -53,6 +54,8 @@ public class University {
     }
 
     public List<Student> getStudentsOrderedByResults() {
-        return null;
+        List<Student> students = new ArrayList<>();
+
+        return students;
     }
 }
