@@ -15,12 +15,12 @@ public class AnimalBox<T extends Animal> {
 
     public void put(T animal) { }
 
-    public <T extends Animal> void sound() {
+    public void sound() {
         animal.sound();
     }
 
     public <T extends Food> void feed(Food food) {
-        System.out.println(animal.getName() + " was fed with " + food);
+        System.out.println(animal.getName() + "was fed with " + food);
     }
 
     public Optional<T> getAnimal() {
