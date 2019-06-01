@@ -8,7 +8,7 @@ public class PersianCat extends Animal {
     }
 
     @Override
-    public String sound() {
-        return "Prrr-prrr";
+    public void sound() {
+        System.out.println("Prrr-prrr");
     }
 }

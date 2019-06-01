@@ -8,7 +8,7 @@ public class SphynxCat extends Animal {
     }
 
     @Override
-    public String sound() {
-        return "Meeeeeoooooww!";
+    public void sound() {
+        System.out.println("Meeeeeoooooww!");
     }
 }
