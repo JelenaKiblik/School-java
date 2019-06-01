@@ -13,7 +13,9 @@ public class AnimalBox<T extends Animal> {
 
     public void put(T animal) { }
 
-    public void sound() { }
+    public void sound() {
+        animal.sound();
+    }
 
     public void feed(Food food) {
     }
