@@ -19,7 +19,7 @@ public class AnimalBox<T extends Animal> {
         animal.sound();
     }
 
-    public <T extends Food> void feed(Food food) {
+    public void feed(Food food) {
         System.out.println(animal.getName() + "was fed with " + food);
     }
 
