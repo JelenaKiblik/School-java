@@ -15,13 +15,11 @@ public class AnimalBox<T extends Animal> {
 
     public void put(T animal) { }
 
-    public void sound() {
+    public <T extends Animal> void sound() {
         animal.sound();
     }
 
-    public void feed(Food food) {
-        System.out.println(animal.getName() + "was fed with " + food);
-    }
+    public void feed(Food food) { }
 
     public Optional<T> getAnimal() {
         return Optional.ofNullable(animal);

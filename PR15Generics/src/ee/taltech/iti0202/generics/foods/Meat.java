@@ -2,7 +2,7 @@ package ee.taltech.iti0202.generics.foods;
 
 import ee.taltech.iti0202.generics.Animal;
 
-public abstract class Meat extends Food {
+public class Meat extends Food {
 
     private static  String name = "";
     private Animal animal;
@@ -12,5 +12,7 @@ public abstract class Meat extends Food {
         super(name);
     }
 
-    public abstract void feed();
+    public String feed() {
+        return animal.getName() + "was fed with " + food.getName();
+    }
 }
