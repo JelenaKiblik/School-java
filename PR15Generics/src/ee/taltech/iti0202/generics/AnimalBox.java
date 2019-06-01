@@ -2,7 +2,6 @@ package ee.taltech.iti0202.generics;
 
 import ee.taltech.iti0202.generics.cats.PersianCat;
 import ee.taltech.iti0202.generics.foods.Food;
-import ee.taltech.iti0202.generics.Animal;
 import java.util.Optional;
 
 
@@ -18,7 +17,8 @@ public class AnimalBox<T extends Animal> {
 
     public void sound() {
         if (animal instanceof PersianCat) {
-        persianCat.sound();}
+            persianCat.sound();
+        }
     }
 
 
