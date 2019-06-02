@@ -20,6 +20,8 @@ public class AnimalBox<T extends Animal> {
     }
 
     public void feed(Food food) {
-        System.out.println(animal.getName() + " was fed with " + food.toString());
+        if (animal != null) {
+            System.out.println(animal.getName() + " was fed with " + food.toString());
+        }
     }
 }
