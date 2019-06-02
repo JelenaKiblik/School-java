@@ -5,6 +5,7 @@ import java.util.Optional;
 
 public class AnimalBox<T extends Animal> {
     private T animal;
+    private Food food;
 
     public void put(T animal) {
         this.animal = animal;
@@ -14,7 +15,9 @@ public class AnimalBox<T extends Animal> {
         animal.sound();
     }
 
-    public void feed(Food food) { }
+    public<T extends Food>void feed(Food food) {
+        System.out.println(animal.getName() + " was fed with " + food);
+    }
 
     public Optional<T> getAnimal() {
         return Optional.ofNullable(animal);
