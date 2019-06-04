@@ -3,12 +3,12 @@ package ee.taltech.iti0202.components;
 public abstract class Component {
     private String name;
     private int price;
-    private int capacity;
+    private int performance;
     private int consumption;
 
-    public Component(String name, int price, int capacity, int consumption) {
+    public Component(String name, int price, int performance, int consumption) {
         this.price = price;
-        this.capacity = capacity;
+        this.performance = performance;
         this.consumption = consumption;
         this.name = name;
     }
@@ -21,8 +21,8 @@ public abstract class Component {
         return price;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int getPerformance() {
+        return performance;
     }
 
     public int getConsumption() {
