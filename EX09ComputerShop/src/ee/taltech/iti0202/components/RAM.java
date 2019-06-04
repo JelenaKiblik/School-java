@@ -12,5 +12,4 @@ public class RAM extends Component {
     public String getSocket() {
         return socket;
     }
-
 }

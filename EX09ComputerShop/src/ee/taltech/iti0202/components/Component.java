@@ -28,5 +28,4 @@ public abstract class Component {
     public int getConsumption() {
         return consumption;
     }
-
 }

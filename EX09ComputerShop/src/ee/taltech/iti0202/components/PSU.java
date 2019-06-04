@@ -12,5 +12,4 @@ public class PSU extends Component {
     public String getSocket() {
         return socket;
     }
-
 }

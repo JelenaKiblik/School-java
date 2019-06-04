@@ -12,5 +12,4 @@ public class Processor extends Component {
     public String getSocket() {
         return socket;
     }
-
 }
