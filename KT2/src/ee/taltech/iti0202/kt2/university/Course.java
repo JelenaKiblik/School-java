@@ -4,52 +4,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
-
-    private int eap;
+    private University university;
     private String name;
-    public List<Student> studentsInCourse = new ArrayList<>();
-    public List<Student> studentsInUniver;
-    public Student student;
+    private int eap;
+    private boolean finished = false;
+    private List<Student> students = new ArrayList<>();
 
-    public Course(String name) {
+    public Course(University university, String name, int eap) {
+        this.university = university;
         this.name = name;
         this.eap = eap;
     }
 
+    public int getEap() {
+        return eap;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public boolean addStudent(Student student) {
-        if (studentsInUniver.contains(student)) {
-            if (!studentsInCourse.contains(student)) {
-                studentsInCourse.add(student);
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public List<Student> getStudentsInCourse() {
-        return studentsInCourse;
-    }
-
-    public List<Student> getStudents() {
-        return studentsInCourse;
+        if (students.contains(student)) return false;
+        if (!student.isStudentOf(university)) return false;
+        students.add(student);
+        student.addCourse(this);
+        return true;
     }
 
     public boolean finish() {
-        if (!isFinished()) {
-            student.eap += eap;
-            return true;
-        } else {
-            return false;
-        }
+        if (finished) return false;
+        finished = true;
+        students.forEach(s -> s.addEap(eap));
+        return true;
     }
 
     public boolean isFinished() {
-        return false;
+        return finished;
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     public String toString() {
-        return name + " :" + name + "(" + student.eap + ")";
+        return String.format("%s: %s (%d)", university.getName(), name, eap);
     }
 }
