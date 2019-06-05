@@ -1,0 +1,436 @@
+package ee.taltech.iti0202.gomoku.strategy;
+
+import ee.taltech.iti0202.gomoku.game.Location;
+import ee.taltech.iti0202.gomoku.game.SimpleBoard;
+import ee.taltech.iti0202.gomoku.opponent.ComputerStrategy;
+
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.function.BiConsumer;
+
+/*
+Jelena Kiblik (jekibl, 164027)
+Annika Remmelgas (aremme, 164055)
+*/
+
+public class AnnikaJelenaStrategy implements ComputerStrategy {
+    public static int you;
+    public static int enemy;
+    public static int empty;
+
+    public static int width;
+    public static int height;
+
+    public static int count;
+    public int MAX_COUNT = 16;
+
+    public static double score;
+    public int[][] boardScores;
+    public boolean[][] criticalPoints;
+    public int[] coordinates = new int[2];
+
+    @Override
+    public Location getMove(SimpleBoard board, int player) {
+        width = board.getWidth();
+        height = board.getHeight();
+        empty = SimpleBoard.EMPTY;
+        you = player;
+        boardScores = new int[height][width];
+        criticalPoints = new boolean[height][width];
+
+        if (SimpleBoard.PLAYER_BLACK == player) {
+            enemy = SimpleBoard.PLAYER_WHITE;
+        }
+        if (SimpleBoard.PLAYER_WHITE == player){
+            enemy = SimpleBoard.PLAYER_BLACK;
+        }
+
+        int[][] b = board.getBoard();
+        evaluationFunction(b);
+
+        if (b[coordinates[1]][coordinates[0]] != empty) {
+            boolean toBreak = false;
+            while(true) {
+                int row = new Random().nextInt(height);
+                int col = new Random().nextInt(width);
+                if (b[row][col] == empty) {
+                    coordinates[0] = col;
+                    coordinates[1] = row;
+                    break;
+                }
+            }
+        }
+        return new Location(coordinates[1], coordinates[0]);
+    }
+
+    private void evaluationFunction(int[][] board) {
+        BiConsumer<ArrayList<Integer>, Integer> analyzer = (playerList, playerIndex) -> {
+            score = 0;
+            int center = playerList.get(playerIndex);
+            if (count == 0) {
+                if (playerList.size() - playerIndex > 4) {
+                    boolean fiveLength = true;
+                    int neightboor = playerList.get(playerIndex + 1);
+                    if (neightboor != empty) {
+                        for (int i = playerIndex + 2; i < playerIndex + 5; i++) {
+                            if (playerList.get(i) != neightboor) {
+                                fiveLength = false;
+                                break;
+                            }
+                        }
+                        if (fiveLength) {
+                            if (neightboor == enemy) {
+                                score = 10000;
+                            } else {
+                                score = 20000;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 1) {
+                if (playerIndex > 3) {
+                    boolean fiveLength = true;
+                    int neightboor = playerList.get(playerIndex - 1);
+                    if (neightboor != empty) {
+                        for (int i = playerIndex - 2; i > playerIndex - 5; i--) {
+                            if (playerList.get(i) != neightboor) {
+                                fiveLength = false;
+                                break;
+                            }
+                        }
+                        if (fiveLength) {
+                            if (neightboor == enemy) {
+                                score = 10000;
+                            } else {
+                                score = 20000;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 2) {
+                if (playerIndex > 1 && playerList.size() - playerIndex > 2) {
+                    int neightboor = playerList.get(playerIndex - 1);
+                    if (neightboor != empty) {
+                        if (playerList.get(playerIndex + 1) != neightboor || playerList.get(playerIndex + 2) != neightboor ||
+                                playerList.get(playerIndex - 2) != neightboor) {
+                        } else {
+                            if (neightboor == enemy) {
+                                score = 10000;
+                            } else {
+                                score = 20000;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 3) {
+                if (playerIndex > 0 && playerList.size() - playerIndex > 3) {
+                    int neightboor = playerList.get(playerIndex - 1);
+                    if (neightboor != empty) {
+                        if (playerList.get(playerIndex + 1) != neightboor || playerList.get(playerIndex + 2) != neightboor ||
+                                playerList.get(playerIndex + 3) != neightboor) {
+                        } else {
+                            if (neightboor == enemy) {
+                                score = 10000;
+                            } else {
+                                score = 20000;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 4) {
+                if (playerIndex > 2 && playerList.size() - playerIndex > 1) {
+                    int neightboor = playerList.get(playerIndex - 1);
+                    if (neightboor != empty) {
+                        if (playerList.get(playerIndex + 1) != neightboor || playerList.get(playerIndex - 2) != neightboor ||
+                                playerList.get(playerIndex - 3) != neightboor) {
+                        } else {
+                            if (neightboor == enemy) {
+                                score = 10000;
+                            } else {
+                                score = 20000;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 5) {
+                if (playerIndex > 2 && playerList.size() - playerIndex > 2) {
+                    int neightboor = playerList.get(playerIndex - 1);
+                    if (neightboor != empty) {
+                        if (playerList.get(playerIndex - 2) == neightboor && playerList.get(playerIndex + 1) == neightboor &&
+                                playerList.get(playerIndex - 3) == empty && playerList.get(playerIndex + 2) == empty) {
+                            if (neightboor == enemy) {
+                                score = 5000;
+                            } else {
+                                score = 2000;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 6) {
+                if (playerIndex > 1 && playerList.size() - playerIndex > 3) {
+                    int neightboor = playerList.get(playerIndex - 1);
+                    if (neightboor != empty) {
+                        if (playerList.get(playerIndex + 2) == neightboor && playerList.get(playerIndex + 1) == neightboor &&
+                                playerList.get(playerIndex - 2) == empty && playerList.get(playerIndex + 3) == empty) {
+                            if (neightboor == enemy) {
+                                score = 5000;
+                            } else {
+                                score = 2000;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 7) {
+                if (playerList.size() - playerIndex > 4 && playerIndex > 0) {
+                    boolean fourLength = true;
+                    int neightboor = playerList.get(playerIndex + 1);
+                    if (neightboor != empty) {
+                        for (int i = playerIndex + 2; i < playerIndex + 4; i++) {
+                            if (playerList.get(i) != neightboor) {
+                                fourLength = false;
+                                break;
+                            }
+                        }
+                        if (fourLength && playerList.get(playerIndex - 1) == empty) {
+                            if (playerList.get(playerIndex + 4) == empty) {
+                                if (neightboor == enemy) {
+                                    score = 5000;
+                                } else {
+                                    score = 2000;
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if (count == 8) {
+                if (playerIndex > 3 && playerList.size() - playerIndex > 1) {
+                    boolean fourLength = true;
+                    int neightboor = playerList.get(playerIndex - 1);
+                    if (neightboor != empty) {
+                        for (int i = playerIndex - 2; i > playerIndex - 4; i--) {
+                            if (playerList.get(i) != neightboor) {
+                                fourLength = false;
+                                break;
+                            }
+                        }
+                        if (fourLength && playerList.get(playerIndex + 1) == empty) {
+                            if (playerList.get(playerIndex - 4) == empty) {
+                                if (neightboor == enemy) {
+                                    score = 5000;
+                                } else {
+                                    score = 2000;
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if (count == 9) {
+                if (playerIndex > 1 && playerList.size() - playerIndex > 2) {
+                    if (playerList.get(playerIndex + 1).equals(playerList.get(playerIndex - 1)) && playerList.get(playerIndex - 1) != empty &&
+                            playerList.get(playerIndex + 2) == empty && playerList.get(playerIndex - 2) == empty) {
+                        if (playerList.get(playerIndex + 1) == you) {
+                            score = 111;
+                            if (playerIndex > 2 && playerList.get(playerIndex - 3) == empty || playerList.size() - playerIndex > 3 && playerList.get(playerIndex + 3) == empty) {
+                                score *= 2;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 10) {
+                if (playerIndex > 2 && playerList.size() - playerIndex > 1) {
+                    if (playerList.get(playerIndex - 1).equals(playerList.get(playerIndex - 2)) && playerList.get(playerIndex - 1) != empty &&
+                            playerList.get(playerIndex + 1) == empty && playerList.get(playerIndex - 3) == empty) {
+                        if (playerList.get(playerIndex + 1) == you) {
+                            score = 110;
+                            if (playerIndex > 3 && playerList.get(playerIndex - 4) == empty || playerList.size() - playerIndex > 2 && playerList.get(playerIndex + 2) == empty) {
+                                score *= 2;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 11) {
+                if (playerIndex > 0 && playerList.size() - playerIndex > 3) {
+                    if (playerList.get(playerIndex + 1).equals(playerList.get(playerIndex + 2)) && playerList.get(playerIndex + 1) != empty &&
+                            playerList.get(playerIndex - 1) == empty && playerList.get(playerIndex + 3) == empty) {
+                        if (playerList.get(playerIndex + 1) == you) {
+                            score = 109;
+                            if (playerIndex > 1 && playerList.get(playerIndex - 1) == empty || playerList.size() - playerIndex > 4 && playerList.get(playerIndex + 4) == empty) {
+                                score *= 2;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 12) {
+                if (playerIndex > 1 && playerList.size() - playerIndex > 2) {
+                    if (playerList.get(playerIndex + 1).equals(playerList.get(playerIndex - 1)) && playerList.get(playerIndex - 1) != empty &&
+                            playerList.get(playerIndex + 2) == empty && playerList.get(playerIndex - 2) == empty) {
+                        if (playerList.get(playerIndex + 1) == enemy) {
+                            score = 82;
+                            if (playerIndex > 2 && playerList.get(playerIndex - 3) == empty || playerList.size() - playerIndex > 3 && playerList.get(playerIndex + 3) == empty) {
+                                score *= 2;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 13) {
+                if (playerIndex > 2 && playerList.size() - playerIndex > 1) {
+                    if (playerList.get(playerIndex - 1).equals(playerList.get(playerIndex - 2)) && playerList.get(playerIndex - 1) != empty &&
+                            playerList.get(playerIndex + 1) == empty && playerList.get(playerIndex - 3) == empty) {
+                        if (playerList.get(playerIndex + 1) == enemy) {
+                            score = 81;
+                            if (playerIndex > 3 && playerList.get(playerIndex - 4) == empty || playerList.size() - playerIndex > 2 && playerList.get(playerIndex + 2) == empty) {
+                                score *= 2;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 14) {
+                if (playerIndex > 0 && playerList.size() - playerIndex > 3) {
+                    if (playerList.get(playerIndex + 1).equals(playerList.get(playerIndex + 2)) && playerList.get(playerIndex + 1) != empty &&
+                            playerList.get(playerIndex - 1) == empty && playerList.get(playerIndex + 3) == empty) {
+                        if (playerList.get(playerIndex + 1) == enemy) {
+                            score = 80;
+                            if (playerIndex > 1 && playerList.get(playerIndex - 1) == empty || playerList.size() - playerIndex > 4 && playerList.get(playerIndex + 4) == empty) {
+                                score *= 2;
+                            }
+                        }
+                    }
+                }
+            } else if (count == 15) {
+                if (playerIndex > 0 && playerList.size() - playerIndex > 1) {
+                    if (playerList.get(playerIndex - 1) == you) {
+                        score = 20;
+                    }
+                    if (playerList.get(playerIndex + 1) == you) {
+                        score += 20;
+                    }
+                }
+            } else if (count == 16) {
+                int space = -1;
+                int our = 0;
+                for (int i = playerIndex; i < playerList.size(); i++) {
+                    if (playerList.get(i) == enemy) {
+                        break;
+                    } else if (playerList.get(i) == you) {
+                        our++;
+                    }
+                    space++;
+                }
+                for (int i = playerIndex; i >= 0; i--) {
+                    if (playerList.get(i) == enemy) {
+                        break;
+                    } else if (playerList.get(i) == you) {
+                        our++;
+                    }
+                    space++;
+                }
+                score = 5 * space + our;
+            }
+        };
+        ArrayList<Integer> allRow;
+        count = 0;
+        boolean toBreak = false;
+        while (count <= MAX_COUNT) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (board[i][j] == empty) {
+                        for (int diagonals = 0; diagonals < 4; diagonals++) {
+                            allRow = new ArrayList<>();
+                            int before = 0;
+                            for (int k = -5; k <= 5; k++) {
+                                boolean wasInField = true;
+                                if (diagonals == 0) {
+                                    if (i + k >= 0 && i + k < height && j + k >= 0 && j + k < width) {
+                                        allRow.add(board[i + k][j + k]);
+                                    } else {
+                                        wasInField = false;
+                                    }
+                                } else if (diagonals == 1) {
+                                    if (i + k >= 0 && i + k < height) {
+                                        allRow.add(board[i + k][j]);
+                                    } else {
+                                        wasInField = false;
+                                    }
+                                } else if (diagonals == 2) {
+                                    if (i + k >= 0 && i + k < height && j - k >= 0 && j - k < width) {
+                                        allRow.add(board[i + k][j - k]);
+                                    } else {
+                                        wasInField = false;
+                                    }
+                                } else if (diagonals == 3) {
+                                    if (j + k >= 0 && j + k < width) {
+                                        allRow.add(board[i][j + k]);
+                                    } else {
+                                        wasInField = false;
+                                    }
+                                }
+                                if (!wasInField) {
+                                    if (k < 0) {
+                                        before--;
+                                    }
+                                }
+                            }
+
+                            analyzer.accept(allRow, 5 + before);
+                            if (count <= 8 && score != 0) {
+                                criticalPoints[i][j] = true;
+                                boardScores[i][j] += score;
+                            } else if (count > 8) {
+                                boardScores[i][j] += score;
+                            }
+                        }
+                        if (toBreak) {
+                            break;
+                        }
+                    }
+                }
+                if (toBreak) {
+                    break;
+                }
+            }
+            if (toBreak) {
+                break;
+            }
+            count++;
+        }
+        if (!toBreak) {
+            int maxScore = 0;
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (criticalPoints[i][j] && boardScores[i][j] > maxScore) {
+                        maxScore = boardScores[i][j];
+                        coordinates[0] = j;
+                        coordinates[1] = i;
+                        toBreak = true;
+                    }
+                }
+            }
+            if (!toBreak) {
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        if (boardScores[i][j] > maxScore) {
+                            maxScore = boardScores[i][j];
+                            coordinates[0] = j;
+                            coordinates[1] = i;
+                            toBreak = true;
+                        }
+                    }
+                }
+            }
+            while(!toBreak) {
+                int row = new Random().nextInt(height);
+                int col = new Random().nextInt(width);
+                if (board[row][col] == empty) {
+                    coordinates[0] = col;
+                    coordinates[1] = row;
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "AnnikaJelenaStrategy";
+    }
+}
